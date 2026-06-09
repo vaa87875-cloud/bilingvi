@@ -325,6 +325,7 @@ section{padding:var(--sec-pad) 0}
 .price-per{font-size:var(--t-sm);color:var(--muted)}
 .perks{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
 .perks li{display:flex;gap:9px;align-items:center;font-size:var(--t-base);color:var(--text)}
+.perk-split-mobile{display:none}
 .perk-ico{width:22px;height:22px;border-radius:50%;background:var(--blue-pale);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
 .stripe-btn{display:block;width:100%;padding:14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:var(--t-base);font-weight:800;text-align:center;cursor:pointer;border:none;transition:transform .2s,opacity .2s;text-decoration:none;min-height:48px}
 .stripe-btn:hover{transform:translateY(-2px);opacity:.92}
@@ -616,6 +617,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .afisha-body{padding:20px 20px 24px}
   .slot-grid{grid-template-columns:1fr;gap:12px}
   .slot-btn{min-height:76px;padding:16px 14px}
+  .perk-split-desktop{display:none!important}
+  .perk-split-mobile{display:flex!important}
 }
 </style>
 <meta content="Bilingvi — интерактивные русские истории по воскресеньям и разговорные мини-группы для детей-билингвов 4–10 лет." name="description"/></head>
@@ -747,7 +750,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="fit-card reveal"><div class="fit-ico">👂</div><h3>Ребёнок понимает, но мало говорит</h3><p>В воскресной истории можно участвовать без стресса: слушать, выбирать, отвечать реакциями и повторять короткие фразы.</p></div>
 <div class="fit-card reveal rd1"><div class="fit-ico">📚</div><h3>Слова запоминаются через сюжет</h3><p>Новая лексика приходит не списком, а через героев, действия и повторяющиеся ситуации.</p></div>
 <div class="fit-card reveal rd2"><div class="fit-ico">✨</div><h3>Русский нужен для действия</h3><p>Ребёнок отвечает, выбирает, помогает героям и видит, что русский — это не упражнение, а способ участвовать.</p></div>
-<div class="fit-card reveal rd3"><div class="fit-ico">💬</div><h3>Говорить легче в маленькой группе</h3><p>В мини-группах до 4 детей больше времени на речь: вопросы, короткие ответы и живой диалог по той же истории.</p></div>
+<div class="fit-card reveal rd3"><div class="fit-ico">💬</div><h3>Говорить легче в маленькой группе</h3><p>В мини-группах до 5 детей больше времени на речь: вопросы, короткие ответы и живой диалог по той же истории.</p></div>
 </div>
 </div>
 </section>
@@ -788,7 +791,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="how-card reveal rd1">
 <div class="how-num">02</div>
 <span class="how-icon">💬</span>
-<h3>Будни — мини-группа до 4 детей</h3>
+<h3>Будни — мини-группа до 5 детей</h3>
 <p>По той же истории дети говорят больше: отвечают на вопросы, строят фразы, обсуждают героев и придумывают продолжение.</p>
 </div>
 <div class="how-card reveal rd2">
@@ -839,7 +842,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="group-emoji-bg">💬</div>
 <div class="group-age">Мини-группа</div>
 <h3>Регулярная речь в маленьком кругу</h3>
-<div class="group-tagline">Для детей, которым нужна постоянная практика: в мини-группе до 4 человек ребёнок говорит больше, отвечает, строит фразы и получает мягкую поддержку.</div>
+<div class="group-tagline">Для регулярной речи в маленьком кругу: ребёнок говорит больше, отвечает, строит фразы и получает мягкую поддержку.</div>
 <div class="group-price-row">
 <span class="group-old-price">£48</span>
 <span class="group-new-price">£39</span>
@@ -847,12 +850,13 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 <div class="group-price-note">специальная цена на запуске</div>
 <ul class="group-list">
-<li>Пробное занятие в мини-группе</li>
+<li>4 мини-встречи в месяц</li>
+<li>4 воскресные истории бонусом</li>
 <li>Группы по возрасту и уровню</li>
-<li>До 4 детей</li>
-<li>Воскресные истории входят бонусом</li>
+<li>До 5 детей</li>
+<li>Материалы и поддержка после встреч</li>
 </ul>
-<button class="group-btn group-btn-light" onclick="openModal('trial')">Оставить заявку</button>
+<button class="group-btn group-btn-light" onclick="openModal('club')">Подобрать мини-группу</button>
 </div>
 <div class="group-card gc-3 reveal rd2">
 <div class="group-emoji-bg">🏡</div>
@@ -893,7 +897,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="price-card hot reveal rd1">
 <div class="hot-badge">⭐ Основной формат</div>
 <div class="price-name">Мини-группа</div>
-<div class="price-tagline">Для регулярной речи в маленьком кругу до 4 детей. Ребёнок говорит больше, отвечает на вопросы и строит фразы.</div>
+<div class="price-tagline">Для регулярной речи в маленьком кругу: ребёнок говорит больше, отвечает, строит фразы и получает мягкую поддержку.</div>
 <div class="price-row price-row--sale">
 <span class="price-old">£48</span>
 <span class="price-new">£39</span>
@@ -902,10 +906,12 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="price-launch-note">специальная цена на запуске</div>
 <ul class="perks">
 <li><div class="perk-ico">✓</div>4 мини-встречи в месяц</li>
-<li><div class="perk-ico">✓</div>До 4 детей в группе</li>
+<li><div class="perk-ico">✓</div>4 воскресные истории бонусом</li>
 <li><div class="perk-ico">✓</div>Группы по возрасту и уровню</li>
-<li><div class="perk-ico">✓</div>Воскресные истории включены бонусом</li>
-<li><div class="perk-ico">✓</div>Материалы после каждой встречи</li>
+<li><div class="perk-ico">✓</div>До 5 детей</li>
+<li class="perk-split-desktop"><div class="perk-ico">✓</div>Материалы после встреч</li>
+<li class="perk-split-desktop"><div class="perk-ico">✓</div>Поддержка</li>
+<li class="perk-split-mobile"><div class="perk-ico">✓</div>Материалы и поддержка после встреч</li>
 </ul>
 <button class="stripe-btn sb-solid" onclick="openModal('club')">Подобрать мини-группу</button>
 </div>
