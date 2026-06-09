@@ -1,0 +1,100 @@
+{
+  "section": {
+    "tag": "Афиша",
+    "title": "Ближайшие воскресные истории",
+    "subtitle": "Можно прийти разово: ребёнок слушает, помогает героям, выбирает действия и повторяет ключевые фразы на русском.",
+    "note": "Участники мини-групп получают воскресные истории как бонус к месячному пакету."
+  },
+  "modal": {
+    "title": "📚 Афиша воскресных историй",
+    "subtitle": "21 июня — две истории для разных возрастов. Выберите подходящую и оплатите билет.",
+    "afterShowNote": "После истории высылаем слова, фразы и маленькое задание для дома",
+    "ticketLabel": "Записаться · £4",
+    "ticketNote": "После оплаты пришлём ссылку на Zoom за 1 час до начала.<br/>Билет действителен на одну выбранную историю."
+  },
+  "ticket": {
+    "price": "£4"
+  },
+  "shows": [
+    {
+      "id": "pod-gribom",
+      "storyId": "under-the-mushroom-4-6",
+      "status": "next",
+      "dateLabel": "21 июня · 10:00 UK",
+      "modalDateLabel": "21 июня · 10:00 UK",
+      "title": "«Под грибом»",
+      "titleModal": "🍄 «Под грибом»",
+      "description": "Добрая интерактивная сказка: слушаем, отвечаем, помогаем героям спрятаться от дождя.",
+      "descriptionModal": "Добрая интерактивная сказка по мотивам В. Сутеева. Дети помогают персонажам, повторяют фразы и выбирают, кто спрячется под грибом.",
+      "tags": ["4–6 лет", "35–45 минут"],
+      "meta": [
+        { "text": "⏱ 35–45 минут", "pill": "pill-blue" },
+        { "text": "👶 4–6 лет", "pill": "pill-yellow" },
+        { "text": "🌍 Online · Zoom", "pill": "pill-green" }
+      ],
+      "theme": "blue",
+      "ticketLabel": "Записаться — 4–6 лет · £4",
+      "inModal": true,
+      "inSchedule": true,
+      "scheduleActions": [
+        { "type": "ticket", "label": "🎟 Билет £4" },
+        { "type": "afisha", "label": "Вся афиша" }
+      ]
+    },
+    {
+      "id": "fisherman-and-fish-7-10",
+      "storyId": "fisherman-and-fish-7-10",
+      "status": "next",
+      "dateLabel": "21 июня · 11:30 UK",
+      "modalDateLabel": "21 июня · 11:30 UK",
+      "title": "«Сказка о рыбаке и рыбке»",
+      "titleModal": "🐟 «Сказка о рыбаке и рыбке»",
+      "description": "Слушаем историю, выбираем ответы, обсуждаем желания героев и говорим короткими фразами.",
+      "descriptionModal": "Пушкин в интерактивном формате. Дети обсуждают желания героев, выбирают ответы и говорят короткими фразами.",
+      "tags": ["7–10 лет", "35–45 минут"],
+      "meta": [
+        { "text": "⏱ 35–45 минут", "pill": "pill-pink" },
+        { "text": "👶 7–10 лет", "pill": "pill-yellow" },
+        { "text": "🌍 Online · Zoom", "pill": "pill-green" }
+      ],
+      "theme": "pink",
+      "ticketLabel": "Записаться — 7–10 лет · £4",
+      "inModal": true,
+      "inSchedule": true,
+      "scheduleActions": [
+        { "type": "ticket", "label": "🎟 Билет £4" },
+        { "type": "afisha", "label": "Вся афиша" }
+      ]
+    },
+    {
+      "id": "teremok",
+      "status": "upcoming",
+      "dateLabel": "Скоро",
+      "title": "«Теремок»",
+      "titleModal": "🐔 «Теремок: кто ещё поместится?»",
+      "description": "Классическая сказка с повторяющимися фразами и вопросом: кто ещё поместится?",
+      "descriptionModal": "Классическая сказка превращается в игру на слова и обсуждение. Дети помогают героям войти в домик.",
+      "tags": ["4–8 лет", "сказка", "повторы"],
+      "theme": "green",
+      "inModal": false,
+      "inSchedule": true,
+      "scheduleActions": [
+        { "type": "afisha", "label": "Подробнее" }
+      ]
+    },
+    {
+      "id": "vorona-lisica",
+      "status": "soon",
+      "dateLabel": "Скоро",
+      "title": "«Ворона и Лисица»",
+      "description": "Живая басня с эмоциями и простыми вопросами: кто хитрый, кто поверил и почему?",
+      "tags": ["7–10 лет", "басня", "речь"],
+      "theme": "green",
+      "inModal": false,
+      "inSchedule": true,
+      "scheduleActions": [
+        { "type": "afisha", "label": "Открыть афишу" }
+      ]
+    }
+  ]
+}
