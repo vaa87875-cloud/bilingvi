@@ -478,10 +478,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .fit-grid,.result-grid{grid-template-columns:1fr 1fr}
   .nav-desktop{display:none!important}
   .hamburger{display:flex}
-  .nav-mobile.open{display:flex;flex-direction:column;position:fixed;inset:0;top:0;z-index:1;background:var(--cream);padding:72px 20px 28px;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  nav.menu-open{z-index:500}
-  nav.menu-open .nav-inner{position:relative;z-index:3}
-  nav.menu-open .nav-mobile.open{z-index:2}
+  .nav-mobile.open{display:flex;flex-direction:column;position:fixed;inset:0;z-index:400;background:var(--cream);padding:calc(72px + env(safe-area-inset-top,0px)) 20px calc(28px + env(safe-area-inset-bottom,0px));gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  body.menu-open #nav{z-index:401}
   .nav-mobile.open li{width:100%}
   .nav-mobile.open a{display:block;font-size:17px;font-weight:800;padding:15px 0;border-bottom:1px solid var(--border);color:var(--dark)}
   .nav-mobile.open a.btn-nav{margin-top:18px;text-align:center;border:none;border-radius:50px;padding:15px 20px;min-height:50px;font-size:15px!important}
@@ -503,18 +501,17 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .fit-card p,.result-card p,.how-card p,.sunday-story-desc,.price-tagline,.faq-a{font-size:16px;line-height:1.6}
   .faq-q{font-size:16px;line-height:1.35}
 
-  nav{padding:0;isolation:isolate}
-  .nav-inner{padding:0 20px;height:64px;position:relative;z-index:2}
+  nav{padding:0;padding-top:env(safe-area-inset-top,0px)}
+  .nav-inner{padding:0 20px;height:64px;position:relative}
   .logo-text{font-size:20px}
   .logo-sub{display:none}
   .nav-cta-mobile{display:none!important}
   .hamburger{display:flex}
   h1,h2,h3,.sec-title,.hero-h1,.hero-h1 span,.hero-h1 em,.hero-h1 strong,.group-card h3,.price-name,.fit-card h3,.result-card h3,.how-card h3,.sunday-story-card h3,.founder-mobile-card h3,.social-sec h2,.final-cta h2{font-family:'Baloo 2',sans-serif!important;font-style:normal!important;font-weight:800;font-synthesis:none}
 
-  .club-hero{position:relative;z-index:1;padding-top:84px;padding-bottom:42px}
+  .club-hero{position:relative;z-index:1;padding-top:calc(84px + env(safe-area-inset-top,0px));padding-bottom:42px}
   .club-hero-inner{gap:0}
-  .hero-sticker-wrap{margin-bottom:14px;pointer-events:none}
-  .hero-sticker-wrap .sticker{pointer-events:auto}
+  .hero-sticker-wrap{display:none}
   .sticker{padding:6px 14px}
   .hero-h1{font-size:clamp(40px,11vw,48px);line-height:.98;letter-spacing:-.4px;margin-bottom:16px}
   .hero-sub{font-size:17px;line-height:1.55;max-width:none}
@@ -639,7 +636,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </button>
 </div>
 </div>
-<ul class="nav-links nav-mobile" id="navLinks">
+</nav>
+<ul class="nav-links nav-mobile" id="navLinks" aria-hidden="true">
 <li><a href="#home" onclick="toggleNav()">Главная</a></li>
 <li><a href="#sunday-stories" onclick="toggleNav()">Воскресные истории</a></li>
 <li><a href="#groups" onclick="toggleNav()">Форматы</a></li>
@@ -649,7 +647,6 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <li><a class="btn-nav" href="#" onclick="scrollToSundayStories();toggleNav();return false">Выбрать историю — £4</a></li>
 <li><a class="btn-nav btn-nav--pink" href="#" onclick="openModal('club');toggleNav();return false">Подобрать мини-группу</a></li>
 </ul>
-</nav>
 
 <section class="club-hero" id="home">
 <div class="container">
@@ -1293,12 +1290,12 @@ function closeAfisha(){document.getElementById('afishaOverlay').classList.remove
 function maybeCloseAfisha(e){if(e.target===document.getElementById('afishaOverlay'))closeAfisha()}
 function buyTheatreTicket(){scrollToSundayStories()}
 function toggleNav(){
-  const nav=document.getElementById('navLinks');
-  const navBar=document.getElementById('nav');
+  const panel=document.getElementById('navLinks');
   const ham=document.getElementById('ham');
-  const opening=!nav.classList.contains('open');
-  nav.classList.toggle('open');
-  navBar.classList.toggle('menu-open',opening);
+  const opening=!panel.classList.contains('open');
+  panel.classList.toggle('open');
+  document.body.classList.toggle('menu-open',opening);
+  panel.setAttribute('aria-hidden',opening?'false':'true');
   if(ham)ham.setAttribute('aria-expanded',opening?'true':'false');
   document.body.style.overflow=opening?'hidden':'';
 }
