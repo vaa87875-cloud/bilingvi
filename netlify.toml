@@ -1,2 +1,4 @@
 [build]
   publish = "."
+
+# Forms: trial-request (detected from index.html at deploy time)
