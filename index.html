@@ -115,9 +115,9 @@ nav.scrolled{box-shadow:0 2px 20px rgba(59,91,219,.08)}
 .btn-nav:hover{background:var(--blue-light)!important}
 .btn-nav--pink{background:var(--pink)!important;box-shadow:0 3px 10px rgba(244,132,95,.25)!important}
 .btn-nav--pink:hover{background:var(--coral)!important}
-.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-actions{display:flex;align-items:center;gap:8px;position:relative;z-index:2}
 .nav-cta-mobile{display:none;align-items:center;justify-content:center;height:36px;padding:0 14px;border-radius:50px;background:var(--blue);color:white;border:none;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 3px 10px rgba(59,91,219,.22)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;width:44px;height:44px;align-items:center;justify-content:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;width:44px;height:44px;align-items:center;justify-content:center;position:relative;z-index:3;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .hamburger span{display:block;width:20px;height:2px;background:var(--blue);border-radius:2px;transition:transform .25s,opacity .25s}
 
 /* ── BUTTON SYSTEM ── */
@@ -478,9 +478,10 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .fit-grid,.result-grid{grid-template-columns:1fr 1fr}
   .nav-desktop{display:none!important}
   .hamburger{display:flex}
-  .nav-mobile.open{display:flex;flex-direction:column;position:fixed;inset:0;top:0;z-index:250;background:var(--cream);padding:72px 20px 28px;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  nav.menu-open{z-index:300}
-  nav.menu-open .nav-inner{position:relative;z-index:301}
+  .nav-mobile.open{display:flex;flex-direction:column;position:fixed;inset:0;top:0;z-index:1;background:var(--cream);padding:72px 20px 28px;gap:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  nav.menu-open{z-index:500}
+  nav.menu-open .nav-inner{position:relative;z-index:3}
+  nav.menu-open .nav-mobile.open{z-index:2}
   .nav-mobile.open li{width:100%}
   .nav-mobile.open a{display:block;font-size:17px;font-weight:800;padding:15px 0;border-bottom:1px solid var(--border);color:var(--dark)}
   .nav-mobile.open a.btn-nav{margin-top:18px;text-align:center;border:none;border-radius:50px;padding:15px 20px;min-height:50px;font-size:15px!important}
@@ -502,17 +503,18 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .fit-card p,.result-card p,.how-card p,.sunday-story-desc,.price-tagline,.faq-a{font-size:16px;line-height:1.6}
   .faq-q{font-size:16px;line-height:1.35}
 
-  nav{padding:0}
-  .nav-inner{padding:0 20px;height:64px}
+  nav{padding:0;isolation:isolate}
+  .nav-inner{padding:0 20px;height:64px;position:relative;z-index:2}
   .logo-text{font-size:20px}
   .logo-sub{display:none}
   .nav-cta-mobile{display:none!important}
   .hamburger{display:flex}
   h1,h2,h3,.sec-title,.hero-h1,.hero-h1 span,.hero-h1 em,.hero-h1 strong,.group-card h3,.price-name,.fit-card h3,.result-card h3,.how-card h3,.sunday-story-card h3,.founder-mobile-card h3,.social-sec h2,.final-cta h2{font-family:'Baloo 2',sans-serif!important;font-style:normal!important;font-weight:800;font-synthesis:none}
 
-  .club-hero{padding-top:32px;padding-bottom:42px}
+  .club-hero{position:relative;z-index:1;padding-top:84px;padding-bottom:42px}
   .club-hero-inner{gap:0}
-  .hero-sticker-wrap{margin-bottom:14px}
+  .hero-sticker-wrap{margin-bottom:14px;pointer-events:none}
+  .hero-sticker-wrap .sticker{pointer-events:auto}
   .sticker{padding:6px 14px}
   .hero-h1{font-size:clamp(40px,11vw,48px);line-height:.98;letter-spacing:-.4px;margin-bottom:16px}
   .hero-sub{font-size:17px;line-height:1.55;max-width:none}
