@@ -405,14 +405,20 @@ label.field-label{display:block;font-size:var(--t-sm);font-weight:800;color:var(
 label.field-label:first-of-type{margin-top:0}
 input[type=text],input[type=email],select,textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'Nunito',sans-serif;font-size:var(--t-base);color:var(--dark);background:var(--cream);outline:none;transition:border-color .2s}
 input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{border-color:var(--blue)}
-.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
-.slot-btn{padding:12px 10px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:var(--cream);cursor:pointer;transition:all .2s;text-align:center;font-family:'Nunito',sans-serif}
+.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.slot-btn{padding:14px 12px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--cream);cursor:pointer;transition:all .2s;text-align:left;font-family:'Nunito',sans-serif;min-height:88px}
 .slot-btn:hover{border-color:var(--blue);background:var(--blue-pale)}
-.slot-btn.selected{border-color:var(--blue);background:var(--blue-pale)}
+.slot-btn.selected{border-color:var(--blue);background:var(--blue-pale);box-shadow:0 0 0 2px rgba(59,91,219,.15)}
 .slot-day{font-size:var(--t-sm);font-weight:800;color:var(--dark)}
-.slot-utc{font-size:11px;color:var(--muted);margin:2px 0}
-.slot-local{font-size:var(--t-sm);font-weight:800;color:var(--blue)}
-.tz-note{font-size:11px;color:var(--muted);margin-top:7px;text-align:center}
+.slot-time{font-size:15px;font-weight:900;color:var(--blue);margin:4px 0 2px}
+.slot-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.slot-local{font-size:12px;font-weight:800;color:var(--text);margin-top:6px;opacity:.85}
+.tz-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+.step-note{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin-bottom:14px}
+.form-pay-note{font-size:var(--t-sm);color:var(--muted);line-height:1.5;margin:14px 0 0;text-align:center}
+.form-error{font-size:var(--t-sm);color:#c0392b;margin-top:12px;line-height:1.5;display:none}
+.form-error.visible{display:block}
+.form-error a{color:var(--blue);font-weight:800}
 .modal-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:10px}
 .btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:700;font-size:var(--t-sm);cursor:pointer;transition:all .2s}
 .btn-back:hover{border-color:var(--blue);color:var(--blue)}
@@ -608,7 +614,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .modal-body{padding:18px 20px 24px}
   .modal-header{padding:20px 20px 0}
   .afisha-body{padding:20px 20px 24px}
-  .slot-grid{grid-template-columns:1fr}
+  .slot-grid{grid-template-columns:1fr;gap:12px}
+  .slot-btn{min-height:76px;padding:16px 14px}
 }
 </style>
 <meta content="Bilingvi — интерактивные русские истории по воскресеньям и разговорные мини-группы для детей-билингвов 4–10 лет." name="description"/></head>
@@ -845,7 +852,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <li>До 4 детей</li>
 <li>Воскресные истории входят бонусом</li>
 </ul>
-<button class="group-btn group-btn-light" onclick="openModal('trial')">Записаться на пробное</button>
+<button class="group-btn group-btn-light" onclick="openModal('trial')">Оставить заявку</button>
 </div>
 <div class="group-card gc-3 reveal rd2">
 <div class="group-emoji-bg">🏡</div>
@@ -905,14 +912,14 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="price-card reveal rd2">
 <div class="price-name">Пробная мини-группа</div>
 <div class="price-tagline">Для тех, кто хочет понять, подойдёт ли ребёнку маленькая группа перед абонементом.</div>
-<div class="price-row"><span class="price-sym">£</span><span class="price-num">7</span><span class="price-per">один раз</span></div>
+<div class="price-row"><span class="price-sym">£</span><span class="price-num">7</span><span class="price-per">после согласования времени</span></div>
 <ul class="perks">
 <li><div class="perk-ico">✓</div>Короткая диагностика речи</li>
 <li><div class="perk-ico">✓</div>Мини-история и разговорные задания</li>
 <li><div class="perk-ico">✓</div>Рекомендация формата</li>
-<li><div class="perk-ico">✓</div>Без обязательства продолжать</li>
+<li><div class="perk-ico">✓</div>Оплата после согласования времени</li>
 </ul>
-<button class="stripe-btn sb-outline" onclick="openModal('trial')">Записаться на пробную</button>
+<button class="stripe-btn sb-outline" onclick="openModal('trial')">Оставить заявку</button>
 </div>
 </div>
 </div>
@@ -1075,13 +1082,14 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 </div>
 <div class="step-screen" id="step3">
-<div class="step-title">Шаг 3 из 3 · Удобное время мини-группы</div>
+<div class="step-title">Шаг 3 из 3 · удобное время</div>
+<p class="step-note">Выберите один или несколько вариантов, которые обычно вам подходят. Я напишу вам на email и согласую точное время пробной мини-группы.</p>
 <label class="field-label">Ваш часовой пояс</label>
 <select id="timezone" onchange="updateSlots()">
 <option value="-8">UTC-8 (Лос-Анджелес)</option>
 <option value="-5">UTC-5 (Нью-Йорк)</option>
-<option value="0">UTC+0 (Лондон)</option>
-<option selected="" value="1">UTC+1 (Париж, Берлин)</option>
+<option selected="" value="0">UTC+0 (Лондон, UK)</option>
+<option value="1">UTC+1 (Париж, Берлин)</option>
 <option value="2">UTC+2 (Хельсинки, Киев)</option>
 <option value="3">UTC+3 (Москва, Стамбул)</option>
 <option value="4">UTC+4 (Дубай)</option>
@@ -1092,9 +1100,13 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <option value="10">UTC+10 (Сидней)</option>
 <option value="12">UTC+12 (Окленд)</option>
 </select>
-<label class="field-label" style="margin-top:14px">Выберите слот</label>
+<label class="field-label" style="margin-top:14px">Какие варианты вам подходят?</label>
 <div class="slot-grid" id="slotGrid"></div>
 <div class="tz-note" id="tzNote"></div>
+<label class="field-label" style="margin-top:14px">Если удобнее другое время — напишите</label>
+<textarea id="preferredTimeComment" placeholder="Например: будни после 17:00 UK, суббота утром, мы живём в США / Испании / Германии…" rows="3" style="resize:vertical"></textarea>
+<p class="form-pay-note">Пробная мини-группа стоит £7. Оплата — после согласования времени.</p>
+<div class="form-error" id="formError"></div>
 <div class="modal-nav">
 <button class="btn-back" onclick="goStep(2)">← Назад</button>
 <button class="btn-pay" onclick="submitForm()">Отправить заявку</button>
@@ -1103,40 +1115,65 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="step-screen" id="stepSuccess">
 <div class="success-screen">
 <div class="success-ico">🎉</div>
-<h3>Заявка принята!</h3>
-<p>Мы получили заявку. На почту <strong id="confirmEmail"></strong> придёт ответ с предложением мини-группы или ближайшей пробной встречи.</p>
+<h3>Заявка отправлена</h3>
+<p id="successMessage">Спасибо! Я напишу вам на email, чтобы согласовать удобное время пробной мини-группы. Оплата £7 — после согласования времени.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 
+<form name="trial-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<input type="hidden" name="form-name" value="trial-request"/>
+<input name="bot-field"/>
+<input type="text" name="parent_name"/>
+<input type="email" name="email"/>
+<input type="text" name="child_name"/>
+<input type="text" name="child_age"/>
+<input type="text" name="russian_level"/>
+<input type="text" name="timezone"/>
+<input type="text" name="preferred_slots"/>
+<textarea name="preferred_time_comment"></textarea>
+<textarea name="comment"></textarea>
+<input type="text" name="request_type"/>
+</form>
+
 <script>
-let modalMode='trial',selectedSlot=null;
+let modalMode='trial';
+const selectedSlots=new Set();
+const UK_OFFSET=0;
 const SLOTS=[
-  {id:'sat-10',day:'Суббота',label:'10:00 UTC',utcH:10,utcM:0},
-  {id:'sat-14',day:'Суббота',label:'14:00 UTC',utcH:14,utcM:0},
-  {id:'sat-17',day:'Суббота',label:'17:00 UTC',utcH:17,utcM:0},
-  {id:'sun-10',day:'Воскресенье',label:'10:00 UTC',utcH:10,utcM:0},
-  {id:'sun-15',day:'Воскресенье',label:'15:00 UTC',utcH:15,utcM:0},
-  {id:'wed-18',day:'Среда',label:'18:00 UTC',utcH:18,utcM:0},
+  {id:'sat-12',day:'Суббота',time:'12:00 UK',desc:'после утренних занятий',ukH:12,ukM:0},
+  {id:'sat-14',day:'Суббота',time:'14:00 UK',desc:'удобно для Европы',ukH:14,ukM:0},
+  {id:'tue-18',day:'Вторник',time:'18:00 UK',desc:'после школы для UK/Европы',ukH:18,ukM:0},
+  {id:'wed-10',day:'Среда',time:'10:00 UK',desc:'для других часовых поясов',ukH:10,ukM:0},
 ];
 function fmt(h,m){const hh=((h%24)+24)%24;return`${String(hh).padStart(2,'0')}:${String(m).padStart(2,'0')}`}
+function slotLabel(s){return`${s.day} ${s.time}`}
+function toggleSlot(id){if(selectedSlots.has(id))selectedSlots.delete(id);else selectedSlots.add(id);updateSlots()}
 function updateSlots(){
-  const offset=parseInt(document.getElementById('timezone').value);
+  const offset=parseInt(document.getElementById('timezone').value,10);
   const grid=document.getElementById('slotGrid');
   grid.innerHTML='';
   SLOTS.forEach(s=>{
-    const lh=s.utcH+offset,localStr=fmt(lh,s.utcM);
+    const lh=s.ukH+(offset-UK_OFFSET),localStr=fmt(lh,s.ukM);
     const btn=document.createElement('div');
-    btn.className='slot-btn'+(selectedSlot===s.id?' selected':'');
-    btn.innerHTML=`<div class="slot-day">${s.day}</div><div class="slot-utc">${s.label}</div><div class="slot-local">У вас: ${localStr}</div>`;
-    btn.onclick=()=>{selectedSlot=s.id;updateSlots()};
+    btn.className='slot-btn'+(selectedSlots.has(s.id)?' selected':'');
+    btn.setAttribute('role','button');
+    btn.setAttribute('tabindex','0');
+    btn.innerHTML=`<div class="slot-day">${s.day}</div><div class="slot-time">${s.time}</div><div class="slot-desc">${s.desc}</div><div class="slot-local">у вас: ${localStr}</div>`;
+    btn.onclick=()=>toggleSlot(s.id);
     grid.appendChild(btn);
   });
-  const ol=parseInt(document.getElementById('timezone').value);
-  document.getElementById('tzNote').textContent=`Время показано для вашего пояса (${ol>=0?'UTC+'+ol:'UTC'+ol})`;
+  const tzSel=document.getElementById('timezone');
+  document.getElementById('tzNote').textContent=`Время слотов указано по UK. Ваш пояс: ${tzSel.options[tzSel.selectedIndex].text}`;
 }
+function showFormError(msg){
+  const el=document.getElementById('formError');
+  el.innerHTML=msg;
+  el.classList.add('visible');
+}
+function hideFormError(){const el=document.getElementById('formError');el.classList.remove('visible');el.innerHTML=''}
 function goStep(n){
   if(n===2){
     if(!document.getElementById('childName').value.trim()){alert('Введите имя ребёнка');return}
@@ -1154,36 +1191,49 @@ function goStep(n){
   const mb=document.querySelector('.modal-body');if(mb)mb.scrollTop=0;
 }
 async function submitForm(){
-  if(!selectedSlot){alert('Выберите удобное время');return}
-  const offset=parseInt(document.getElementById('timezone').value);
-  const slot=SLOTS.find(s=>s.id===selectedSlot);
-  const email=document.getElementById('parentEmail').value.trim();
-  const payload={
-    '👶 Ребёнок':document.getElementById('childName').value,
-    '🎂 Возраст':document.getElementById('childAge').value,
-    '🏷 Группа':document.getElementById('childGroup').value,
-    '📚 Уровень':document.getElementById('childLevel').value,
-    '👩 Родитель':document.getElementById('parentName').value,
-    '📧 Email':email,
-    '🌍 Пояс':document.getElementById('timezone').options[document.getElementById('timezone').selectedIndex].text,
-    '📅 Слот':slot.day+' '+slot.label,
-    '🕐 Местное время':fmt(slot.utcH+offset,slot.utcM),
-    '💬 Комментарий':document.getElementById('comment').value,
-    '💳 Тариф':modalMode==='club'?'Абонемент £39':'Пробная £7',
-    '_subject':'📚 Новая заявка Bilingvi — '+document.getElementById('childName').value,
-  };
+  hideFormError();
+  const preferredTimeComment=document.getElementById('preferredTimeComment').value.trim();
+  const slotsStr=[...selectedSlots].map(id=>{const s=SLOTS.find(x=>x.id===id);return s?slotLabel(s):''}).filter(Boolean).join(', ');
+  if(!slotsStr&&!preferredTimeComment){
+    showFormError('Выберите один или несколько вариантов времени или напишите удобное время в поле ниже.');
+    return;
+  }
+  const tzSel=document.getElementById('timezone');
+  const groupVal=document.getElementById('childGroup').value;
+  let commentText=document.getElementById('comment').value.trim();
+  if(groupVal)commentText=(commentText?commentText+'\n\n':'')+'Формат / возрастная линия: '+groupVal;
+  const requestType=modalMode==='club'?'Заявка в мини-группу':'Пробная мини-группа £7';
+  const formData=new URLSearchParams();
+  formData.append('form-name','trial-request');
+  formData.append('parent_name',document.getElementById('parentName').value.trim());
+  formData.append('email',document.getElementById('parentEmail').value.trim());
+  formData.append('child_name',document.getElementById('childName').value.trim());
+  formData.append('child_age',document.getElementById('childAge').value);
+  formData.append('russian_level',document.getElementById('childLevel').value);
+  formData.append('timezone',tzSel.options[tzSel.selectedIndex].text);
+  formData.append('preferred_slots',slotsStr);
+  formData.append('preferred_time_comment',preferredTimeComment);
+  formData.append('comment',commentText);
+  formData.append('request_type',requestType);
   document.getElementById('sendingOverlay').classList.add('show');
   try{
-    const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+    const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:formData.toString()});
     document.getElementById('sendingOverlay').classList.remove('show');
     if(res.ok){
-      document.getElementById('confirmEmail').textContent=email;
+      const msg=modalMode==='club'
+        ?'Спасибо! Я напишу вам на email, чтобы подобрать подходящую мини-группу.'
+        :'Спасибо! Я напишу вам на email, чтобы согласовать удобное время пробной мини-группы. Оплата £7 — после согласования времени.';
+      document.getElementById('successMessage').textContent=msg;
       document.querySelectorAll('.step-screen').forEach(s=>s.classList.remove('active'));
       document.getElementById('stepSuccess').classList.add('active');
       document.getElementById('progress').style.display='none';
-      if(modalMode!=='club') setTimeout(()=>window.open('https://buy.stripe.com/TRIAL_LINK','_blank'),2500);
-    }else alert('Что-то пошло не так. Напишите: hello@bilingvi.club');
-  }catch(e){document.getElementById('sendingOverlay').classList.remove('show');alert('Ошибка соединения. Напишите: hello@bilingvi.club')}
+    }else{
+      showFormError('Не получилось отправить заявку. Пожалуйста, напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.');
+    }
+  }catch(e){
+    document.getElementById('sendingOverlay').classList.remove('show');
+    showFormError('Не получилось отправить заявку. Пожалуйста, напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.');
+  }
 }
 function openModal(mode){
   modalMode=mode||'trial';
@@ -1191,9 +1241,12 @@ function openModal(mode){
   document.getElementById('stickyCta').classList.remove('show');
   document.querySelectorAll('.step-screen').forEach(s=>s.classList.remove('active'));
   document.getElementById('step1').classList.add('active');
+  document.getElementById('stepSuccess').classList.remove('active');
   for(let i=1;i<=3;i++) document.getElementById('ps'+i).classList.toggle('done',i===1);
   document.getElementById('progress').style.display='flex';
-  selectedSlot=null;
+  selectedSlots.clear();
+  document.getElementById('preferredTimeComment').value='';
+  hideFormError();
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
