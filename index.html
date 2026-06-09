@@ -412,8 +412,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 .slot-btn.selected{border-color:var(--blue);background:var(--blue-pale);box-shadow:0 0 0 2px rgba(59,91,219,.15)}
 .slot-day{font-size:var(--t-sm);font-weight:800;color:var(--dark)}
 .slot-time{font-size:15px;font-weight:900;color:var(--blue);margin:4px 0 2px}
-.slot-desc{font-size:12px;color:var(--muted);line-height:1.4}
-.slot-local{font-size:12px;font-weight:800;color:var(--text);margin-top:6px;opacity:.85}
+.slot-local{font-size:12px;font-weight:800;color:var(--text);margin-top:8px;opacity:.85}
+.netlify-form{display:none}
 .tz-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
 .step-note{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin-bottom:14px}
 .form-pay-note{font-size:var(--t-sm);color:var(--muted);line-height:1.5;margin:14px 0 0;text-align:center}
@@ -623,6 +623,22 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </style>
 <meta content="Bilingvi — интерактивные русские истории по воскресеньям и разговорные мини-группы для детей-билингвов 4–10 лет." name="description"/></head>
 <body>
+<!-- Netlify Forms: static markup for deploy-time detection -->
+<form id="trialRequestForm" name="trial-request" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" class="netlify-form">
+<input type="hidden" name="form-name" value="trial-request"/>
+<p style="display:none"><label>Не заполняйте: <input name="bot-field"/></label></p>
+<input type="text" name="parent_name"/>
+<input type="email" name="email"/>
+<input type="text" name="child_name"/>
+<input type="text" name="child_age"/>
+<input type="text" name="russian_level"/>
+<input type="text" name="timezone"/>
+<input type="text" name="preferred_slots"/>
+<textarea name="preferred_time_comment"></textarea>
+<textarea name="comment"></textarea>
+<input type="text" name="request_type"/>
+<button type="submit">Отправить</button>
+</form>
 <!-- NAV -->
 <nav id="nav">
 <div class="nav-inner">
@@ -1129,30 +1145,15 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 </div>
 
-<form name="trial-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
-<input type="hidden" name="form-name" value="trial-request"/>
-<input name="bot-field"/>
-<input type="text" name="parent_name"/>
-<input type="email" name="email"/>
-<input type="text" name="child_name"/>
-<input type="text" name="child_age"/>
-<input type="text" name="russian_level"/>
-<input type="text" name="timezone"/>
-<input type="text" name="preferred_slots"/>
-<textarea name="preferred_time_comment"></textarea>
-<textarea name="comment"></textarea>
-<input type="text" name="request_type"/>
-</form>
-
 <script>
 let modalMode='trial';
 const selectedSlots=new Set();
 const UK_OFFSET=0;
 const SLOTS=[
-  {id:'sat-12',day:'Суббота',time:'12:00 UK',desc:'после утренних занятий',ukH:12,ukM:0},
-  {id:'sat-14',day:'Суббота',time:'14:00 UK',desc:'удобно для Европы',ukH:14,ukM:0},
-  {id:'tue-18',day:'Вторник',time:'18:00 UK',desc:'после школы для UK/Европы',ukH:18,ukM:0},
-  {id:'wed-10',day:'Среда',time:'10:00 UK',desc:'для других часовых поясов',ukH:10,ukM:0},
+  {id:'sat-12',day:'Суббота',time:'12:00 UK',ukH:12,ukM:0},
+  {id:'sat-14',day:'Суббота',time:'14:00 UK',ukH:14,ukM:0},
+  {id:'tue-18',day:'Вторник',time:'18:00 UK',ukH:18,ukM:0},
+  {id:'wed-10',day:'Среда',time:'10:00 UK',ukH:10,ukM:0},
 ];
 function fmt(h,m){const hh=((h%24)+24)%24;return`${String(hh).padStart(2,'0')}:${String(m).padStart(2,'0')}`}
 function slotLabel(s){return`${s.day} ${s.time}`}
@@ -1167,7 +1168,7 @@ function updateSlots(){
     btn.className='slot-btn'+(selectedSlots.has(s.id)?' selected':'');
     btn.setAttribute('role','button');
     btn.setAttribute('tabindex','0');
-    btn.innerHTML=`<div class="slot-day">${s.day}</div><div class="slot-time">${s.time}</div><div class="slot-desc">${s.desc}</div><div class="slot-local">у вас: ${localStr}</div>`;
+    btn.innerHTML=`<div class="slot-day">${s.day}</div><div class="slot-time">${s.time}</div><div class="slot-local">у вас: ${localStr}</div>`;
     btn.onclick=()=>toggleSlot(s.id);
     grid.appendChild(btn);
   });
@@ -1209,21 +1210,23 @@ async function submitForm(){
   let commentText=document.getElementById('comment').value.trim();
   if(groupVal)commentText=(commentText?commentText+'\n\n':'')+'Формат / возрастная линия: '+groupVal;
   const requestType=modalMode==='club'?'Заявка в мини-группу':'Пробная мини-группа £7';
-  const formData=new URLSearchParams();
-  formData.append('form-name','trial-request');
-  formData.append('parent_name',document.getElementById('parentName').value.trim());
-  formData.append('email',document.getElementById('parentEmail').value.trim());
-  formData.append('child_name',document.getElementById('childName').value.trim());
-  formData.append('child_age',document.getElementById('childAge').value);
-  formData.append('russian_level',document.getElementById('childLevel').value);
-  formData.append('timezone',tzSel.options[tzSel.selectedIndex].text);
-  formData.append('preferred_slots',slotsStr);
-  formData.append('preferred_time_comment',preferredTimeComment);
-  formData.append('comment',commentText);
-  formData.append('request_type',requestType);
+  const form=document.getElementById('trialRequestForm');
+  form.parent_name.value=document.getElementById('parentName').value.trim();
+  form.email.value=document.getElementById('parentEmail').value.trim();
+  form.child_name.value=document.getElementById('childName').value.trim();
+  form.child_age.value=document.getElementById('childAge').value;
+  form.russian_level.value=document.getElementById('childLevel').value;
+  form.timezone.value=tzSel.options[tzSel.selectedIndex].text;
+  form.preferred_slots.value=slotsStr;
+  form.preferred_time_comment.value=preferredTimeComment;
+  form.comment.value=commentText;
+  form.request_type.value=requestType;
+  const formData=new URLSearchParams(new FormData(form));
+  formData.set('form-name','trial-request');
+  formData.set('bot-field','');
   document.getElementById('sendingOverlay').classList.add('show');
   try{
-    const res=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:formData.toString()});
+    const res=await fetch(form.action||'/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:formData.toString()});
     document.getElementById('sendingOverlay').classList.remove('show');
     if(res.ok){
       const msg=modalMode==='club'
