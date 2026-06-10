@@ -9,11 +9,11 @@
     "title": "📚 Афиша воскресных историй",
     "subtitle": "21 и 28 июня — истории для разных возрастов. Выберите подходящую и оплатите билет.",
     "afterShowNote": "После истории высылаем слова, фразы и маленькое задание для дома",
-    "ticketLabel": "Записаться · £4",
+    "ticketLabel": "Записаться · £5",
     "ticketNote": "После оплаты пришлём ссылку на Zoom за 1 час до начала.<br/>Билет действителен на одну выбранную историю."
   },
   "ticket": {
-    "price": "£4"
+    "price": "£5"
   },
   "shows": [
     {
@@ -33,11 +33,11 @@
         { "text": "🌍 Online · Zoom", "pill": "pill-green" }
       ],
       "theme": "blue",
-      "ticketLabel": "Записаться — 4–6 лет · £4",
+      "ticketLabel": "Записаться — 4–6 лет · £5",
       "inModal": true,
       "inSchedule": true,
       "scheduleActions": [
-        { "type": "ticket", "label": "🎟 Билет £4" },
+        { "type": "ticket", "label": "🎟 Билет £5" },
         { "type": "afisha", "label": "Вся афиша" }
       ]
     },
@@ -47,8 +47,8 @@
       "status": "next",
       "dateLabel": "21 июня · 11:30 UK",
       "modalDateLabel": "21 июня · 11:30 UK",
-      "title": "«Блокоград: секретный портал»",
-      "titleModal": "🧱 «Блокоград: секретный портал»",
+      "title": "«BloxGrad: секретный портал»",
+      "titleModal": "🧱 «BloxGrad: секретный портал»",
       "description": "Попадаем в мир кубов, выбираем инструменты, строим укрытие и решаем, кому можно доверять.",
       "descriptionModal": "Современная история-квест по мотивам детских игровых миров. Дети выбирают инструменты, строят укрытие и решают, кому можно доверять.",
       "tags": ["7–10 лет", "35–45 минут"],
@@ -58,11 +58,11 @@
         { "text": "🌍 Online · Zoom", "pill": "pill-green" }
       ],
       "theme": "purple",
-      "ticketLabel": "Записаться — 7–10 лет · £4",
+      "ticketLabel": "Записаться — 7–10 лет · £5",
       "inModal": true,
       "inSchedule": true,
       "scheduleActions": [
-        { "type": "ticket", "label": "🎟 Билет £4" },
+        { "type": "ticket", "label": "🎟 Билет £5" },
         { "type": "afisha", "label": "Вся афиша" }
       ]
     },
