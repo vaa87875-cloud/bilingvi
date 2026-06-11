@@ -22,6 +22,8 @@
       "price": "£5",
       "cta": "Попробовать за £5",
       "theme": "blue",
+      "illustration": "img/ant.webp",
+      "illustrationAlt": "Муравей из сказки «Под грибом»",
       "stripeUrl": "https://buy.stripe.com/dRm28qfEv1Io5Q2a3KfIs0c"
     },
     {
@@ -39,6 +41,8 @@
       "price": "£5",
       "cta": "Попробовать за £5",
       "theme": "purple",
+      "illustration": "img/bloxgrad.webp",
+      "illustrationAlt": "Герой из истории «BloxGrad: секретный портал»",
       "stripeUrl": "https://buy.stripe.com/6oU9AS4ZR5YEceq7VCfIs0e"
     },
     {
@@ -56,6 +60,8 @@
       "price": "£5",
       "cta": "Скоро запись",
       "theme": "yellow",
+      "illustration": "img/fisherman.webp",
+      "illustrationAlt": "Рыбак из сказки «Сказка о рыбаке и рыбке»",
       "stripeUrl": ""
     },
     {
@@ -73,6 +79,8 @@
       "price": "£5",
       "cta": "Скоро запись",
       "theme": "green",
+      "illustration": "img/cat.webp",
+      "illustrationAlt": "Кот учёный из истории «Лукоморье: секрет золотой цепи»",
       "stripeUrl": ""
     }
   ]
