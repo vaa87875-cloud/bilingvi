@@ -476,7 +476,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 .slot-day{font-size:var(--t-sm);font-weight:800;color:var(--dark)}
 .slot-time{font-size:15px;font-weight:900;color:var(--blue);margin:4px 0 2px}
 .slot-local{font-size:12px;font-weight:800;color:var(--text);margin-top:8px;opacity:.85}
-.netlify-form{display:none}
+.hidden-form{display:none}
 .tz-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
 .step-note{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin-bottom:14px}
 .form-pay-note{font-size:var(--t-sm);color:var(--muted);line-height:1.5;margin:14px 0 0;text-align:center}
@@ -716,10 +716,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </style>
 <meta content="Bilingvi — интерактивные русские истории по воскресеньям и разговорные мини-группы для детей-билингвов 4–10 лет." name="description"/></head>
 <body>
-<!-- Netlify Forms: static markup for deploy-time detection -->
-<form id="trialRequestForm" name="trial-request" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" class="netlify-form">
-<input type="hidden" name="form-name" value="trial-request"/>
-<p style="display:none"><label>Не заполняйте: <input name="bot-field"/></label></p>
+<form id="trialRequestForm" name="trial-request" method="POST" action="https://formspree.io/f/xykanrag" class="hidden-form">
 <input type="text" name="parent_name"/>
 <input type="email" name="email"/>
 <input type="text" name="child_name"/>
@@ -1356,12 +1353,12 @@ async function submitForm(){
   form.preferred_time_comment.value=preferredTimeComment;
   form.comment.value=commentText;
   form.request_type.value=requestType;
-  const formData=new URLSearchParams(new FormData(form));
-  formData.set('form-name','trial-request');
-  formData.set('bot-field','');
+  const formData=new FormData(form);
+  formData.set('_replyto',document.getElementById('parentEmail').value.trim());
+  formData.set('_subject',requestType);
   document.getElementById('sendingOverlay').classList.add('show');
   try{
-    const res=await fetch(form.action||'/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:formData.toString()});
+    const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:formData});
     document.getElementById('sendingOverlay').classList.remove('show');
     if(res.ok){
       document.getElementById('successMessage').textContent=getModalConfig(modalMode).success;
