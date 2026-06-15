@@ -369,6 +369,7 @@ section{padding:var(--sec-pad) 0}
 .sunday-story-card.theme-green .sunday-story-btn:not(.is-pending){background:linear-gradient(180deg,#34C38A 0%,#059669 100%);color:#fff;border:none;box-shadow:0 10px 22px rgba(5,150,105,.22)}
 .sunday-story-card.theme-green .sunday-story-btn:not(.is-pending):hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(5,150,105,.28)}
 .sunday-story-btn.is-pending{background:#fff!important;color:#3B5BDB;border:1.5px solid #A8B8FF!important;box-shadow:none!important;cursor:not-allowed;opacity:.85}
+.sunday-story-btn.is-waitlist{border:none}
 .sunday-story-card.theme-purple .sunday-story-btn.is-pending{color:#6f4ee8;border-color:#cfc5ff!important}
 .sunday-story-card.theme-yellow .sunday-story-btn.is-pending{color:#c56a08;border-color:#f0d9a8!important}
 .sunday-story-card.theme-green .sunday-story-btn.is-pending{color:#047857;border-color:#b8e6cc!important}
@@ -530,6 +531,11 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 .afisha-show-meta{display:flex;gap:8px;flex-wrap:wrap}
 .afisha-show-buy{display:block;width:100%;padding:12px 18px;background:var(--yellow);color:var(--dark);border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:var(--t-base);font-weight:800;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none;box-shadow:0 3px 12px rgba(245,166,35,.28);margin-top:14px}
 .afisha-show-buy:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,166,35,.38)}
+.afisha-show-waitlist{background:#fff;color:var(--blue);border:1.5px solid #A8B8FF;box-shadow:0 4px 14px rgba(59,91,219,.10);cursor:pointer;font-family:'Nunito',sans-serif}
+.afisha-show-waitlist:hover{background:var(--blue-pale);transform:translateY(-2px)}
+.waitlist-story-pill{display:inline-block;margin-bottom:14px;padding:6px 12px;border-radius:999px;background:var(--blue-pale);color:var(--blue);font-size:var(--t-sm);font-weight:800}
+.waitlist-modal{max-width:420px}
+.waitlist-modal .modal-body{padding-top:8px}
 .afisha-note{font-size:var(--t-sm);color:var(--muted);text-align:center;margin-top:12px;line-height:1.6}
 
 /* ── STICKY CTA ── */
@@ -1093,7 +1099,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="soc-links">
 <a class="soc-btn sb-ig" href="https://www.instagram.com/bilingvi.club/" target="_blank" rel="noopener noreferrer">📸 @bilingvi.club</a>
 <a class="soc-btn sb-yt" href="#">▶ YouTube</a>
-<a class="soc-btn sb-fb" href="#">Facebook</a>
+<a class="soc-btn sb-fb" href="https://www.facebook.com/share/1QciJmJnym/" target="_blank" rel="noopener noreferrer">📘 Bilingvi.club</a>
 </div>
 </div>
 </section>
@@ -1280,6 +1286,39 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 </div>
 
+<!-- WAITLIST MODAL -->
+<div class="modal-overlay" id="waitlistOverlay" onclick="maybeCloseWaitlist(event)">
+<div class="modal waitlist-modal">
+<div class="modal-header">
+<h3>Уведомить о записи</h3>
+<button class="modal-close" onclick="closeWaitlist()">✕</button>
+</div>
+<div class="modal-body">
+<div class="sending-overlay" id="waitlistSending"><div class="spinner"></div>Отправляем…</div>
+<div class="step-screen active" id="waitlistFormScreen">
+<span class="waitlist-story-pill" id="waitlistStoryTitle"></span>
+<p class="modal-subtitle" id="waitlistStoryMeta" style="margin:0 0 16px"></p>
+<p class="step-note" style="margin-top:0;margin-bottom:16px">Оставьте email — напишем, когда откроется запись на эту историю.</p>
+<label class="field-label" for="waitlistEmail">Email</label>
+<input id="waitlistEmail" placeholder="your@email.com" type="email" autocomplete="email"/>
+<label class="field-label" for="waitlistChildName">Имя ребёнка <span style="font-weight:600;color:var(--muted)">(необязательно)</span></label>
+<input id="waitlistChildName" placeholder="Например: Маша" type="text" autocomplete="off"/>
+<div class="form-error" id="waitlistError"></div>
+<div class="modal-nav" style="margin-top:20px">
+<button class="btn-pay" style="flex:1" type="button" onclick="submitWaitlist()">Напомнить мне</button>
+</div>
+</div>
+<div class="step-screen" id="waitlistSuccessScreen">
+<div class="success-screen">
+<div class="success-ico">✉️</div>
+<h3>Готово!</h3>
+<p id="waitlistSuccessMessage">Спасибо! Напишем на email, когда откроется запись.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <script>
 const GA_ID='G-XN4C60RZNJ';
 function grantAnalyticsConsent(){
@@ -1459,6 +1498,80 @@ function openModal(mode){
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';updateStickyCta()}
 function maybeClose(e){if(e.target===document.getElementById('modalOverlay'))closeModal()}
 
+let waitlistStoryId='',waitlistStoryTitle='';
+function openWaitlist(storyId){
+  const story=(sundayStoriesData&&sundayStoriesData.sundayStories||[]).find(s=>s.id===storyId);
+  if(!story)return;
+  waitlistStoryId=story.id;
+  waitlistStoryTitle=story.title;
+  document.getElementById('waitlistStoryTitle').textContent=story.title;
+  const datetime=formatStoryDatetime(story);
+  document.getElementById('waitlistStoryMeta').textContent=datetime||'';
+  document.getElementById('waitlistEmail').value='';
+  document.getElementById('waitlistChildName').value='';
+  const err=document.getElementById('waitlistError');
+  err.classList.remove('visible');
+  err.textContent='';
+  document.getElementById('waitlistFormScreen').classList.add('active');
+  document.getElementById('waitlistSuccessScreen').classList.remove('active');
+  document.getElementById('waitlistOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  updateStickyCta();
+  setTimeout(()=>document.getElementById('waitlistEmail').focus(),200);
+}
+function closeWaitlist(){
+  document.getElementById('waitlistOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  updateStickyCta();
+}
+function maybeCloseWaitlist(e){if(e.target===document.getElementById('waitlistOverlay'))closeWaitlist()}
+async function submitWaitlist(){
+  const err=document.getElementById('waitlistError');
+  const email=document.getElementById('waitlistEmail').value.trim();
+  if(!email||!email.includes('@')){
+    err.textContent='Введите корректный email';
+    err.classList.add('visible');
+    return;
+  }
+  err.classList.remove('visible');
+  err.textContent='';
+  const childName=document.getElementById('waitlistChildName').value.trim();
+  const story=(sundayStoriesData&&sundayStoriesData.sundayStories||[]).find(s=>s.id===waitlistStoryId);
+  const datetime=story?formatStoryDatetime(story):'';
+  const form=document.getElementById('trialRequestForm');
+  form.parent_name.value='—';
+  form.email.value=email;
+  form.child_name.value=childName;
+  form.child_age.value='';
+  form.russian_level.value='';
+  form.timezone.value='';
+  form.preferred_slots.value='';
+  form.preferred_time_comment.value='';
+  form.comment.value=datetime?`Дата истории: ${datetime}`:'';
+  form.request_type.value=`Waitlist: ${waitlistStoryTitle}`;
+  const formData=new FormData(form);
+  formData.set('_replyto',email);
+  formData.set('_subject',`Waitlist: ${waitlistStoryTitle}`);
+  document.getElementById('waitlistSending').classList.add('show');
+  try{
+    const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:formData});
+    document.getElementById('waitlistSending').classList.remove('show');
+    if(res.ok){
+      document.getElementById('waitlistSuccessMessage').textContent=`Спасибо! Напишем на ${email}, когда откроется запись на ${waitlistStoryTitle}.`;
+      document.getElementById('waitlistFormScreen').classList.remove('active');
+      document.getElementById('waitlistSuccessScreen').classList.add('active');
+      trackEvent('join_waitlist',{item_id:waitlistStoryId,item_name:waitlistStoryTitle});
+    }else{
+      err.innerHTML='Не получилось отправить. Напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.';
+      err.classList.add('visible');
+    }
+  }catch(e){
+    document.getElementById('waitlistSending').classList.remove('show');
+    err.innerHTML='Не получилось отправить. Напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.';
+    err.classList.add('visible');
+  }
+}
+
 let afishaData=null,sundayStoriesData=null;
 const AFISHA_THEMES={blue:{bg:'',border:'',dateColor:''},pink:{bg:'var(--pink-pale)',border:'#F5C0A8',dateColor:'var(--pink)'}};
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
@@ -1470,7 +1583,7 @@ function renderSundayStoryBtn(story){
   if(isStripeUrlReady(story.stripeUrl)){
     return`<a class="btn btn-sm sunday-story-btn sunday-story-btn--full" href="${esc(story.stripeUrl)}" target="_blank" rel="noopener noreferrer" data-story-id="${esc(story.id)}" data-item-name="${esc(story.title)}" data-value="5" data-item-category="sunday_story">${label}</a>`;
   }
-  return`<button type="button" class="btn btn-sm sunday-story-btn sunday-story-btn--full is-pending" disabled>${label}</button>`;
+  return`<button type="button" class="btn btn-sm sunday-story-btn sunday-story-btn--full is-waitlist" onclick="openWaitlist('${esc(story.id)}')">${label}</button>`;
 }
 
 function renderSundayStories(data){
@@ -1487,7 +1600,7 @@ function renderSundayStories(data){
     const theme=storyThemeClass(story);
     const datetime=formatStoryDatetime(story);
     const meta=`${esc(story.duration)} · ${esc(story.platform)} · ${esc(story.price)} за одну историю`;
-    const badge=isStripeUrlReady(story.stripeUrl)?'Ближайшая история':'Скоро запись';
+    const badge=isStripeUrlReady(story.stripeUrl)?'Ближайшая история':'Запись скоро';
     const illustration=story.illustration?`<img class="sunday-story-illustration" src="${esc(story.illustration)}" alt="${esc(story.illustrationAlt||'')}" loading="lazy" width="152" height="152">`:'';
     const hasIllustration=story.illustration?' has-illustration':'';
     return`<div class="sunday-story-card ${theme}${hasIllustration} reveal rd${i}">
@@ -1529,7 +1642,9 @@ function renderAfishaModal(data){
     const meta=(show.meta||[]).map(p=>`<span class="pill ${esc(p.pill)}">${esc(p.text)}</span>`).join('');
     const stripe=getShowStripeUrl(show);
     const itemName=show.titleModal||show.title;
-    const buyBtn=stripe?`<a class="afisha-show-buy" href="${esc(stripe)}" target="_blank" rel="noopener noreferrer" data-story-id="${esc(show.storyId||show.id)}" data-item-name="${esc(itemName)}" data-value="5" data-item-category="sunday_story">${esc(show.ticketLabel||m.ticketLabel)}</a>`:'';
+    const buyBtn=stripe
+      ?`<a class="afisha-show-buy" href="${esc(stripe)}" target="_blank" rel="noopener noreferrer" data-story-id="${esc(show.storyId||show.id)}" data-item-name="${esc(itemName)}" data-value="5" data-item-category="sunday_story">${esc(show.ticketLabel||m.ticketLabel)}</a>`
+      :(show.storyId?`<button type="button" class="afisha-show-buy afisha-show-waitlist" onclick="openWaitlist('${esc(show.storyId)}')">Уведомить о записи</button>`:'');
     return`<div class="afisha-show"${style}>
 <div class="afisha-show-date"${dateStyle}>${esc(show.modalDateLabel||show.dateLabel)}</div>
 <div class="afisha-show-title">${esc(show.titleModal||show.title)}</div>
@@ -1573,7 +1688,7 @@ if(sundaySecEl){
 const WHATSAPP_FAB={size:52,mobileSize:48,gap:12};
 function updateStickyCta(){
   document.getElementById('nav').classList.toggle('scrolled',scrollY>30);
-  const modalOpen=document.getElementById('modalOverlay').classList.contains('open')||document.getElementById('afishaOverlay').classList.contains('open');
+  const modalOpen=document.getElementById('modalOverlay').classList.contains('open')||document.getElementById('afishaOverlay').classList.contains('open')||document.getElementById('waitlistOverlay').classList.contains('open');
   const isMobile=window.innerWidth<=900;
   const scrolledEnough=scrollY>(isMobile?320:550);
   const hideInSunday=isMobile&&stickyInSundaySec;
