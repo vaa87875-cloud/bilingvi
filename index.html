@@ -3,6 +3,23 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  analytics_storage:'denied',
+  ad_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+if(localStorage.getItem('ck'))gtag('consent','update',{analytics_storage:'granted'});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN4C60RZNJ"></script>
+<script>
+gtag('js',new Date());
+gtag('config','G-XN4C60RZNJ',{anonymize_ip:true});
+</script>
 <script>if('scrollRestoration' in history)history.scrollRestoration='manual';if(!location.hash)window.scrollTo(0,0);</script>
 <title>Bilingvi — русский через истории для детей-билингвов</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -1265,22 +1282,11 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 
 <script>
 const GA_ID='G-XN4C60RZNJ';
-let gaLoaded=false;
-function loadGoogleAnalytics(){
-  if(gaLoaded||!localStorage.getItem('ck'))return;
-  gaLoaded=true;
-  window.dataLayer=window.dataLayer||[];
-  window.gtag=function(){dataLayer.push(arguments);};
-  gtag('js',new Date());
-  gtag('config',GA_ID,{anonymize_ip:true});
-  const s=document.createElement('script');
-  s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
-  document.head.appendChild(s);
+function grantAnalyticsConsent(){
+  if(typeof gtag==='function')gtag('consent','update',{analytics_storage:'granted'});
 }
 function trackEvent(name,params={}){
   if(!localStorage.getItem('ck'))return;
-  loadGoogleAnalytics();
   if(typeof gtag!=='function')return;
   gtag('event',name,params);
 }
@@ -1639,9 +1645,9 @@ async function initPage(){
 }
 initPage();
 initAnalytics();
-if(localStorage.getItem('ck')){document.getElementById('cookie').classList.add('hidden');loadGoogleAnalytics();}
+if(localStorage.getItem('ck')){document.getElementById('cookie').classList.add('hidden');grantAnalyticsConsent();}
 updateStickyCta();
-function closeCookie(){localStorage.setItem('ck','1');document.getElementById('cookie').classList.add('hidden');loadGoogleAnalytics();updateStickyCta()}
+function closeCookie(){localStorage.setItem('ck','1');document.getElementById('cookie').classList.add('hidden');grantAnalyticsConsent();updateStickyCta()}
 </script>
 </body>
 </html>
