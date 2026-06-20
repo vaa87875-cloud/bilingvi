@@ -65,8 +65,8 @@ gtag('config','G-XN4C60RZNJ',{anonymize_ip:true});
   --r-xl:28px;
 
   /* Section vertical rhythm */
-  --sec-pad:80px;
-  --sec-pad-sm:56px;
+  --sec-pad:64px;
+  --sec-pad-sm:44px;
 
   /* Spacing scale */
   --sp-xs:8px;
@@ -165,7 +165,7 @@ nav.scrolled{box-shadow:0 2px 20px rgba(59,91,219,.08)}
 .sticker-yellow{background:var(--yellow-pale);color:var(--yellow-dark);border-color:var(--yellow)}
 .sticker-pink{background:var(--pink-pale);color:var(--pink);border-color:var(--pink)}
 .sticker-green{background:var(--green-pale);color:var(--green);border-color:var(--green)}
-.hero-sticker-wrap{display:inline-block;margin-bottom:18px;animation:float2 5.5s ease-in-out infinite}
+.hero-sticker-wrap{display:inline-block;margin-bottom:14px;animation:float2 5.5s ease-in-out infinite}
 .pill{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:50px;font-size:var(--t-sm);font-weight:800}
 .pill-blue{background:var(--blue-pale);color:var(--blue)}
 .pill-yellow{background:var(--yellow-pale);color:var(--yellow-dark)}
@@ -175,13 +175,13 @@ nav.scrolled{box-shadow:0 2px 20px rgba(59,91,219,.08)}
 
 /* ── SECTION COMMONS ── */
 section{padding:var(--sec-pad) 0}
-.sec-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:50px;background:var(--blue-pale);color:var(--blue);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;border:1.5px solid #C4CFFF}
-.sec-title{font-size:clamp(24px,3.2vw,38px);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.18}
-.sec-sub{font-size:var(--t-md);color:var(--muted);max-width:520px;line-height:1.72}
+.sec-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:50px;background:var(--blue-pale);color:var(--blue);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;border:1.5px solid #C4CFFF}
+.sec-title{font-size:clamp(24px,3.2vw,38px);font-weight:800;color:var(--dark);margin-bottom:8px;line-height:1.18}
+.sec-sub{font-size:var(--t-md);color:var(--muted);max-width:520px;line-height:1.65}
 
 /* ── CLUB HERO ── */
-.club-hero{padding:76px 0 64px;background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.club-hero-inner{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center}
+.club-hero{padding:64px 0 48px;background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.club-hero-inner{display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:center}
 
 /* Hero visual cards */
 .hv-card{background:white;border-radius:var(--r-lg);border:1.5px solid var(--border);padding:18px 20px;box-shadow:0 6px 24px rgba(59,91,219,.08);margin-bottom:12px;transition:transform .3s,box-shadow .3s}
@@ -212,12 +212,12 @@ section{padding:var(--sec-pad) 0}
 
 /* ── FOUNDER STORY ── */
 .founder-story-sec{padding:var(--sec-pad) 0;background:linear-gradient(180deg,#fffaf6 0%,#fff 55%,var(--cream) 100%)}
-.founder-story-inner{display:grid;grid-template-columns:1fr minmax(280px,360px);gap:48px;align-items:start}
+.founder-story-inner{display:grid;grid-template-columns:1fr minmax(280px,360px);gap:36px;align-items:start}
 .founder-story-copy p{font-size:var(--t-base);color:var(--muted);line-height:1.72;margin-bottom:14px}
 .founder-story-copy p:last-of-type{margin-bottom:0}
 .founder-story-accent{font-size:var(--t-md);font-weight:800;color:var(--blue);line-height:1.55;margin-top:18px;margin-bottom:0}
-.founder-story-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.founder-quote-card{background:white;border:1.5px solid var(--border);border-radius:28px;padding:28px 24px;box-shadow:0 12px 40px rgba(59,91,219,.08)}
+.founder-story-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.founder-quote-card{background:white;border:1.5px solid var(--border);border-radius:22px;padding:22px 20px;box-shadow:0 12px 40px rgba(59,91,219,.08)}
 .founder-quote-card blockquote{margin:0 0 16px;font-size:var(--t-md);font-weight:700;color:var(--dark);line-height:1.65}
 .founder-quote-card cite{display:block;font-size:var(--t-sm);color:var(--muted);font-style:normal;font-weight:800}
 .founder-photo-wrap{margin-top:18px;border-radius:var(--r-lg);overflow:hidden}
@@ -225,24 +225,24 @@ section{padding:var(--sec-pad) 0}
 
 /* ── PAIN / SOLUTION ── */
 .pain-sec{padding:var(--sec-pad) 0;background:white}
-.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
-.pain-card{border-radius:26px;padding:24px 22px;border:1px solid var(--border);box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+.pain-card{border-radius:22px;padding:20px 18px;border:1px solid var(--border);box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s}
 .pain-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(59,91,219,.10)}
 .pain-card--blue{background:linear-gradient(180deg,#f7faff 0%,#fff 100%);border-color:#d4e0ff}
 .pain-card--peach{background:linear-gradient(180deg,#fff8f4 0%,#fff 100%);border-color:#f5d4c4}
 .pain-card--yellow{background:linear-gradient(180deg,#fffaf0 0%,#fff 100%);border-color:#f0ddb0}
 .pain-card--green{background:linear-gradient(180deg,#f4fcf8 0%,#fff 100%);border-color:#bfe8d2}
-.pain-ico{font-size:28px;line-height:1;margin-bottom:12px}
-.pain-card h3{font-size:18px;color:var(--dark);margin-bottom:10px;line-height:1.25}
+.pain-ico{font-size:26px;line-height:1;margin-bottom:8px}
+.pain-card h3{font-size:18px;color:var(--dark);margin-bottom:8px;line-height:1.25}
 .pain-card p{font-size:var(--t-base);color:var(--muted);line-height:1.62;margin:0}
-.pain-cta{margin-top:40px;text-align:center;padding:32px 28px;background:var(--cream);border:1.5px solid var(--border);border-radius:28px}
-.pain-cta>p{font-size:var(--t-md);color:var(--dark);font-weight:700;margin-bottom:18px;line-height:1.5}
+.pain-cta{margin-top:28px;text-align:center;padding:24px 22px;background:var(--cream);border:1.5px solid var(--border);border-radius:22px}
+.pain-cta>p{font-size:var(--t-md);color:var(--dark);font-weight:700;margin-bottom:14px;line-height:1.5}
 .pain-cta-actions{display:flex;flex-direction:column;align-items:center;gap:12px}
 .pain-cta .btn-yellow{min-height:52px;padding:14px 28px;font-size:var(--t-base)}
 .pain-cta-link{background:none;border:none;padding:0;font-family:'Nunito',sans-serif;font-size:var(--t-sm);font-weight:800;color:var(--blue);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .pain-cta-link:hover{color:var(--blue-light)}
-.hero-h1{font-size:clamp(32px,4.2vw,52px);color:var(--dark);margin-bottom:14px;line-height:1.05}
-.hero-sub{font-size:var(--t-md);color:var(--muted);max-width:560px;margin-bottom:26px;line-height:1.72}
+.hero-h1{font-size:clamp(32px,4.2vw,52px);color:var(--dark);margin-bottom:12px;line-height:1.05}
+.hero-sub{font-size:var(--t-md);color:var(--muted);max-width:560px;margin-bottom:20px;line-height:1.65}
 .hero-sub--mobile{display:none}
 .hero-mobile-chain{display:none;font-size:14px;line-height:1.35;font-weight:700;color:var(--text);background:#EEF2FF;border:1px solid #D4CCFF;border-radius:999px;padding:10px 14px;margin-top:14px;text-align:center}
 .hero-mobile-card{display:none;background:var(--blue-pale);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;margin-top:18px}
@@ -258,8 +258,8 @@ section{padding:var(--sec-pad) 0}
 .hero-cta-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .hero-cta-actions .btn-yellow{min-height:52px;padding:14px 28px;font-size:var(--t-md)}
 .hero-price-hint{font-size:11px;color:#9896AE;line-height:1.45;margin:0;padding-left:2px}
-.hero-demo{margin-bottom:16px}
-.hero-demo--mobile{display:none;margin-top:24px}
+.hero-demo{margin-bottom:10px}
+.hero-demo--mobile{display:none;margin-top:18px}
 .hero-demo .system-demo-video{border-radius:16px;overflow:hidden;background:var(--dark);box-shadow:0 10px 28px rgba(47,110,234,.14);border:1.5px solid #c4d4ff;line-height:0}
 .hero-demo .system-demo-video video{width:100%;height:auto;display:block;vertical-align:top;aspect-ratio:16/9;object-fit:cover;background:#1a1d35}
 .hero-demo .system-demo-caption{margin-top:10px;font-size:12px;font-weight:800;color:var(--muted);line-height:1.4;text-align:center}
@@ -268,9 +268,9 @@ section{padding:var(--sec-pad) 0}
 .system-sec{padding:var(--sec-pad) 0;background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)}
 .system-head{margin-bottom:8px}
 .system-head-copy .sec-sub{margin-bottom:0}
-.system-route{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-top:40px}
+.system-route{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-top:24px}
 .system-arrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--blue);font-weight:900;opacity:.4;padding:0 2px;user-select:none}
-.system-step{border-radius:26px;padding:24px 22px;border:1.5px solid var(--border);box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s;position:relative;height:100%}
+.system-step{border-radius:22px;padding:20px 18px;border:1.5px solid var(--border);box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s;position:relative;height:100%}
 .system-step:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(59,91,219,.10)}
 .system-step--sun{background:linear-gradient(180deg,#f7faff 0%,#fff 100%);border-color:#d4e0ff}
 .system-step--home{background:linear-gradient(180deg,#fffaf0 0%,#fff 100%);border-color:#f0ddb0}
@@ -278,32 +278,32 @@ section{padding:var(--sec-pad) 0}
 .system-step-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px;color:var(--blue);margin-bottom:8px}
 .system-step--home .system-step-label{color:#9A6200}
 .system-step--group .system-step-label{color:#6f4ee8}
-.system-step-icon{font-size:28px;line-height:1;margin-bottom:12px}
-.system-step h3{font-size:18px;color:var(--dark);margin-bottom:10px;line-height:1.25}
+.system-step-icon{font-size:26px;line-height:1;margin-bottom:8px}
+.system-step h3{font-size:18px;color:var(--dark);margin-bottom:8px;line-height:1.25}
 .system-step p{font-size:var(--t-base);color:var(--muted);line-height:1.65;margin:0}
 .system-optional-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;background:var(--pink-pale);color:var(--coral);border:1px solid #f5c0a8;border-radius:999px;padding:4px 10px;line-height:1}
 .system-step-note{font-size:12px;font-weight:800;color:var(--coral);margin-top:12px;line-height:1.4}
-.system-accent-box{margin-top:32px;padding:18px 22px;background:var(--blue-pale);border:1.5px solid #c4cfff;border-radius:22px;font-size:var(--t-base);font-weight:700;color:var(--dark);line-height:1.55;text-align:center}
-.system-cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+.system-accent-box{margin-top:22px;padding:16px 20px;background:var(--blue-pale);border:1.5px solid #c4cfff;border-radius:18px;font-size:var(--t-base);font-weight:700;color:var(--dark);line-height:1.5;text-align:center}
+.system-cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
 .system-cta-row .btn{min-height:52px;padding:14px 24px}
 
 /* ── RESULTS ── */
 .results-sec{padding:var(--sec-pad) 0;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
-.result-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:36px}
-.result-card{grid-column:span 2;background:#fff;border:1.5px solid var(--border);border-radius:26px;padding:24px 22px;box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s;position:relative}
+.result-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:24px}
+.result-card{grid-column:span 2;background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:20px 18px;box-shadow:0 8px 28px rgba(59,91,219,.06);transition:transform .25s,box-shadow .25s;position:relative}
 .result-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(59,91,219,.10)}
 .result-card:nth-child(1){background:linear-gradient(180deg,#f7faff 0%,#fff 100%);border-color:#d4e0ff}
 .result-card:nth-child(2){background:linear-gradient(180deg,#fff8f6 0%,#fff 100%);border-color:#f5d4c4}
 .result-card:nth-child(3){background:linear-gradient(180deg,#f4fcf8 0%,#fff 100%);border-color:#bfe8d2}
 .result-card:nth-child(4){grid-column:2/span 2;background:linear-gradient(180deg,#fffaf0 0%,#fff 100%);border-color:#f0ddb0}
 .result-card:nth-child(5){grid-column:4/span 2;background:linear-gradient(180deg,#fbf9ff 0%,#fff 100%);border-color:#cfc5ff}
-.result-ico{font-size:28px;line-height:1;margin-bottom:12px}
-.result-card h3{font-size:18px;color:var(--dark);margin-bottom:8px;line-height:1.25}
+.result-ico{font-size:26px;line-height:1;margin-bottom:8px}
+.result-card h3{font-size:18px;color:var(--dark);margin-bottom:6px;line-height:1.25}
 .result-card p{font-size:var(--t-base);color:var(--muted);line-height:1.62;margin:0}
 .result-family-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;background:var(--yellow-pale);color:#9A6200;border:1px solid #f0d9a8;border-radius:999px;padding:4px 10px;line-height:1}
 
 /* ── TARIFFS (ex-groups) ── */
-.groups{background:var(--cream);padding:var(--sec-pad) 0}
+.groups{background:var(--cream);padding:calc(var(--sec-pad) - 16px) 0 var(--sec-pad)}
 .tariffs-grid{gap:24px;align-items:stretch}
 .price-card{display:flex;flex-direction:column;height:100%}
 .price-card .perks{flex:1}
@@ -318,10 +318,10 @@ section{padding:var(--sec-pad) 0}
 .sb-yellow:hover{box-shadow:0 6px 20px rgba(245,166,35,.38)}
 
 /* ── SUNDAY STORIES ── */
-.sunday-stories-sec{padding:var(--sec-pad) 0;background:linear-gradient(180deg,var(--sunday-bg-start) 0%,var(--sunday-bg-end) 100%);border-top:1px solid var(--sunday-card-border);border-bottom:1px solid var(--sunday-card-border)}
-.sunday-stories-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
-.sunday-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
-.sunday-story-card{position:relative;overflow:hidden;border-radius:var(--r-xl);padding:24px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.sunday-stories-sec{padding:var(--sec-pad) 0 calc(var(--sec-pad) - 16px);background:linear-gradient(180deg,var(--sunday-bg-start) 0%,var(--sunday-bg-end) 100%);border-top:1px solid var(--sunday-card-border);border-bottom:1px solid var(--sunday-card-border)}
+.sunday-stories-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sunday-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.sunday-story-card{position:relative;overflow:hidden;border-radius:22px;padding:20px 18px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
 .sunday-story-card>*{position:relative;z-index:1}
 .sunday-story-card::after{content:'';position:absolute;width:120px;height:120px;border-radius:50%;right:-40px;top:-40px;opacity:.35;pointer-events:none;z-index:0}
 .sunday-story-card.theme-blue{background:linear-gradient(180deg,#f7faff 0%,#eef4ff 100%);border:1.5px solid #b9caff;box-shadow:0 12px 34px rgba(47,110,234,.12)}
@@ -336,7 +336,7 @@ section{padding:var(--sec-pad) 0}
 .sunday-story-card.theme-green{background:linear-gradient(180deg,#f4fcf8 0%,#e8f7ef 100%);border:1.5px solid #b8e6cc;box-shadow:0 12px 34px rgba(5,150,105,.10)}
 .sunday-story-card.theme-green::after{background:#d4f0e0}
 .sunday-story-card.theme-green:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(5,150,105,.22)}
-.sunday-story-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+.sunday-story-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
 .sunday-story-badge{font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;border-radius:999px;padding:6px 12px;line-height:1}
 .sunday-story-card.theme-blue .sunday-story-badge{background:rgba(47,110,234,.10);color:#2f6eea}
 .sunday-story-card.theme-purple .sunday-story-badge{background:rgba(124,92,255,.10);color:#6f4ee8}
@@ -351,13 +351,13 @@ section{padding:var(--sec-pad) 0}
 .sunday-story-card.theme-purple .sunday-story-datetime{color:#6f4ee8}
 .sunday-story-card.theme-yellow .sunday-story-datetime{color:#c56a08}
 .sunday-story-card.theme-green .sunday-story-datetime{color:#047857}
-.sunday-story-card h3{font-family:'Baloo 2',sans-serif;font-size:22px;font-style:normal;font-weight:800;color:var(--dark);margin-bottom:5px;line-height:1.15;font-synthesis:none}
-.sunday-story-author{font-family:'Nunito',sans-serif;font-size:var(--t-sm);font-weight:700;font-style:normal;color:#2f6eea;margin-bottom:12px}
+.sunday-story-card h3{font-family:'Baloo 2',sans-serif;font-size:20px;font-style:normal;font-weight:800;color:var(--dark);margin-bottom:4px;line-height:1.15;font-synthesis:none}
+.sunday-story-author{font-family:'Nunito',sans-serif;font-size:var(--t-sm);font-weight:700;font-style:normal;color:#2f6eea;margin-bottom:8px}
 .sunday-story-card.theme-purple .sunday-story-author{color:#6f4ee8}
 .sunday-story-card.theme-yellow .sunday-story-author{color:#c56a08}
 .sunday-story-card.theme-green .sunday-story-author{color:#047857}
-.sunday-story-desc{font-size:var(--t-base);color:var(--muted);line-height:1.68;margin-bottom:16px;flex:1}
-.sunday-story-meta{font-size:var(--t-sm);font-weight:800;color:var(--text);margin-bottom:16px;opacity:.85}
+.sunday-story-desc{font-size:var(--t-base);color:var(--muted);line-height:1.6;margin-bottom:10px;flex:1}
+.sunday-story-meta{font-size:var(--t-sm);font-weight:800;color:var(--text);margin-bottom:0;opacity:.85}
 .sunday-story-btn{align-self:flex-start;min-height:44px;padding:10px 20px;font-size:var(--t-sm);border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;text-decoration:none}
 .sunday-story-btn--full{width:100%;align-self:stretch;justify-content:center;display:inline-flex;align-items:center}
 .sunday-story-card.theme-blue .sunday-story-btn:not(.is-pending){background:linear-gradient(180deg,#4F6EE8 0%,#3050D0 100%);color:#fff;border:none;box-shadow:0 10px 22px rgba(47,110,234,.22)}
@@ -376,8 +376,20 @@ section{padding:var(--sec-pad) 0}
 .sunday-story-btn.is-pending:hover{transform:none!important;box-shadow:none!important}
 .sunday-story-card>.sunday-story-illustration{position:absolute;right:-4px;top:10px;width:min(52%,152px);height:auto;object-fit:contain;pointer-events:none;z-index:0;opacity:.96}
 .sunday-story-card.has-illustration h3,.sunday-story-card.has-illustration .sunday-story-author,.sunday-story-card.has-illustration .sunday-story-desc,.sunday-story-card.has-illustration .sunday-story-datetime{max-width:calc(100% - 108px)}
-.sunday-stories-note{font-size:var(--t-sm);color:var(--muted);margin-top:14px;text-align:center}
-.sunday-stories-price-note{font-size:11px;color:#9896AE;margin-top:8px;text-align:center;line-height:1.5}
+.sunday-stories-note{font-size:var(--t-sm);color:var(--muted);margin-top:12px;text-align:center}
+.sunday-stories-price-note{font-size:11px;color:#9896AE;margin-top:6px;text-align:center;line-height:1.5}
+.sunday-stories-cta{margin-top:20px;text-align:center}
+.signup-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.signup-step{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:18px 16px;text-align:center;box-shadow:0 8px 28px rgba(59,91,219,.06)}
+.signup-step-num{width:30px;height:30px;margin:0 auto 10px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.signup-step h3{font-size:16px;color:var(--dark);margin-bottom:6px;line-height:1.25}
+.signup-step p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0}
+.pricing-after{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pricing-after-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:20px 18px;text-align:center}
+.pricing-after-card h3{font-size:18px;color:var(--dark);margin-bottom:4px}
+.pricing-after-card .price{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:var(--blue);margin-bottom:6px}
+.pricing-after-card p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0}
+.pricing-after-note{margin-top:14px;text-align:center;font-size:var(--t-sm);color:var(--muted);line-height:1.5}
 
 /* ── PRICING ── */
 .pricing{background:var(--cream);padding:var(--sec-pad) 0}
@@ -410,25 +422,25 @@ section{padding:var(--sec-pad) 0}
 
 /* ── FAQ ── */
 .faq-sec{background:white;padding:var(--sec-pad) 0}
-.faq-list{max-width:660px;margin:44px auto 0}
+.faq-list{max-width:660px;margin:28px auto 0}
 .faq-item{border-bottom:1.5px solid var(--border)}
 .faq-item:first-child{border-top:1.5px solid var(--border)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-weight:800;color:var(--dark);font-size:var(--t-md);line-height:1.35;gap:18px;user-select:none;transition:color .2s}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;font-weight:800;color:var(--dark);font-size:var(--t-md);line-height:1.35;gap:18px;user-select:none;transition:color .2s}
 .faq-q:hover{color:var(--blue)}
 .faq-ico{width:28px;height:28px;border-radius:50%;background:var(--blue-pale);border:1.5px solid #C4CFFF;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .3s,background .3s;font-weight:400;line-height:1;padding-bottom:2px}
 .faq-item.open .faq-ico{transform:rotate(45deg);background:var(--blue);border-color:var(--blue);color:white}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:var(--t-base);color:var(--muted);line-height:1.75}
 .faq-a p{margin:0}
 .faq-a p+p{margin-top:10px}
-.faq-item.open .faq-a{max-height:720px;padding-bottom:20px}
+.faq-item.open .faq-a{max-height:720px;padding-bottom:16px}
 .faq-sec .sec-sub{max-width:560px;margin:0 auto;text-align:center}
 
 /* ── SOCIAL ── */
-.social-sec{background:var(--dark);padding:72px 0;text-align:center;position:relative;overflow:hidden}
+.social-sec{background:var(--dark);padding:52px 0;text-align:center;position:relative;overflow:hidden}
 .social-sec::before{content:'♥';position:absolute;font-size:180px;color:rgba(244,132,95,.05);top:-30px;left:-10px}
 .social-sec::after{content:'★';position:absolute;font-size:140px;color:rgba(245,166,35,.05);bottom:-20px;right:20px}
 .social-sec h2{color:white;font-size:clamp(24px,3vw,38px);margin-bottom:10px;position:relative;z-index:1}
-.social-sec p{color:rgba(255,255,255,.52);font-size:var(--t-md);margin-bottom:36px;position:relative;z-index:1}
+.social-sec p{color:rgba(255,255,255,.52);font-size:var(--t-md);margin-bottom:24px;position:relative;z-index:1}
 .soc-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
 .soc-btn{display:inline-flex;align-items:center;gap:9px;padding:12px 24px;border-radius:50px;font-weight:800;font-size:var(--t-sm);transition:transform .2s,opacity .2s;border:none;text-decoration:none;color:white}
 .soc-btn:hover{transform:translateY(-2px);opacity:.9}
@@ -437,19 +449,19 @@ section{padding:var(--sec-pad) 0}
 .sb-fb{background:#1877F2}
 
 /* ── FINAL CTA ── */
-.final-cta{background:linear-gradient(135deg,#2f6eea 0%,#5b47c7 52%,#e09010 100%);padding:52px 24px;text-align:center;position:relative;overflow:hidden}
+.final-cta{background:linear-gradient(135deg,#2f6eea 0%,#5b47c7 52%,#e09010 100%);padding:44px 24px;text-align:center;position:relative;overflow:hidden}
 .final-cta::before{content:'✦';position:absolute;font-size:90px;color:rgba(255,255,255,.05);top:-8px;left:6%}
 .final-cta::after{content:'★';position:absolute;font-size:72px;color:rgba(255,255,255,.04);bottom:-8px;right:6%}
 .final-cta-inner{max-width:560px;margin:0 auto;position:relative;z-index:1}
-.final-cta h2{color:white;font-size:clamp(22px,3vw,30px);max-width:520px;margin:0 auto 12px;line-height:1.22}
-.final-cta-sub{color:rgba(255,255,255,.85);font-size:var(--t-base);max-width:480px;margin:0 auto 20px;line-height:1.55}
+.final-cta h2{color:white;font-size:clamp(22px,3vw,30px);max-width:520px;margin:0 auto 10px;line-height:1.22}
+.final-cta-sub{color:rgba(255,255,255,.85);font-size:var(--t-base);max-width:480px;margin:0 auto 16px;line-height:1.5}
 .final-cta .btn-yellow{min-height:50px;padding:14px 28px;font-size:var(--t-base);box-shadow:0 10px 24px rgba(0,0,0,.16)}
-.final-cta-micro{color:rgba(255,255,255,.72);font-size:12px;max-width:440px;margin:14px auto 0;line-height:1.5}
-.final-cta-tagline{color:rgba(255,255,255,.88);font-size:var(--t-sm);font-weight:800;max-width:440px;margin:16px auto 0;line-height:1.45;padding-top:14px;border-top:1px solid rgba(255,255,255,.18)}
+.final-cta-micro{color:rgba(255,255,255,.72);font-size:12px;max-width:440px;margin:12px auto 0;line-height:1.5}
+.final-cta-tagline{color:rgba(255,255,255,.88);font-size:var(--t-sm);font-weight:800;max-width:440px;margin:12px auto 0;line-height:1.45;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
 
 /* ── FOOTER ── */
-footer{background:var(--dark);color:rgba(255,255,255,.52);padding:60px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
-.ft-inner{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px 24px;margin-bottom:44px;align-items:start}
+footer{background:var(--dark);color:rgba(255,255,255,.52);padding:48px 0 24px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-inner{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px 20px;margin-bottom:32px;align-items:start}
 .ft-brand-col{max-width:300px}
 .ft-brand{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:var(--blue-light);line-height:1;margin-bottom:6px}
 .ft-brand span{color:var(--pink)}
@@ -569,13 +581,13 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 }
 @media(max-width:900px){
   .club-hero-inner{grid-template-columns:1fr}
-  .hero-visual{margin-top:28px}
+  .hero-visual{margin-top:20px}
   .float-anim{animation:none}
   .system-route{grid-template-columns:1fr}
   .system-arrow{transform:rotate(90deg);padding:6px 0}
   .pricing-grid{grid-template-columns:1fr}
   .price-card.hot{transform:none}
-  .result-grid{grid-template-columns:1fr;margin-top:32px}
+  .result-grid{grid-template-columns:1fr;margin-top:24px}
   .result-card,.result-card:nth-child(4),.result-card:nth-child(5){grid-column:auto}
   .nav-desktop{display:none!important}
   .hamburger{display:flex}
@@ -591,9 +603,9 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 
 /* ── RESPONSIVE — mobile ── */
 @media(max-width:900px){
-  :root{--sec-pad:64px;--sec-pad-sm:48px}
+  :root{--sec-pad:48px;--sec-pad-sm:36px}
   body{font-size:17px;line-height:1.6;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
-  section{padding:64px 0}
+  section{padding:48px 0}
   .container{padding-left:20px;padding-right:20px}
   .sec-title{font-size:clamp(30px,8.5vw,36px);line-height:1.08;letter-spacing:-.2px;margin-bottom:12px}
   .sec-sub{font-size:17px;line-height:1.6;max-width:none}
@@ -610,7 +622,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .hamburger{display:flex}
   h1,h2,h3,.sec-title,.hero-h1,.hero-h1 span,.hero-h1 em,.hero-h1 strong,.group-card h3,.price-name,.result-card h3,.system-step h3,.sunday-story-card h3,.founder-mobile-card h3,.social-sec h2,.final-cta h2{font-family:'Baloo 2',sans-serif!important;font-style:normal!important;font-weight:800;font-synthesis:none}
 
-  .club-hero{position:relative;z-index:1;padding-top:calc(84px + env(safe-area-inset-top,0px));padding-bottom:42px}
+  .club-hero{position:relative;z-index:1;padding-top:calc(84px + env(safe-area-inset-top,0px));padding-bottom:32px}
   .club-hero-inner{gap:0}
   .hero-sticker-wrap{display:none}
   .sticker{padding:6px 14px}
@@ -632,10 +644,10 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .hero-mobile-card{display:none!important}
   .hero-mobile-chain{display:block}
 
-  .sunday-stories-sec{padding:64px 0 32px}
-  .sunday-stories-head{margin-bottom:24px}
+  .sunday-stories-sec{padding:48px 0 24px}
+  .sunday-stories-head{margin-bottom:18px}
   .sunday-stories-head .btn-outline{display:none}
-  .sunday-stories-grid{gap:24px}
+  .sunday-stories-grid{gap:16px}
   .sunday-story-card{padding:22px 20px;border-radius:24px}
   .sunday-story-card,
   .sunday-story-card *{font-synthesis:none;font-style:normal!important}
@@ -646,30 +658,32 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .sunday-story-badge{font-family:'Nunito',sans-serif!important;font-style:normal!important}
   .sunday-story-desc{font-family:'Nunito',sans-serif!important;font-style:normal!important;font-size:16px;line-height:1.6;margin-bottom:14px}
   .sunday-story-meta{font-family:'Nunito',sans-serif!important;font-style:normal!important;margin-bottom:16px;font-size:15px;font-weight:900;opacity:1}
-  .sunday-story-btn{width:100%;min-height:54px;font-size:17px;border-radius:999px}
+  .sunday-stories-cta .btn{width:100%;max-width:360px;min-height:56px;font-size:17px;border-radius:999px}
+  .signup-steps{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .pricing-after{grid-template-columns:1fr;gap:12px;margin-top:22px}
   .sunday-story-card>.sunday-story-illustration{width:min(48%,132px);right:-6px;top:8px}
   .sunday-story-card.has-illustration h3,.sunday-story-card.has-illustration .sunday-story-author,.sunday-story-card.has-illustration .sunday-story-desc,.sunday-story-card.has-illustration .sunday-story-datetime{max-width:calc(100% - 92px)}
 
-  .founder-story-sec{padding:64px 0}
-  .founder-story-inner{grid-template-columns:1fr;gap:28px}
+  .founder-story-sec{padding:48px 0}
+  .founder-story-inner{grid-template-columns:1fr;gap:22px}
   .founder-story-copy .sec-title{font-size:clamp(30px,8.5vw,38px);line-height:1.08}
   .founder-story-copy p,.founder-story-accent{font-size:17px;line-height:1.6}
   .founder-quote-card{padding:22px 20px;border-radius:24px}
   .founder-quote-card blockquote{font-size:17px;line-height:1.6}
   .founder-photo-wrap{display:none}
 
-  .pain-sec{padding:64px 0}
-  .pain-grid{grid-template-columns:1fr;gap:22px;margin-top:28px}
+  .pain-sec{padding:48px 0}
+  .pain-grid{grid-template-columns:1fr;gap:16px;margin-top:20px}
   .pain-card{padding:22px 20px;border-radius:24px}
   .pain-card h3{font-size:20px;line-height:1.2}
   .pain-card p{font-size:16px;line-height:1.6}
-  .pain-cta{margin-top:32px;padding:24px 20px;border-radius:24px}
+  .pain-cta{margin-top:24px;padding:20px 18px;border-radius:22px}
   .pain-cta>p{font-size:17px;margin-bottom:16px}
   .pain-cta .btn-yellow{width:100%;min-height:56px;font-size:17px;border-radius:999px}
   .pain-cta-link{font-size:16px;min-height:44px}
 
-  .results-sec{padding:64px 0}
-  .result-grid{grid-template-columns:1fr;gap:20px;margin-top:28px}
+  .results-sec{padding:48px 0}
+  .result-grid{grid-template-columns:1fr;gap:16px;margin-top:20px}
   .result-card{grid-column:auto;padding:20px 18px;display:grid;grid-template-columns:48px 1fr;grid-template-rows:auto auto;gap:6px 14px;align-items:start;border-radius:24px}
   .result-ico{width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:0;grid-row:1/span 2;align-self:start;background:var(--blue-pale);border-radius:12px}
   .result-card:nth-child(4) .result-ico{background:var(--yellow-pale)}
@@ -677,17 +691,17 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .result-card p{grid-column:2;font-size:16px;line-height:1.6}
   .result-family-badge{top:12px;right:12px;font-size:11px}
 
-  .system-sec{padding:64px 0}
+  .system-sec{padding:48px 0}
   .system-head{margin-bottom:0}
-  .system-route{gap:0;margin-top:24px}
+  .system-route{gap:0;margin-top:18px}
   .system-step{padding:22px 20px;border-radius:24px}
   .system-step h3{font-size:20px}
   .system-step p{font-size:16px;line-height:1.6}
-  .system-accent-box{font-size:17px;line-height:1.55;margin-top:24px;padding:16px 18px}
-  .system-cta-row{flex-direction:column;width:100%;margin-top:24px}
+  .system-accent-box{font-size:17px;line-height:1.55;margin-top:18px;padding:14px 16px}
+  .system-cta-row{flex-direction:column;width:100%;margin-top:18px}
   .system-cta-row .btn{width:100%;min-height:56px;font-size:17px;border-radius:999px;justify-content:center}
 
-  .groups{padding:64px 0}
+  .groups{padding:36px 0 48px}
   .groups-grid{gap:22px;margin-top:28px}
   .group-card{padding:24px 22px;border-radius:24px}
   .group-card.gc-3{padding:22px 20px}
@@ -703,24 +717,24 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .price-old{font-size:22px}
   .stripe-btn{min-height:54px;padding:14px;font-size:16px}
 
-  .faq-sec{padding:64px 0}
-  .faq-list{margin-top:28px}
+  .faq-sec{padding:48px 0}
+  .faq-list{margin-top:20px}
   .faq-q{padding:18px 0;gap:12px}
   .faq-item.open .faq-a{max-height:900px}
   .faq-sec .sec-sub{font-size:17px;line-height:1.6}
 
-  .social-sec{padding:64px 0}
+  .social-sec{padding:44px 0}
   .social-sec h2{font-size:clamp(28px,8vw,34px)}
   .social-sec p{font-size:16px;margin-bottom:24px}
-  .final-cta{padding:40px 20px}
+  .final-cta{padding:36px 20px}
   .final-cta h2{font-size:clamp(22px,6.5vw,26px);margin-bottom:10px}
   .final-cta-sub{font-size:15px;line-height:1.5;margin-bottom:18px}
   .final-cta .btn-yellow{width:100%;max-width:340px;min-height:50px;font-size:16px;border-radius:999px}
   .final-cta-micro{font-size:13px;line-height:1.45;margin-top:12px}
   .final-cta-tagline{font-size:14px;line-height:1.45;margin-top:14px;padding-top:12px}
 
-  footer{padding:48px 0 28px}
-  .ft-inner{grid-template-columns:1fr;gap:24px;margin-bottom:32px}
+  footer{padding:40px 0 24px}
+  .ft-inner{grid-template-columns:1fr;gap:20px;margin-bottom:24px}
   .ft-brand{font-size:26px}
   .ft-cta{width:100%;justify-content:center;min-height:52px;font-size:16px}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:7px}
@@ -743,18 +757,18 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
   .perk-split-mobile{display:flex!important}
 }
 </style>
-<meta content="Bilingvi — интерактивные русские истории по воскресеньям и разговорные мини-группы для детей-билингвов 4–10 лет." name="description"/>
+<meta content="Bilingvi — интерактивные русские истории в Zoom для детей-билингвов 4–10 лет. Первая встреча бесплатно." name="description"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://bilingvi.club/"/>
 <meta property="og:title" content="Bilingvi — русские истории для детей-билингвов"/>
-<meta property="og:description" content="Интерактивные воскресные истории онлайн для детей 4–10 лет. Попробуйте одну встречу за £5."/>
+<meta property="og:description" content="Интерактивные русские истории в Zoom для детей 4–10 лет. Первая встреча — бесплатно по записи."/>
 <meta property="og:image" content="https://bilingvi.club/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Bilingvi — русские истории для детей-билингвов"/>
-<meta name="twitter:description" content="Интерактивные воскресные истории онлайн для детей 4–10 лет. Попробуйте одну встречу за £5."/>
+<meta name="twitter:description" content="Интерактивные русские истории в Zoom для детей 4–10 лет. Первая встреча — бесплатно по записи."/>
 <meta name="twitter:image" content="https://bilingvi.club/og-image.jpg"/>
 </head>
 <body>
@@ -782,10 +796,10 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 <ul class="nav-links nav-desktop">
 <li><a href="#home">Главная</a></li>
+<li><a href="#sunday-stories">Истории</a></li>
 <li><a href="#how">Как проходит</a></li>
-<li><a href="#sunday-stories">Воскресенья</a></li>
-<li><a href="#groups">Тарифы</a></li>
-<li><a class="btn-nav" href="#" onclick="openModal('club');return false">В мини-группу</a></li>
+<li><a href="#signup">Записаться</a></li>
+<li><a class="btn-nav" href="#" onclick="openFreeTrial();return false">Бесплатная история</a></li>
 </ul>
 <div class="nav-actions">
 <button type="button" aria-label="Меню" class="hamburger" id="ham" aria-expanded="false" onclick="toggleNav()">
@@ -796,12 +810,11 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </nav>
 <ul class="nav-links nav-mobile" id="navLinks" aria-hidden="true">
 <li><a href="#home" onclick="toggleNav()">Главная</a></li>
-<li><a href="#sunday-stories" onclick="toggleNav()">Воскресные истории</a></li>
-<li><a href="#groups" onclick="toggleNav()">Тарифы</a></li>
+<li><a href="#sunday-stories" onclick="toggleNav()">Примеры историй</a></li>
 <li><a href="#how" onclick="toggleNav()">Как это работает</a></li>
+<li><a href="#signup" onclick="toggleNav()">Записаться</a></li>
 <li><a href="#faq" onclick="toggleNav()">FAQ</a></li>
-<li><a class="btn-nav" href="#" onclick="scrollToSundayStories();toggleNav();return false">Выбрать историю — £5</a></li>
-<li><a class="btn-nav btn-nav--pink" href="#" onclick="openModal('club');toggleNav();return false">Подобрать мини-группу</a></li>
+<li><a class="btn-nav" href="#" onclick="openFreeTrial();toggleNav();return false">Бесплатная история</a></li>
 </ul>
 
 <section class="club-hero" id="home">
@@ -815,10 +828,10 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="hero-cta-row">
 <div class="hero-cta-primary">
 <div class="hero-cta-actions">
-<button class="btn btn-yellow" onclick="scrollToSundayStories()">Выбрать историю — £5</button>
+<button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 <a class="btn btn-outline hero-cta-how" href="#how">Как это работает →</a>
 </div>
-<p class="hero-price-hint">≈ €6–7 / $6–7 · оплата картой из любой страны</p>
+<p class="hero-price-hint">35–45 минут в Zoom · не урок, а интерактивная сказка · первая встреча бесплатно</p>
 </div>
 </div>
 <div class="hero-demo hero-demo--mobile reveal">
@@ -836,8 +849,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <span class="pill pill-yellow">разный уровень русского</span>
 </div>
 <ul class="hero-mobile-steps">
-<li>Воскресные истории</li>
-<li>Мини-группы</li>
+<li>Истории в Zoom</li>
 <li>Игра дома</li>
 </ul>
 </div>
@@ -850,18 +862,14 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <p class="system-demo-caption">Так проходит воскресная история «Под грибом»</p>
 </div>
 <div class="hv-card hv-card--afisha">
-<div class="hv-label">Афиша воскресных историй</div>
-<div class="hv-afisha-date">21 июня</div>
+<div class="hv-label">Примеры историй</div>
 <ul class="hv-list">
-<li><b>4–6 лет</b> · «Под грибом» · 10:00 UK</li>
-<li><b>7–10 лет</b> · «BloxGrad: секретный портал» · 11:30 UK</li>
+<li><b>4–6 лет</b> · «Под грибом»</li>
+<li><b>7–10 лет</b> · «BloxGrad: секретный портал»</li>
+<li><b>4–6 лет</b> · «Сказка о рыбаке и рыбке»</li>
+<li><b>7–10 лет</b> · «Лукоморье: секрет золотой цепи»</li>
 </ul>
-<div class="hv-afisha-date">28 июня</div>
-<ul class="hv-list">
-<li><b>4–6 лет</b> · «Сказка о рыбаке и рыбке» · 10:00 UK</li>
-<li><b>7–10 лет</b> · «Лукоморье: секрет золотой цепи» · 11:30 UK</li>
-</ul>
-<button class="btn btn-sm btn-outline hv-card-btn" onclick="scrollToSundayStories()">Выбрать историю — £5</button>
+<button class="btn btn-sm btn-outline hv-card-btn" onclick="openFreeTrial()">Записаться бесплатно</button>
 </div>
 </div>
 </div>
@@ -921,14 +929,13 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="pain-card pain-card--green reveal rd3">
 <div class="pain-ico">💬</div>
 <h3>В большой группе ребёнок молчит и теряется.</h3>
-<p>В мини-группе до 5 детей у каждого есть пространство говорить на своём уровне — без сравнения и без давления.</p>
+<p>У нас небольшие встречи: у каждого есть пространство отвечать на своём уровне — без сравнения и без давления.</p>
 </div>
 </div>
 <div class="pain-cta reveal">
-<p>Начать можно с одной воскресной истории — без абонемента.</p>
+<p>Начните с бесплатной истории — без оплаты и без абонемента.</p>
 <div class="pain-cta-actions">
-<button class="btn btn-yellow" onclick="scrollToSundayStories()">Выбрать историю — £5</button>
-<button type="button" class="pain-cta-link" onclick="openModal('club')">или оставить заявку на мини-группу</button>
+<button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
 </div>
 </div>
@@ -941,15 +948,15 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="system-head-copy">
 <div class="sec-tag">Как это работает</div>
 <h2 class="sec-title">Как работает Bilingvi</h2>
-<p class="sec-sub">Одна история может работать всю неделю: в воскресенье ребёнок входит в сюжет, после встречи получает игру и задания для дома, а если нужна разговорная практика — продолжает эту же историю в мини-группе.</p>
+<p class="sec-sub">Одна история может работать всю неделю: ребёнок входит в сюжет на живой встрече, а после неё получает игру и задания для дома.</p>
 </div>
 </div>
 <div class="system-route">
 <div class="system-step system-step--sun reveal">
 <div class="system-step-label">Шаг 1</div>
 <div class="system-step-icon">📖</div>
-<h3>Воскресенье — входим в сюжет</h3>
-<p>Ребёнок приходит на живую интерактивную историю: слушает, выбирает, отвечает реакциями или короткими фразами и помогает героям. Можно участвовать даже с небольшим русским.</p>
+<h3>Живая история в Zoom</h3>
+<p>Ребёнок слушает, выбирает, отвечает реакциями или короткими фразами и помогает героям. Можно участвовать даже с небольшим русским — 35–45 минут, не урок за партой.</p>
 </div>
 <div class="system-arrow" aria-hidden="true">→</div>
 <div class="system-step system-step--home reveal rd1">
@@ -958,20 +965,10 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <h3>После встречи — игра дома</h3>
 <p>Родители получают PDF или ссылку с мини-игрой, словами и заданиями по сюжету. Русский продолжается дома без «сядь и учи»: через вопросы, выборы и маленькие задания.</p>
 </div>
-<div class="system-arrow" aria-hidden="true">→</div>
-<div class="system-step system-step--group system-step--optional reveal rd2">
-<span class="system-optional-badge">опция</span>
-<div class="system-step-label">Шаг 3</div>
-<div class="system-step-icon">💬</div>
-<h3>Мини-группа — говорим больше</h3>
-<p>Для детей, которым нужна регулярная практика, есть мини-группы до 5 человек. Мы возвращаемся к той же истории и превращаем её в разговор: ребёнок отвечает, строит фразы и говорит на своём уровне.</p>
-<p class="system-step-note">для регулярной разговорной практики</p>
 </div>
-</div>
-<div class="system-accent-box reveal">Можно начать с одной воскресной истории. Мини-группа — следующий шаг, если вы хотите больше разговорной практики.</div>
+<div class="system-accent-box reveal">Первая встреча — бесплатно. Понравится формат — продолжайте: £5 за историю или £16 / месяц.</div>
 <div class="system-cta-row reveal">
-<button class="btn btn-yellow" onclick="scrollToSundayStories()">Выбрать историю — £5</button>
-<button class="btn btn-outline" onclick="openModal('club')">Оставить заявку на мини-группу</button>
+<button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
 </div>
 </section>
@@ -1027,72 +1024,51 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="sunday-stories-grid" id="sundayStoriesGrid"></div>
 <div class="sunday-stories-note" id="sundayStoriesNote"></div>
 <p class="sunday-stories-price-note" id="sundayStoriesPriceNote"></p>
+<div class="sunday-stories-cta reveal">
+<button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
+</div>
 </div>
 </section>
 
-<!-- TARIFFS -->
-<section class="groups" id="groups">
+<!-- SIGNUP + PRICING -->
+<section class="groups" id="signup">
 <div class="container">
-<div class="sec-tag">Тарифы</div>
-<h2 class="sec-title">Выберите удобный тариф</h2>
-<p class="sec-sub">Можно прийти на одну воскресную историю, взять месяц историй или оставить заявку на мини-группу, если ребёнку нужна регулярная разговорная практика.</p>
-<div class="pricing-grid tariffs-grid">
-<div class="price-card reveal">
-<div class="plan-badge plan-badge--test">Тест-драйв</div>
-<div class="price-name">Одна история</div>
-<div class="price-tagline">Идеальный формат, чтобы познакомиться с клубом, проверить методику и увидеть реакцию ребёнка.</div>
-<div class="price-row"><span class="price-sym">£</span><span class="price-num">5</span><span class="price-per">за встречу</span></div>
-<ul class="perks">
-<li><div class="perk-ico">✓</div>1 воскресная история</li>
-<li><div class="perk-ico">✓</div>35–45 минут онлайн</li>
-<li><div class="perk-ico">✓</div>Можно прийти разово</li>
-<li><div class="perk-ico">✓</div>Игра для дома после встречи</li>
-</ul>
-<div class="price-card-footer">
-<div class="price-card-footer-note" aria-hidden="true"></div>
-<button class="stripe-btn sb-yellow" onclick="scrollToSundayStories()">Попробовать за £5</button>
+<div class="sec-tag">Записаться</div>
+<h2 class="sec-title">Как попасть на бесплатную историю</h2>
+<p class="sec-sub">Оставьте email — мы напишем и предложим удобное время. Расписание согласуем вручную, без оплаты на сайте.</p>
+<div class="signup-steps">
+<div class="signup-step reveal">
+<div class="signup-step-num">1</div>
+<h3>Оставьте заявку</h3>
+<p>Email и возраст ребёнка — 4–6 или 7–10 лет. Это займёт меньше минуты.</p>
+</div>
+<div class="signup-step reveal rd1">
+<div class="signup-step-num">2</div>
+<h3>Мы напишем вам</h3>
+<p>Предложим несколько слотов на Zoom и подберём историю под возраст и интересы.</p>
+</div>
+<div class="signup-step reveal rd2">
+<div class="signup-step-num">3</div>
+<h3>Встреча в Zoom</h3>
+<p>35–45 минут интерактивной сказки. После — игра и задания для дома.</p>
 </div>
 </div>
-<div class="price-card reveal rd1">
-<div class="plan-badge plan-badge--basic">Базовый</div>
-<div class="price-name">Месяц историй</div>
-<div class="price-tagline">Для тех, кто хочет мягко и без давления внедрить русский язык в привычную рутину ребёнка.</div>
-<div class="price-row"><span class="price-sym">£</span><span class="price-num">16</span><span class="price-per">/ месяц</span></div>
-<ul class="perks">
-<li><div class="perk-ico">✓</div>4 воскресные истории в месяц</li>
-<li><div class="perk-ico">✓</div>Каждую неделю новая сказка-квест</li>
-<li><div class="perk-ico">✓</div>Можно ходить только по воскресеньям</li>
-<li><div class="perk-ico">✓</div>Подходит для разных уровней русского</li>
-</ul>
-<div class="price-card-footer">
-<div class="price-card-footer-note" aria-hidden="true"></div>
-<a class="stripe-btn sb-outline" href="https://buy.stripe.com/aFa7sKfEv72I5Q27VCfIs0d" target="_blank" rel="noopener noreferrer" data-item-id="month-stories" data-item-name="Месяц историй" data-value="16" data-item-category="subscription">Выбрать</a>
+<div class="system-cta-row reveal">
+<button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
+</div>
+<div class="pricing-after reveal">
+<div class="pricing-after-card">
+<h3>Одна история</h3>
+<div class="price">£5</div>
+<p>Разовая встреча — если хотите ходить время от времени.</p>
+</div>
+<div class="pricing-after-card">
+<h3>Месяц историй</h3>
+<div class="price">£16</div>
+<p>4 встречи в месяц — для регулярного контакта с русским.</p>
 </div>
 </div>
-<div class="price-card hot reveal rd2">
-<div class="plan-badge plan-badge--pro">Продвинутый</div>
-<div class="price-name">Максимум общения</div>
-<div class="price-tagline">Для родителей, которым важно, чтобы ребёнок перешёл от пассивного понимания к активной речи. Сначала оставьте заявку — я подберу подходящую мини-группу и приглашу на пробную встречу за £7.</div>
-<div class="price-row price-row--sale">
-<span class="price-old">£48</span>
-<span class="price-new">£39</span>
-<span class="price-period">/ месяц</span>
-</div>
-<div class="price-launch-note">специальная цена на запуске</div>
-<ul class="perks">
-<li><div class="perk-ico">✓</div>4 мини-встречи в месяц</li>
-<li><div class="perk-ico">✓</div>4 воскресные истории бонусом</li>
-<li><div class="perk-ico">✓</div>Мини-группа до 5 детей</li>
-<li><div class="perk-ico">✓</div>Группы по возрасту и уровню</li>
-<li><div class="perk-ico">✓</div>Разговорная практика по сюжетам</li>
-<li><div class="perk-ico">✓</div>Материалы и поддержка после встреч</li>
-</ul>
-<div class="price-card-footer">
-<p class="price-card-footer-note">Пробная встреча — £7 после согласования времени. Оплата тарифа £39 — только если формат подойдёт.</p>
-<button class="stripe-btn sb-solid" onclick="openModal('max')">Оставить заявку</button>
-</div>
-</div>
-</div>
+<p class="pricing-after-note reveal">Тарифы — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
 </div>
 </section>
 
@@ -1124,8 +1100,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <section class="final-cta">
 <div class="final-cta-inner">
 <h2>Русский не исчезает за один день. И вернуть его в речь тоже можно мягко — через историю, в которую ребёнку хочется войти.</h2>
-<p class="final-cta-sub">Попробуйте одну историю за £5. Понравится формат — продолжайте с тарифом «Базовый».</p>
-<button class="btn btn-yellow btn-lg" onclick="scrollToSundayStories()">Попробовать за £5 →</button>
+<p class="final-cta-sub">Первая встреча — бесплатно. Понравится формат — продолжайте: £5 за историю или £16 / месяц.</p>
+<button class="btn btn-yellow btn-lg" onclick="openFreeTrial()">Записаться на бесплатную историю →</button>
 <p class="final-cta-micro">Придумала Настя — методист и мама детей-трилингвов. Я знаю эту боль изнутри и делаю Bilingvi так, как хотела бы для своих детей.</p>
 <p class="final-cta-tagline">Bilingvi — это не курс русского языка. Это место, где ребёнок постепенно начинает хотеть говорить.</p>
 </div>
@@ -1143,9 +1119,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="ft-col">
 <h5>Форматы</h5>
 <div class="ft-links">
-<a href="#sunday-stories">Воскресные истории</a>
-<a href="#groups">Мини-группы</a>
-<a href="#groups">Тарифы</a>
+<a href="#sunday-stories">Примеры историй</a>
+<a href="#signup">Записаться</a>
 </div>
 </div>
 <div class="ft-col">
@@ -1162,7 +1137,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="ft-col" id="contact">
 <h5>Контакты</h5>
 <a class="ft-email" href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>
-<button class="ft-cta" onclick="scrollToSundayStories()">Выбрать историю</button>
+<button class="ft-cta" onclick="openFreeTrial()">Бесплатная история</button>
 </div>
 </div>
 <div class="ft-bottom">
@@ -1174,7 +1149,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 
 <!-- STICKY CTA -->
 <div class="sticky-cta" id="stickyCta">
-<button onclick="scrollToSundayStories()">Выбрать историю — £5</button>
+<button onclick="openFreeTrial()">Бесплатная история</button>
 </div>
 
 <!-- COOKIE -->
@@ -1188,149 +1163,37 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.11.55 4.09 1.514 5.81L0 24l6.335-1.66A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82a9.82 9.82 0 0 1-5.01-1.37l-.36-.214-3.76.985 1.004-3.67-.234-.376A9.82 9.82 0 0 1 2.18 12C2.18 6.57 6.57 2.18 12 2.18S21.82 6.57 21.82 12 17.43 21.82 12 21.82z"/></svg>
 </a>
 
-<!-- AFISHA MODAL -->
-<div class="modal-overlay" id="afishaOverlay" onclick="maybeCloseAfisha(event)">
-<div class="afisha-modal">
-<div class="modal-header" style="padding:0">
-<div class="afisha-header" style="width:100%">
-<h3 id="afishaModalTitle"></h3>
-<p id="afishaModalSubtitle"></p>
-<button class="modal-close" onclick="closeAfisha()" style="position:absolute;top:18px;right:18px">✕</button>
-</div>
-</div>
-<div class="afisha-body" id="afishaBody"></div>
-</div>
-</div>
-
-<!-- SIGNUP MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="maybeClose(event)">
-<div class="modal">
-<div class="modal-header">
-<h3 id="modalTitle">Заявка в Bilingvi</h3>
-<p class="modal-subtitle" id="modalSubtitle">Заполните короткую анкету — я посмотрю возраст, уровень русского и удобное время. Потом напишу вам на email и предложу подходящий формат.</p>
-<button class="modal-close" onclick="closeModal()">✕</button>
-</div>
-<div class="modal-body">
-<div class="modal-progress" id="progress">
-<div class="prog-step done" id="ps1"></div>
-<div class="prog-step" id="ps2"></div>
-<div class="prog-step" id="ps3"></div>
-</div>
-<div class="sending-overlay" id="sendingOverlay"><div class="spinner"></div>Отправляем заявку…</div>
-<div class="step-screen active" id="step1">
-<div class="step-title">Шаг 1 из 3 · О ребёнке</div>
-<label class="field-label">Имя ребёнка</label>
-<input id="childName" placeholder="Например: Маша" type="text"/>
-<label class="field-label">Возраст</label>
-<select id="childAge">
-<option value="">— выберите —</option>
-<option>4 года</option><option>5 лет</option><option>6 лет</option>
-<option>7 лет</option><option>8 лет</option><option>9 лет</option>
-<option>10 лет</option><option>11 лет</option><option>12 лет</option>
-<option>13 лет</option><option>14 лет</option><option>15 лет</option><option>16 лет</option>
-</select>
-<label class="field-label">Формат / возрастная линия</label>
-<select id="childGroup">
-<option value="">— не знаю, посоветуйте —</option>
-<option value="Мини-группа 4–6">💬 Мини-группа (4–6 лет)</option>
-<option value="Мини-группа 7–10">💬 Мини-группа (7–10 лет)</option>
-<option value="Месяц историй £16">📚 Месяц историй (£16 / месяц)</option>
-<option value="Только воскресные истории">📚 Пока только воскресные истории</option>
-</select>
-<label class="field-label">Уровень русского</label>
-<select id="childLevel">
-<option value="">— оценить сложно —</option>
-<option>Понимает, но говорит мало</option>
-<option>Говорит фразами, словарь небольшой</option>
-<option>Говорит уверенно, читает</option>
-<option>Продвинутый уровень</option>
-</select>
-<div class="modal-nav">
-<button class="btn-next" onclick="goStep(2)">Далее →</button>
-</div>
-</div>
-<div class="step-screen" id="step2">
-<div class="step-title">Шаг 2 из 3 · О вас</div>
-<label class="field-label">Ваше имя</label>
-<input id="parentName" placeholder="Ваше имя" type="text"/>
-<label class="field-label">Email для связи</label>
-<input id="parentEmail" placeholder="your@email.com" type="email"/>
-<label class="field-label">Комментарий (необязательно)</label>
-<textarea id="comment" placeholder="Расскажите о ребёнке: понимает ли русский, говорит ли фразами, что любит слушать/смотреть…" rows="3" style="resize:vertical"></textarea>
-<div class="modal-nav">
-<button class="btn-back" onclick="goStep(1)">← Назад</button>
-<button class="btn-next" onclick="goStep(3)">Далее →</button>
-</div>
-</div>
-<div class="step-screen" id="step3">
-<div class="step-title">Шаг 3 из 3 · удобное время</div>
-<p class="step-note" id="stepNote">Выберите один или несколько вариантов, которые обычно вам подходят. Я напишу вам на email, чтобы согласовать удобное время и предложить подходящий формат.</p>
-<label class="field-label">Ваш часовой пояс</label>
-<select id="timezone" onchange="updateSlots()">
-<option value="-8">UTC-8 (Лос-Анджелес)</option>
-<option value="-5">UTC-5 (Нью-Йорк)</option>
-<option selected="" value="0">UTC+0 (Лондон, UK)</option>
-<option value="1">UTC+1 (Париж, Берлин)</option>
-<option value="2">UTC+2 (Хельсинки, Киев)</option>
-<option value="3">UTC+3 (Москва, Стамбул)</option>
-<option value="4">UTC+4 (Дубай)</option>
-<option value="5">UTC+5 (Ташкент)</option>
-<option value="6">UTC+6 (Алматы)</option>
-<option value="8">UTC+8 (Пекин, Сингапур)</option>
-<option value="9">UTC+9 (Токио)</option>
-<option value="10">UTC+10 (Сидней)</option>
-<option value="12">UTC+12 (Окленд)</option>
-</select>
-<label class="field-label" style="margin-top:14px">Какие варианты вам подходят?</label>
-<div class="slot-grid" id="slotGrid"></div>
-<div class="tz-note" id="tzNote"></div>
-<label class="field-label" style="margin-top:14px">Если удобнее другое время — напишите</label>
-<textarea id="preferredTimeComment" placeholder="Например: будни после 17:00 UK, суббота утром, мы живём в США / Испании / Германии…" rows="3" style="resize:vertical"></textarea>
-<p class="form-pay-note" id="formPayNote" style="display:none"></p>
-<div class="form-error" id="formError"></div>
-<div class="modal-nav">
-<button class="btn-back" onclick="goStep(2)">← Назад</button>
-<button class="btn-pay" onclick="submitForm()">Отправить заявку</button>
-</div>
-</div>
-<div class="step-screen" id="stepSuccess">
-<div class="success-screen">
-<div class="success-ico">🎉</div>
-<h3>Заявка отправлена</h3>
-<p id="successMessage">Спасибо за вашу заявку. Я напишу вам на email, и мы подберём удобное время.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- WAITLIST MODAL -->
-<div class="modal-overlay" id="waitlistOverlay" onclick="maybeCloseWaitlist(event)">
+<!-- FREE TRIAL MODAL -->
+<div class="modal-overlay" id="freeTrialOverlay" onclick="maybeCloseFreeTrial(event)">
 <div class="modal waitlist-modal">
 <div class="modal-header">
-<h3>Уведомить о записи</h3>
-<button class="modal-close" onclick="closeWaitlist()">✕</button>
+<h3>Бесплатная история</h3>
+<button class="modal-close" onclick="closeFreeTrial()">✕</button>
 </div>
 <div class="modal-body">
-<div class="sending-overlay" id="waitlistSending"><div class="spinner"></div>Отправляем…</div>
-<div class="step-screen active" id="waitlistFormScreen">
-<span class="waitlist-story-pill" id="waitlistStoryTitle"></span>
-<p class="modal-subtitle" id="waitlistStoryMeta" style="margin:0 0 16px"></p>
-<p class="step-note" style="margin-top:0;margin-bottom:16px">Оставьте email — напишем, когда откроется запись на эту историю.</p>
-<label class="field-label" for="waitlistEmail">Email</label>
-<input id="waitlistEmail" placeholder="your@email.com" type="email" autocomplete="email"/>
-<label class="field-label" for="waitlistChildName">Имя ребёнка <span style="font-weight:600;color:var(--muted)">(необязательно)</span></label>
-<input id="waitlistChildName" placeholder="Например: Маша" type="text" autocomplete="off"/>
-<div class="form-error" id="waitlistError"></div>
+<div class="sending-overlay" id="freeTrialSending"><div class="spinner"></div>Отправляем…</div>
+<div class="step-screen active" id="freeTrialFormScreen">
+<p class="step-note" style="margin-top:0;margin-bottom:16px">Оставьте email — напишем и предложим удобное время для первой встречи в Zoom.</p>
+<label class="field-label" for="freeTrialEmail">Email</label>
+<input id="freeTrialEmail" placeholder="your@email.com" type="email" autocomplete="email"/>
+<label class="field-label" for="freeTrialAge">Возраст ребёнка</label>
+<select id="freeTrialAge">
+<option value="">— выберите —</option>
+<option value="4–6 лет">4–6 лет</option>
+<option value="7–10 лет">7–10 лет</option>
+</select>
+<label class="field-label" for="freeTrialChildName">Имя ребёнка <span style="font-weight:600;color:var(--muted)">(необязательно)</span></label>
+<input id="freeTrialChildName" placeholder="Например: Маша" type="text" autocomplete="off"/>
+<div class="form-error" id="freeTrialError"></div>
 <div class="modal-nav" style="margin-top:20px">
-<button class="btn-pay" style="flex:1" type="button" onclick="submitWaitlist()">Напомнить мне</button>
+<button class="btn-pay" style="flex:1" type="button" onclick="submitFreeTrial()">Записаться бесплатно</button>
 </div>
 </div>
-<div class="step-screen" id="waitlistSuccessScreen">
+<div class="step-screen" id="freeTrialSuccessScreen">
 <div class="success-screen">
-<div class="success-ico">✉️</div>
-<h3>Готово!</h3>
-<p id="waitlistSuccessMessage">Спасибо! Напишем на email, когда откроется запись.</p>
+<div class="success-ico">🎉</div>
+<h3>Заявка отправлена!</h3>
+<p id="freeTrialSuccessMessage">Спасибо! Напишем на email и предложим удобное время.</p>
 </div>
 </div>
 </div>
@@ -1347,262 +1210,88 @@ function trackEvent(name,params={}){
   if(typeof gtag!=='function')return;
   gtag('event',name,params);
 }
-function stripeParamsFromLink(link){
-  const ds=link.dataset;
-  if(ds.itemName)return{
-    currency:'GBP',
-    value:parseFloat(ds.value)||5,
-    item_id:ds.storyId||ds.itemId||'',
-    item_name:ds.itemName,
-    item_category:ds.itemCategory||'stripe'
-  };
-  const href=link.href||'';
-  if(href.includes('aFa7sKfEv'))return{currency:'GBP',value:16,item_id:'month-stories',item_name:'Месяц историй',item_category:'subscription'};
-  return{currency:'GBP',value:5,item_name:(link.textContent||'').trim()||'stripe',item_category:'stripe'};
-}
 function initAnalytics(){
   document.addEventListener('click',e=>{
     if(e.target.closest('#whatsappFab'))trackEvent('contact',{method:'whatsapp'});
-    const link=e.target.closest('a[href*="buy.stripe.com"]');
-    if(link)trackEvent('begin_checkout',stripeParamsFromLink(link));
   });
 }
-let modalMode='club';
-const MODAL_CONFIG={
-  month:{
-    title:'Заявка в Bilingvi',
-    subtitle:'Заполните короткую анкету — я посмотрю возраст, уровень русского и удобное время. Потом напишу вам на email и предложу подходящий формат.',
-    stepNote:'Выберите один или несколько вариантов, которые обычно вам подходят. Я напишу вам на email, чтобы согласовать удобное время и предложить подходящий формат.',
-    payNote:'',
-    requestType:'Заявка на тариф: Месяц историй £16',
-    success:'Спасибо за вашу заявку. Я напишу вам на email, и мы подберём удобное время.'
-  },
-  max:{
-    title:'Заявка в Bilingvi',
-    subtitle:'Для мини-группы я сначала приглашу ребёнка на пробную встречу за £7. Полный тариф £39 / месяц оплачивается только если вы решите продолжить.',
-    stepNote:'Выберите один или несколько вариантов, которые обычно вам подходят. Я напишу вам на email, чтобы согласовать удобное время и пригласить на пробную мини-встречу.',
-    payNote:'Пробная встреча — £7 после согласования времени. Оплата тарифа £39 — только если формат подойдёт.',
-    requestType:'Заявка на тариф: Максимум общения £39',
-    success:'Спасибо за вашу заявку. Я напишу вам на email, и мы подберём удобное время.'
-  },
-  club:{
-    title:'Заявка в Bilingvi',
-    subtitle:'Заполните короткую анкету — я посмотрю возраст, уровень русского и удобное время. Потом напишу вам на email и предложу подходящий формат.',
-    stepNote:'Выберите один или несколько вариантов, которые обычно вам подходят. Я напишу вам на email, чтобы согласовать удобное время и подобрать мини-группу.',
-    payNote:'Пробная встреча — £7 после согласования времени. Оплата тарифа £39 — только если формат подойдёт.',
-    requestType:'Заявка на подбор мини-группы',
-    success:'Спасибо за вашу заявку. Я напишу вам на email, и мы подберём удобное время.'
-  }
-};
-function getModalConfig(mode){return MODAL_CONFIG[mode]||MODAL_CONFIG.club}
-const selectedSlots=new Set();
-const UK_OFFSET=0;
-const SLOTS=[
-  {id:'sat-12',day:'Суббота',time:'12:00 UK',ukH:12,ukM:0},
-  {id:'sat-14',day:'Суббота',time:'14:00 UK',ukH:14,ukM:0},
-  {id:'tue-18',day:'Вторник',time:'18:00 UK',ukH:18,ukM:0},
-  {id:'wed-10',day:'Среда',time:'10:00 UK',ukH:10,ukM:0},
-];
-function fmt(h,m){const hh=((h%24)+24)%24;return`${String(hh).padStart(2,'0')}:${String(m).padStart(2,'0')}`}
-function slotLabel(s){return`${s.day} ${s.time}`}
-function toggleSlot(id){if(selectedSlots.has(id))selectedSlots.delete(id);else selectedSlots.add(id);updateSlots()}
-function updateSlots(){
-  const offset=parseInt(document.getElementById('timezone').value,10);
-  const grid=document.getElementById('slotGrid');
-  grid.innerHTML='';
-  SLOTS.forEach(s=>{
-    const lh=s.ukH+(offset-UK_OFFSET),localStr=fmt(lh,s.ukM);
-    const btn=document.createElement('div');
-    btn.className='slot-btn'+(selectedSlots.has(s.id)?' selected':'');
-    btn.setAttribute('role','button');
-    btn.setAttribute('tabindex','0');
-    btn.innerHTML=`<div class="slot-day">${s.day}</div><div class="slot-time">${s.time}</div><div class="slot-local">у вас: ${localStr}</div>`;
-    btn.onclick=()=>toggleSlot(s.id);
-    grid.appendChild(btn);
-  });
-  const tzSel=document.getElementById('timezone');
-  document.getElementById('tzNote').textContent=`Время слотов указано по UK. Ваш пояс: ${tzSel.options[tzSel.selectedIndex].text}`;
-}
-function showFormError(msg){
-  const el=document.getElementById('formError');
-  el.innerHTML=msg;
-  el.classList.add('visible');
-}
-function hideFormError(){const el=document.getElementById('formError');el.classList.remove('visible');el.innerHTML=''}
-function goStep(n){
-  if(n===2){
-    if(!document.getElementById('childName').value.trim()){alert('Введите имя ребёнка');return}
-    if(!document.getElementById('childAge').value){alert('Выберите возраст');return}
-  }
-  if(n===3){
-    if(!document.getElementById('parentName').value.trim()){alert('Введите ваше имя');return}
-    const em=document.getElementById('parentEmail').value.trim();
-    if(!em||!em.includes('@')){alert('Введите корректный email');return}
-    updateSlots();
-  }
-  document.querySelectorAll('.step-screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('step'+n).classList.add('active');
-  for(let i=1;i<=3;i++) document.getElementById('ps'+i).classList.toggle('done',i<=n);
-  const mb=document.querySelector('.modal-body');if(mb)mb.scrollTop=0;
-}
-async function submitForm(){
-  hideFormError();
-  const preferredTimeComment=document.getElementById('preferredTimeComment').value.trim();
-  const slotsStr=[...selectedSlots].map(id=>{const s=SLOTS.find(x=>x.id===id);return s?slotLabel(s):''}).filter(Boolean).join(', ');
-  if(!slotsStr&&!preferredTimeComment){
-    showFormError('Выберите один или несколько вариантов времени или напишите удобное время в поле ниже.');
-    return;
-  }
-  const tzSel=document.getElementById('timezone');
-  const groupVal=document.getElementById('childGroup').value;
-  let commentText=document.getElementById('comment').value.trim();
-  if(groupVal)commentText=(commentText?commentText+'\n\n':'')+'Формат / возрастная линия: '+groupVal;
-  const requestType=getModalConfig(modalMode).requestType;
-  const form=document.getElementById('trialRequestForm');
-  form.parent_name.value=document.getElementById('parentName').value.trim();
-  form.email.value=document.getElementById('parentEmail').value.trim();
-  form.child_name.value=document.getElementById('childName').value.trim();
-  form.child_age.value=document.getElementById('childAge').value;
-  form.russian_level.value=document.getElementById('childLevel').value;
-  form.timezone.value=tzSel.options[tzSel.selectedIndex].text;
-  form.preferred_slots.value=slotsStr;
-  form.preferred_time_comment.value=preferredTimeComment;
-  form.comment.value=commentText;
-  form.request_type.value=requestType;
-  const formData=new FormData(form);
-  formData.set('_replyto',document.getElementById('parentEmail').value.trim());
-  formData.set('_subject',requestType);
-  document.getElementById('sendingOverlay').classList.add('show');
-  try{
-    const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:formData});
-    document.getElementById('sendingOverlay').classList.remove('show');
-    if(res.ok){
-      document.getElementById('successMessage').textContent=getModalConfig(modalMode).success;
-      document.getElementById('modalSubtitle').style.display='none';
-      document.querySelectorAll('.step-screen').forEach(s=>s.classList.remove('active'));
-      document.getElementById('stepSuccess').classList.add('active');
-      document.getElementById('progress').style.display='none';
-      trackEvent('generate_lead',{form_type:modalMode});
-    }else{
-      showFormError('Не получилось отправить заявку. Пожалуйста, напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.');
-    }
-  }catch(e){
-    document.getElementById('sendingOverlay').classList.remove('show');
-    showFormError('Не получилось отправить заявку. Пожалуйста, напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.');
-  }
-}
-function openModal(mode){
-  modalMode=mode||'club';
-  const cfg=getModalConfig(modalMode);
-  document.getElementById('modalTitle').textContent=cfg.title;
-  document.getElementById('modalSubtitle').textContent=cfg.subtitle;
-  document.getElementById('modalSubtitle').style.display='';
-  document.getElementById('stepNote').textContent=cfg.stepNote;
-  const payNote=document.getElementById('formPayNote');
-  if(cfg.payNote){payNote.textContent=cfg.payNote;payNote.style.display='block'}else{payNote.textContent='';payNote.style.display='none'}
-  document.querySelectorAll('.step-screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('step1').classList.add('active');
-  document.getElementById('stepSuccess').classList.remove('active');
-  for(let i=1;i<=3;i++) document.getElementById('ps'+i).classList.toggle('done',i===1);
-  document.getElementById('progress').style.display='flex';
-  selectedSlots.clear();
-  document.getElementById('preferredTimeComment').value='';
-  hideFormError();
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-  trackEvent('open_form',{form_type:modalMode});
-  updateStickyCta();
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';updateStickyCta()}
-function maybeClose(e){if(e.target===document.getElementById('modalOverlay'))closeModal()}
-
-let waitlistStoryId='',waitlistStoryTitle='';
-function openWaitlist(storyId){
-  const story=(sundayStoriesData&&sundayStoriesData.sundayStories||[]).find(s=>s.id===storyId);
-  if(!story)return;
-  waitlistStoryId=story.id;
-  waitlistStoryTitle=story.title;
-  document.getElementById('waitlistStoryTitle').textContent=story.title;
-  const datetime=formatStoryDatetime(story);
-  document.getElementById('waitlistStoryMeta').textContent=datetime||'';
-  document.getElementById('waitlistEmail').value='';
-  document.getElementById('waitlistChildName').value='';
-  const err=document.getElementById('waitlistError');
+function openFreeTrial(){
+  document.getElementById('freeTrialEmail').value='';
+  document.getElementById('freeTrialAge').value='';
+  document.getElementById('freeTrialChildName').value='';
+  const err=document.getElementById('freeTrialError');
   err.classList.remove('visible');
   err.textContent='';
-  document.getElementById('waitlistFormScreen').classList.add('active');
-  document.getElementById('waitlistSuccessScreen').classList.remove('active');
-  document.getElementById('waitlistOverlay').classList.add('open');
+  document.getElementById('freeTrialFormScreen').classList.add('active');
+  document.getElementById('freeTrialSuccessScreen').classList.remove('active');
+  document.getElementById('freeTrialOverlay').classList.add('open');
   document.body.style.overflow='hidden';
   updateStickyCta();
-  setTimeout(()=>document.getElementById('waitlistEmail').focus(),200);
+  trackEvent('open_form',{form_type:'free_trial'});
+  setTimeout(()=>document.getElementById('freeTrialEmail').focus(),200);
 }
-function closeWaitlist(){
-  document.getElementById('waitlistOverlay').classList.remove('open');
+function closeFreeTrial(){
+  document.getElementById('freeTrialOverlay').classList.remove('open');
   document.body.style.overflow='';
   updateStickyCta();
 }
-function maybeCloseWaitlist(e){if(e.target===document.getElementById('waitlistOverlay'))closeWaitlist()}
-async function submitWaitlist(){
-  const err=document.getElementById('waitlistError');
-  const email=document.getElementById('waitlistEmail').value.trim();
+function maybeCloseFreeTrial(e){if(e.target===document.getElementById('freeTrialOverlay'))closeFreeTrial()}
+async function submitFreeTrial(){
+  const err=document.getElementById('freeTrialError');
+  const email=document.getElementById('freeTrialEmail').value.trim();
+  const age=document.getElementById('freeTrialAge').value;
   if(!email||!email.includes('@')){
     err.textContent='Введите корректный email';
     err.classList.add('visible');
     return;
   }
+  if(!age){
+    err.textContent='Выберите возраст ребёнка';
+    err.classList.add('visible');
+    return;
+  }
   err.classList.remove('visible');
   err.textContent='';
-  const childName=document.getElementById('waitlistChildName').value.trim();
-  const story=(sundayStoriesData&&sundayStoriesData.sundayStories||[]).find(s=>s.id===waitlistStoryId);
-  const datetime=story?formatStoryDatetime(story):'';
+  const childName=document.getElementById('freeTrialChildName').value.trim();
+  const requestType=`Бесплатная история · ${age}`;
   const form=document.getElementById('trialRequestForm');
   form.parent_name.value='—';
   form.email.value=email;
   form.child_name.value=childName;
-  form.child_age.value='';
+  form.child_age.value=age;
   form.russian_level.value='';
   form.timezone.value='';
   form.preferred_slots.value='';
   form.preferred_time_comment.value='';
-  form.comment.value=datetime?`Дата истории: ${datetime}`:'';
-  form.request_type.value=`Waitlist: ${waitlistStoryTitle}`;
+  form.comment.value='';
+  form.request_type.value=requestType;
   const formData=new FormData(form);
   formData.set('_replyto',email);
-  formData.set('_subject',`Waitlist: ${waitlistStoryTitle}`);
-  document.getElementById('waitlistSending').classList.add('show');
+  formData.set('_subject',requestType);
+  document.getElementById('freeTrialSending').classList.add('show');
   try{
     const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:formData});
-    document.getElementById('waitlistSending').classList.remove('show');
+    document.getElementById('freeTrialSending').classList.remove('show');
     if(res.ok){
-      document.getElementById('waitlistSuccessMessage').textContent=`Спасибо! Напишем на ${email}, когда откроется запись на ${waitlistStoryTitle}.`;
-      document.getElementById('waitlistFormScreen').classList.remove('active');
-      document.getElementById('waitlistSuccessScreen').classList.add('active');
-      trackEvent('join_waitlist',{item_id:waitlistStoryId,item_name:waitlistStoryTitle});
+      document.getElementById('freeTrialSuccessMessage').textContent=`Спасибо! Напишем на ${email} и предложим удобное время для бесплатной истории.`;
+      document.getElementById('freeTrialFormScreen').classList.remove('active');
+      document.getElementById('freeTrialSuccessScreen').classList.add('active');
+      trackEvent('free_trial_signup',{child_age:age});
+      trackEvent('generate_lead',{form_type:'free_trial'});
     }else{
       err.innerHTML='Не получилось отправить. Напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.';
       err.classList.add('visible');
     }
   }catch(e){
-    document.getElementById('waitlistSending').classList.remove('show');
+    document.getElementById('freeTrialSending').classList.remove('show');
     err.innerHTML='Не получилось отправить. Напишите нам на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a>.';
     err.classList.add('visible');
   }
 }
 
-let afishaData=null,sundayStoriesData=null;
-const AFISHA_THEMES={blue:{bg:'',border:'',dateColor:''},pink:{bg:'var(--pink-pale)',border:'#F5C0A8',dateColor:'var(--pink)'}};
+let sundayStoriesData=null;
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-function isStripeUrlReady(url){return typeof url==='string'&&url.trim()!==''&&url!=='#'&&url.startsWith('https://')}
 function storyThemeClass(story){return story.theme?`theme-${story.theme}`:'theme-blue'}
-function formatStoryDatetime(story){if(!story.date||!story.time)return'';return`${story.date} · ${story.time}${story.timezone?' '+story.timezone:''}`}
-function renderSundayStoryBtn(story){
-  const label=esc(story.cta||'Записаться');
-  if(isStripeUrlReady(story.stripeUrl)){
-    return`<a class="btn btn-sm sunday-story-btn sunday-story-btn--full" href="${esc(story.stripeUrl)}" target="_blank" rel="noopener noreferrer" data-story-id="${esc(story.id)}" data-item-name="${esc(story.title)}" data-value="5" data-item-category="sunday_story">${label}</a>`;
-  }
-  return`<button type="button" class="btn btn-sm sunday-story-btn sunday-story-btn--full is-waitlist" onclick="openWaitlist('${esc(story.id)}')">${label}</button>`;
-}
 
 function renderSundayStories(data){
   const sec=data.section;
@@ -1616,23 +1305,18 @@ function renderSundayStories(data){
   const stories=data.sundayStories.filter(s=>s.isActive);
   grid.innerHTML=stories.map((story,i)=>{
     const theme=storyThemeClass(story);
-    const datetime=formatStoryDatetime(story);
-    const meta=`${esc(story.duration)} · ${esc(story.platform)} · ${esc(story.price)} за одну историю`;
-    const badge=isStripeUrlReady(story.stripeUrl)?'Ближайшая история':'Запись скоро';
+    const meta=`${esc(story.duration)} · ${esc(story.platform)}`;
     const illustration=story.illustration?`<img class="sunday-story-illustration" src="${esc(story.illustration)}" alt="${esc(story.illustrationAlt||'')}" loading="lazy" width="152" height="152">`:'';
     const hasIllustration=story.illustration?' has-illustration':'';
     return`<div class="sunday-story-card ${theme}${hasIllustration} reveal rd${i}">
 <div class="sunday-story-top">
-<span class="sunday-story-badge">${badge}</span>
 <span class="sunday-story-age">${esc(story.age)}</span>
 </div>
-${datetime?`<div class="sunday-story-datetime">${esc(datetime)}</div>`:''}
 <h3>${esc(story.title)}</h3>
 <div class="sunday-story-author">${esc(story.authorLine)}</div>
 <p class="sunday-story-desc">${esc(story.description)}</p>
 <div class="sunday-story-meta">${meta}</div>
 ${illustration}
-${renderSundayStoryBtn(story)}
 </div>`;
   }).join('');
   observeReveals(grid.querySelectorAll('.reveal'));
@@ -1642,52 +1326,11 @@ async function loadSundayStories(){
   try{const res=await fetch('./sundayStories.json');if(!res.ok)throw new Error('');sundayStoriesData=await res.json();}
   catch(e){console.error('Не удалось загрузить sundayStories.json. Откройте сайт через локальный сервер.',e);return}
   renderSundayStories(sundayStoriesData);
-  if(afishaData) renderAfishaModal(afishaData);
-}
-function getShowStripeUrl(show){
-  if(sundayStoriesData&&show.storyId){const s=sundayStoriesData.sundayStories.find(s=>s.id===show.storyId);if(s&&isStripeUrlReady(s.stripeUrl))return s.stripeUrl}
-  return isStripeUrlReady(show.stripeUrl)?show.stripeUrl:'';
-}
-function renderAfishaModal(data){
-  const m=data.modal;
-  document.getElementById('afishaModalTitle').textContent=m.title;
-  document.getElementById('afishaModalSubtitle').textContent=m.subtitle;
-  const shows=data.shows.filter(s=>s.inModal);
-  const showsHtml=shows.map(show=>{
-    const theme=AFISHA_THEMES[show.theme]||AFISHA_THEMES.blue;
-    const style=theme.bg?` style="background:${theme.bg};border-color:${theme.border}"`:'';
-    const dateStyle=theme.dateColor?` style="color:${theme.dateColor}"`:'';
-    const meta=(show.meta||[]).map(p=>`<span class="pill ${esc(p.pill)}">${esc(p.text)}</span>`).join('');
-    const stripe=getShowStripeUrl(show);
-    const itemName=show.titleModal||show.title;
-    const buyBtn=stripe
-      ?`<a class="afisha-show-buy" href="${esc(stripe)}" target="_blank" rel="noopener noreferrer" data-story-id="${esc(show.storyId||show.id)}" data-item-name="${esc(itemName)}" data-value="5" data-item-category="sunday_story">${esc(show.ticketLabel||m.ticketLabel)}</a>`
-      :(show.storyId?`<button type="button" class="afisha-show-buy afisha-show-waitlist" onclick="openWaitlist('${esc(show.storyId)}')">Уведомить о записи</button>`:'');
-    return`<div class="afisha-show"${style}>
-<div class="afisha-show-date"${dateStyle}>${esc(show.modalDateLabel||show.dateLabel)}</div>
-<div class="afisha-show-title">${esc(show.titleModal||show.title)}</div>
-<div class="afisha-show-desc">${esc(show.descriptionModal||show.description)}</div>
-<div class="afisha-show-meta">${meta}</div>${buyBtn}</div>`;
-  }).join('');
-  document.getElementById('afishaBody').innerHTML=`${showsHtml}
-<div style="background:var(--blue-pale);border-radius:var(--r);padding:14px 18px;margin-top:4px;font-size:13px;color:var(--blue);font-weight:700;display:flex;align-items:center;gap:9px">
-<span style="font-size:18px">📩</span>${esc(m.afterShowNote)}</div>
-<div class="afisha-note">${m.ticketNote}</div>`;
-}
-async function loadAfisha(){
-  try{const res=await fetch('./afisha.json');if(!res.ok)throw new Error('');afishaData=await res.json();}
-  catch(e){console.error('Не удалось загрузить afisha.json.',e);return}
-  renderAfishaModal(afishaData);
 }
 function observeReveals(nodes){nodes.forEach(el=>{if(!el.dataset.observed){el.dataset.observed='1';obs.observe(el)}})}
 function cleanUrlHash(){history.replaceState(null,'',location.pathname+location.search)}
 function scrollToSundayStories(){trackEvent('scroll_to_stories');const el=document.getElementById('sunday-stories');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});cleanUrlHash()}
 function keepPageAtTop(){if(!location.hash)window.scrollTo(0,0)}
-function bookSundayStory(stripeUrl){if(!stripeUrl||stripeUrl==='#'){scrollToSundayStories();return}window.open(stripeUrl,'_blank')}
-function openAfisha(){scrollToSundayStories()}
-function closeAfisha(){document.getElementById('afishaOverlay').classList.remove('open');document.body.style.overflow='';updateStickyCta()}
-function maybeCloseAfisha(e){if(e.target===document.getElementById('afishaOverlay'))closeAfisha()}
-function buyTheatreTicket(){scrollToSundayStories()}
 function toggleNav(){
   const panel=document.getElementById('navLinks');
   const ham=document.getElementById('ham');
@@ -1706,7 +1349,7 @@ if(sundaySecEl){
 const WHATSAPP_FAB={size:52,mobileSize:48,gap:12};
 function updateStickyCta(){
   document.getElementById('nav').classList.toggle('scrolled',scrollY>30);
-  const modalOpen=document.getElementById('modalOverlay').classList.contains('open')||document.getElementById('afishaOverlay').classList.contains('open')||document.getElementById('waitlistOverlay').classList.contains('open');
+  const modalOpen=document.getElementById('freeTrialOverlay').classList.contains('open');
   const isMobile=window.innerWidth<=900;
   const scrolledEnough=scrollY>(isMobile?320:550);
   const hideInSunday=isMobile&&stickyInSundaySec;
@@ -1773,7 +1416,7 @@ window.addEventListener('pageshow',keepPageAtTop);
 let userScrolled=false;
 window.addEventListener('scroll',()=>{if(scrollY>24)userScrolled=true},{passive:true});
 async function initPage(){
-  await Promise.all([loadSundayStories(),loadAfisha(),loadFaq()]);
+  await Promise.all([loadSundayStories(),loadFaq()]);
   if(!location.hash&&!userScrolled)window.scrollTo(0,0);
 }
 initPage();
