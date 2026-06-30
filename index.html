@@ -990,7 +990,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <a class="btn btn-outline btn-sm system-homework-link" href="homework/">Открыть домашнее задание →</a>
 </div>
 </div>
-<div class="system-accent-box reveal">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="accentPromoPrice">£18</span> <span id="accentPromoOld" style="text-decoration:line-through;opacity:.6">£20</span> <span id="accentPromoNote">(акция до 7 июля)</span> или индивидуальное чтение — £15.</div>
+<div class="system-accent-box reveal">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="accentPromoPrice">£19</span> <span id="accentPromoOld" style="text-decoration:line-through;opacity:.6">£20</span> <span id="accentPromoNote">(акция до 7 июля)</span> или индивидуальное чтение — £15.</div>
 <div class="system-cta-row reveal">
 <button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
@@ -1089,15 +1089,16 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <button class="btn btn-yellow btn-sm" type="button" onclick="openFreeTrial()">Записаться бесплатно</button>
 </div>
 <div class="pricing-after-card pricing-after-card--hot">
-<span class="plan-badge-sm badge-promo" id="promoBadge">−£2 · акция</span>
+<span class="plan-badge-sm badge-promo" id="promoBadge">−£1 · акция</span>
 <h3>Абонемент на месяц</h3>
 <div class="price-row-sale" id="monthlyPriceRow">
 <span class="price-old" id="monthlyOldPrice">£20</span>
-<span class="price-new" id="monthlyNewPrice">£18</span>
+<span class="price-new" id="monthlyNewPrice">£19</span>
 <span class="price-period">/ месяц</span>
 </div>
 <p class="promo-countdown" id="promoCountdown">Акция заканчивается через 7 дней</p>
 <p>4 интерактивные истории в Zoom + игра дома после каждой встречи. Основной формат клуба.</p>
+<a class="btn btn-blue btn-sm" id="subscriptionPayBtn" href="https://buy.stripe.com/cNi4gy63V2Msceq2BifIs0f" target="_blank" rel="noopener noreferrer">Оплатить £19 →</a>
 </div>
 <div class="pricing-after-card pricing-after-card--reading">
 <span class="plan-badge-sm badge-reading">Индивидуально</span>
@@ -1106,7 +1107,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <p>40 минут один на один в Zoom: читаем вместе, обсуждаем сюжет и мягко поддерживаем русскую речь.</p>
 </div>
 </div>
-<p class="pricing-after-note reveal">Абонемент и чтение — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
+<p class="pricing-after-note reveal">Сначала — бесплатное пробное. Абонемент можно оплатить кнопкой выше после встречи; чтение — по ссылке в email.</p>
 </div>
 </section>
 
@@ -1138,7 +1139,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <section class="final-cta">
 <div class="final-cta-inner">
 <h2>Русский не исчезает за один день. И вернуть его в речь тоже можно мягко — через живую историю, в которой ребёнку интересно участвовать.</h2>
-<p class="final-cta-sub">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="finalPromoPrice">£18</span> <span id="finalPromoOld" style="text-decoration:line-through;opacity:.65">£20</span> <span id="finalPromoNote">(акция)</span> или чтение один на один — £15.</p>
+<p class="final-cta-sub">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="finalPromoPrice">£19</span> <span id="finalPromoOld" style="text-decoration:line-through;opacity:.65">£20</span> <span id="finalPromoNote">(акция)</span> или чтение один на один — £15.</p>
 <button class="btn btn-yellow btn-lg" onclick="openFreeTrial()">Записаться на бесплатную историю →</button>
 <p class="final-cta-micro">Придумала Настя — методист и мама детей-трилингвов. Я знаю эту боль изнутри и делаю Bilingvi так, как хотела бы для своих детей.</p>
 <p class="final-cta-tagline">Bilingvi — это не курс русского языка. Это место, где ребёнок постепенно начинает хотеть говорить.</p>
@@ -1441,6 +1442,7 @@ function toggleFaq(el){
 }
 
 const PROMO_END=new Date('2026-07-07T23:59:59');
+const STRIPE_SUBSCRIPTION_URL='https://buy.stripe.com/cNi4gy63V2Msceq2BifIs0f';
 function pluralDays(n){
   const m10=n%10,m100=n%100;
   if(m10===1&&m100!==11)return 'день';
@@ -1460,12 +1462,14 @@ function initPromoPricing(){
   const hide=ids=>ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
   const setText=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text;};
   if(!active){
-    hide(['monthlyOldPrice','promoBadge','promoCountdown','accentPromoOld','accentPromoNote','finalPromoOld','finalPromoNote']);
+    hide(['monthlyOldPrice','promoBadge','promoCountdown','accentPromoOld','accentPromoNote','finalPromoOld','finalPromoNote','subscriptionPayBtn']);
     setText('monthlyNewPrice','£20');
     setText('accentPromoPrice','£20');
     setText('finalPromoPrice','£20');
     return;
   }
+  const payBtn=document.getElementById('subscriptionPayBtn');
+  if(payBtn)payBtn.href=STRIPE_SUBSCRIPTION_URL;
   const txt=formatPromoRemaining(PROMO_END.getTime()-Date.now());
   if(txt)setText('promoCountdown',txt);
   const dateStr=PROMO_END.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
