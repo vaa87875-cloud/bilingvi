@@ -392,10 +392,11 @@ section{padding:var(--sec-pad) 0}
 .signup-step-num{width:30px;height:30px;margin:0 auto 10px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
 .signup-step h3{font-size:16px;color:var(--dark);margin-bottom:6px;line-height:1.25}
 .signup-step p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0}
-.pricing-after{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pricing-after{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .pricing-after-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:20px 18px;text-align:center;display:flex;flex-direction:column}
 .pricing-after-card--free{border-color:#b8e6cc;background:linear-gradient(180deg,#f6fffb 0%,#fff 100%)}
 .pricing-after-card--hot{border:2px solid var(--blue);box-shadow:0 12px 32px rgba(59,91,219,.12);background:linear-gradient(180deg,#f7faff 0%,#fff 100%)}
+.pricing-after-card--reading{border-color:#cfc5ff;background:linear-gradient(180deg,#fbf9ff 0%,#fff 100%)}
 .pricing-after-card h3{font-size:18px;color:var(--dark);margin-bottom:4px}
 .pricing-after-card .price{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:var(--blue);margin-bottom:6px}
 .pricing-after-card .price-row-sale{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin-bottom:4px}
@@ -406,6 +407,7 @@ section{padding:var(--sec-pad) 0}
 .pricing-after-card .plan-badge-sm{display:inline-block;padding:4px 12px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;margin-bottom:10px}
 .pricing-after-card .plan-badge-sm.badge-free{background:#d1fae5;color:#047857}
 .pricing-after-card .plan-badge-sm.badge-promo{background:#ffe8d6;color:#c05621}
+.pricing-after-card .plan-badge-sm.badge-reading{background:#ede9fe;color:#5c47c7}
 .pricing-after-card p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0 0 12px;flex:1}
 .pricing-after-card .btn{margin-top:auto;align-self:center}
 .pricing-after-note{margin-top:14px;text-align:center;font-size:var(--t-sm);color:var(--muted);line-height:1.5}
@@ -988,7 +990,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <a class="btn btn-outline btn-sm system-homework-link" href="homework/">Открыть домашнее задание →</a>
 </div>
 </div>
-<div class="system-accent-box reveal">Первая встреча — бесплатно. Дальше — месяц из 4 занятий: <span id="accentPromoPrice">£18</span> <span id="accentPromoOld" style="text-decoration:line-through;opacity:.6">£20</span> <span id="accentPromoNote">(акция до 7 июля)</span>.</div>
+<div class="system-accent-box reveal">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="accentPromoPrice">£18</span> <span id="accentPromoOld" style="text-decoration:line-through;opacity:.6">£20</span> <span id="accentPromoNote">(акция до 7 июля)</span> или индивидуальное чтение — £15.</div>
 <div class="system-cta-row reveal">
 <button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
@@ -1088,17 +1090,23 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 <div class="pricing-after-card pricing-after-card--hot">
 <span class="plan-badge-sm badge-promo" id="promoBadge">−£2 · акция</span>
-<h3>Месяц занятий</h3>
+<h3>Абонемент на месяц</h3>
 <div class="price-row-sale" id="monthlyPriceRow">
 <span class="price-old" id="monthlyOldPrice">£20</span>
 <span class="price-new" id="monthlyNewPrice">£18</span>
 <span class="price-period">/ месяц</span>
 </div>
 <p class="promo-countdown" id="promoCountdown">Акция заканчивается через 7 дней</p>
-<p>4 интерактивные истории в Zoom + игра дома после каждой встречи. Для регулярного контакта с русским.</p>
+<p>4 интерактивные истории в Zoom + игра дома после каждой встречи. Основной формат клуба.</p>
+</div>
+<div class="pricing-after-card pricing-after-card--reading">
+<span class="plan-badge-sm badge-reading">Индивидуально</span>
+<h3>Занятие по чтению</h3>
+<div class="price">£15</div>
+<p>40 минут один на один в Zoom: читаем вместе, обсуждаем сюжет и мягко поддерживаем русскую речь.</p>
 </div>
 </div>
-<p class="pricing-after-note reveal">Тариф — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
+<p class="pricing-after-note reveal">Абонемент и чтение — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
 </div>
 </section>
 
@@ -1130,7 +1138,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <section class="final-cta">
 <div class="final-cta-inner">
 <h2>Русский не исчезает за один день. И вернуть его в речь тоже можно мягко — через историю, в которую ребёнку хочется войти.</h2>
-<p class="final-cta-sub">Первая встреча — бесплатно. Понравится формат — месяц из 4 занятий: <span id="finalPromoPrice">£18</span> <span id="finalPromoOld" style="text-decoration:line-through;opacity:.65">£20</span> <span id="finalPromoNote">(акция)</span>.</p>
+<p class="final-cta-sub">Первая встреча — бесплатно. Дальше — абонемент на 4 занятия: <span id="finalPromoPrice">£18</span> <span id="finalPromoOld" style="text-decoration:line-through;opacity:.65">£20</span> <span id="finalPromoNote">(акция)</span> или чтение один на один — £15.</p>
 <button class="btn btn-yellow btn-lg" onclick="openFreeTrial()">Записаться на бесплатную историю →</button>
 <p class="final-cta-micro">Придумала Настя — методист и мама детей-трилингвов. Я знаю эту боль изнутри и делаю Bilingvi так, как хотела бы для своих детей.</p>
 <p class="final-cta-tagline">Bilingvi — это не курс русского языка. Это место, где ребёнок постепенно начинает хотеть говорить.</p>
