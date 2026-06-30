@@ -404,26 +404,13 @@
 
   .hidden{ display:none !important; }
 
-  .file-warn{
-    margin:0 16px 0;
-    padding:12px 14px;
-    border-radius:14px;
-    background:#fff8e6;
-    border:1.5px solid #f0d48a;
-    font-size:13px;
-    line-height:1.5;
-    color:#5c4a12;
-    flex-shrink:0;
-  }
-  .file-warn strong{display:block;margin-bottom:4px}
-  .file-warn code{font-size:12px;background:#fff;padding:1px 5px;border-radius:5px}
-
   /* ---------- DESKTOP ---------- */
   @media (min-width: 900px){
     body{
       align-items:center;
       justify-content:center;
       padding: 28px;
+      overflow: hidden;
       background:
         radial-gradient(ellipse at 20% 10%, rgba(220, 232, 216, 0.9) 0%, transparent 55%),
         radial-gradient(ellipse at 80% 90%, rgba(232, 184, 84, 0.18) 0%, transparent 50%),
@@ -437,6 +424,8 @@
       height: min(860px, calc(100dvh - 56px));
       border-radius: 32px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       box-shadow:
         0 24px 80px rgba(58, 50, 38, 0.14),
         0 0 0 1px rgba(91, 123, 79, 0.08);
@@ -452,6 +441,8 @@
       gap: 0;
       padding: 0 20px 20px;
       min-height: 0;
+      flex: 1;
+      overflow: hidden;
     }
 
     .scene-wrap{
@@ -471,21 +462,23 @@
 
     .card{
       flex: 1;
-      align-self: center;
+      align-self: stretch;
       border-radius: 24px;
       margin: 0;
-      padding: 28px 26px 30px;
+      padding: 24px 22px 26px;
       box-shadow: 0 12px 40px rgba(60, 45, 20, 0.1);
-      max-height: 100%;
-      overflow-y: auto;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    .question-text{ font-size: 19px; }
+    .question-text{ font-size: 18px; }
 
     .option-btn{
-      min-height: 58px;
-      padding: 14px 16px;
-      font-size: 17px;
+      min-height: 54px;
+      padding: 12px 14px;
+      font-size: 16px;
     }
 
     .option-icon{ width: 44px; height: 44px; }
@@ -562,8 +555,6 @@
     <p class="title">Под грибом</p>
     <p class="subtitle">сказка В. Сутеева</p>
   </header>
-
-  <div class="file-warn hidden" id="fileWarn"><strong>Звук может не работать</strong>Откройте игру через сервер: в папке bilingvi выполните <code>npx serve .</code>, затем <code>http://localhost:3000/homework/pod-gribom/</code></div>
 
   <div class="game-layout">
   <!-- SCENE -->
@@ -935,11 +926,6 @@
   });
 
   document.getElementById('restartBtn').addEventListener('click', resetGame);
-
-  if (location.protocol === 'file:') {
-    const w = document.getElementById('fileWarn');
-    if (w) w.classList.remove('hidden');
-  }
 
   renderProgress();
 })();
