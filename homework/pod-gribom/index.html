@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#5B7B4F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Под грибом">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<title>Под грибом — играем вместе</title>
+<style>
+  :root{
+    --cream: #F6EFDE;
+    --moss: #5B7B4F;
+    --moss-dark: #3E5934;
+    --terracotta: #C8743C;
+    --terracotta-dark: #A85C2A;
+    --butter: #E8B854;
+    --berry: #9B4444;
+    --ink: #3A3226;
+    --sky: #DCE8D8;
+    --white-soft: #FFFBF2;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+  }
+
+  *{box-sizing:border-box;}
+
+  html{
+    height:100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body{
+    margin:0;
+    min-height:100%;
+    min-height:100dvh;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--cream);
+    color: var(--ink);
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    overflow-x:hidden;
+    overscroll-behavior:none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .stage{
+    width:100%;
+    min-height:100dvh;
+    background: var(--cream);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---------- MOBILE APP BAR ---------- */
+  .app-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding: calc(10px + var(--safe-top)) calc(16px + var(--safe-right)) 10px calc(16px + var(--safe-left));
+    background: rgba(255, 251, 242, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(91, 123, 79, 0.12);
+    position:sticky;
+    top:0;
+    z-index:10;
+    flex-shrink:0;
+  }
+  .app-bar-brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+  .app-bar-icon{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background: linear-gradient(145deg, var(--terracotta), #d9894f);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    box-shadow: 0 2px 8px rgba(200, 116, 60, 0.25);
+    flex-shrink:0;
+  }
+  .app-bar-title-wrap{ min-width:0; }
+  .app-bar-title{
+    display:block;
+    font-size:17px;
+    font-weight:700;
+    color: var(--moss-dark);
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .app-bar-subtitle{
+    display:block;
+    font-size:11px;
+    color:#8a7d63;
+    font-style:italic;
+    margin-top:1px;
+  }
+  .app-bar-step{
+    flex-shrink:0;
+    font-size:12px;
+    font-weight:700;
+    color: var(--moss-dark);
+    background: #e8f0e4;
+    padding: 6px 10px;
+    border-radius:999px;
+    letter-spacing:0.2px;
+  }
+  .app-bar-back{
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:40px;
+    height:40px;
+    border-radius:12px;
+    background:#e8f0e4;
+    color:var(--moss-dark);
+    font-size:18px;
+    text-decoration:none;
+    line-height:1;
+  }
+  .app-bar-back:active{ opacity:0.75; }
+
+  /* ---------- DESKTOP HEADER ---------- */
+  .desktop-header{
+    display:none;
+    text-align:center;
+    padding: 28px 24px 12px;
+    flex-shrink:0;
+  }
+  .title{
+    font-size: 28px;
+    font-weight:700;
+    color: var(--moss-dark);
+    letter-spacing: 0.3px;
+    margin:0;
+  }
+  .subtitle{
+    font-size: 14px;
+    color: #8a7d63;
+    margin: 6px 0 0;
+    font-style: italic;
+  }
+
+  .game-layout{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+
+  /* ---------- SCENE ---------- */
+  .scene-wrap{
+    position:relative;
+    flex: 1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    padding: 8px 12px 6px;
+    min-height: 220px;
+  }
+
+  .rain{
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    pointer-events:none;
+    overflow:hidden;
+    opacity:0;
+    transition: opacity 0.6s ease;
+  }
+  .rain.active{ opacity:1; }
+  .drop{
+    position:absolute;
+    width:2px;
+    height:16px;
+    background: linear-gradient(180deg, rgba(120,150,180,0), rgba(120,150,180,0.55));
+    border-radius:2px;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    0%{ transform: translateY(-20px); opacity:0; }
+    10%{ opacity:1; }
+    100%{ transform: translateY(420px); opacity:0; }
+  }
+
+  .ground{
+    position:relative;
+    width:100%;
+    display:flex;
+    justify-content:center;
+  }
+
+  #mushroomSvg{
+    width: 280px;
+    height: auto;
+    transition: transform 0.55s cubic-bezier(.34,1.56,.64,1);
+    transform-origin: bottom center;
+    filter: drop-shadow(0 8px 10px rgba(60,45,20,0.15));
+  }
+
+  .animal-slot{
+    position:absolute;
+    width:54px; height:54px;
+    opacity:0;
+    transform: scale(0.3) translateY(20px);
+    transition: all 0.5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .animal-slot.show{
+    opacity:1;
+    transform: scale(1) translateY(0);
+  }
+  .animal-slot svg{ width:100%; height:100%; }
+
+  /* ---------- QUESTION CARD ---------- */
+  .card{
+    background: var(--white-soft);
+    border-radius: 24px 24px 0 0;
+    padding: 20px 18px calc(22px + var(--safe-bottom));
+    box-shadow: 0 -10px 32px rgba(60,45,20,0.1);
+    position:relative;
+    z-index:5;
+    flex-shrink:0;
+  }
+
+  .progress{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background: #ddd2b8;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.done{ background: var(--moss); }
+  .dot.current{ background: var(--terracotta); transform: scale(1.3); }
+
+  .voice-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 14px;
+  }
+  .replay-btn{
+    flex-shrink:0;
+    width: 48px; height:48px;
+    border-radius:50%;
+    border:none;
+    background: var(--moss);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 3px 0 var(--moss-dark);
+    transition: transform 0.1s;
+  }
+  .replay-btn:active{ transform: translateY(2px); box-shadow: 0 1px 0 var(--moss-dark); }
+  .replay-btn.speaking{ animation: pulse 0.8s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.08);} }
+
+  .question-text{
+    font-size: 17px;
+    line-height:1.4;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .option-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background: var(--cream);
+    border: 2px solid #e8dcc0;
+    border-radius:16px;
+    padding: 12px 14px;
+    min-height: 56px;
+    font-family:inherit;
+    font-size: 16px;
+    color: var(--ink);
+    cursor:pointer;
+    text-align:left;
+    transition: all 0.15s;
+  }
+  .option-btn:active{ transform: scale(0.98); }
+  .option-btn:hover{ border-color: var(--terracotta); background: #fbf3e3; }
+  .option-icon{
+    width:38px; height:38px;
+    flex-shrink:0;
+  }
+  .option-icon svg{ width:100%; height:100%; }
+  .option-label{ flex:1; }
+
+  .option-btn.correct{
+    background: #e2efd9;
+    border-color: var(--moss);
+  }
+  .option-btn.wrong{
+    background: #f5dede;
+    border-color: var(--berry);
+    animation: shake 0.4s;
+  }
+  @keyframes shake{
+    0%,100%{ transform: translateX(0); }
+    25%{ transform: translateX(-6px); }
+    75%{ transform: translateX(6px); }
+  }
+  .option-btn[disabled]{ pointer-events:none; }
+  .option-btn[disabled]:not(.correct):not(.wrong){ opacity:0.45; }
+
+  .feedback{
+    min-height: 22px;
+    font-size: 14px;
+    color: var(--moss-dark);
+    font-style: italic;
+    margin-top:8px;
+    text-align:center;
+  }
+
+  .next-btn{
+    margin-top: 12px;
+    width:100%;
+    background: var(--terracotta);
+    color:white;
+    border:none;
+    border-radius:14px;
+    padding: 15px;
+    min-height: 52px;
+    font-size:16px;
+    font-weight:700;
+    font-family:inherit;
+    cursor:pointer;
+    box-shadow: 0 4px 0 var(--terracotta-dark);
+    display:none;
+  }
+  .next-btn.show{ display:block; }
+  .next-btn:active{ transform: translateY(3px); box-shadow:0 1px 0 var(--terracotta-dark); }
+
+  /* ---------- INTRO / END ---------- */
+  .overlay{
+    position:fixed;
+    inset:0;
+    background: var(--cream);
+    z-index:20;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: calc(30px + var(--safe-top)) calc(30px + var(--safe-right)) calc(30px + var(--safe-bottom)) calc(30px + var(--safe-left));
+  }
+  .overlay h1{
+    font-size:26px;
+    color: var(--moss-dark);
+    margin-bottom:6px;
+  }
+  .overlay p{
+    font-size:15px;
+    color:#7a6d54;
+    line-height:1.5;
+    max-width:300px;
+    margin: 0 0 22px;
+  }
+  .big-btn{
+    background: var(--moss);
+    color:white;
+    border:none;
+    border-radius:18px;
+    padding: 16px 34px;
+    font-size:18px;
+    font-weight:700;
+    font-family:inherit;
+    cursor:pointer;
+    box-shadow: 0 5px 0 var(--moss-dark);
+  }
+  .big-btn:active{ transform: translateY(3px); box-shadow:0 2px 0 var(--moss-dark); }
+  .overlay-mushroom{ width:160px; margin-bottom: 18px; }
+
+  .hidden{ display:none !important; }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width: 900px){
+    body{
+      align-items:center;
+      justify-content:center;
+      padding: 28px;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(220, 232, 216, 0.9) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(232, 184, 84, 0.18) 0%, transparent 50%),
+        linear-gradient(160deg, #e8f0e4 0%, var(--cream) 40%, #f3ead8 100%);
+    }
+
+    .stage{
+      width:100%;
+      max-width: 1120px;
+      min-height: 0;
+      height: min(860px, calc(100dvh - 56px));
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 80px rgba(58, 50, 38, 0.14),
+        0 0 0 1px rgba(91, 123, 79, 0.08);
+    }
+
+    .app-bar{ display:none; }
+
+    .desktop-header{ display:block; }
+
+    .game-layout{
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0;
+      padding: 0 20px 20px;
+      min-height: 0;
+    }
+
+    .scene-wrap{
+      flex: 1.15;
+      justify-content: center;
+      padding: 12px 8px 20px;
+      background:
+        radial-gradient(ellipse at 50% 85%, rgba(203, 185, 142, 0.35) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(220, 232, 216, 0.55) 0%, transparent 70%);
+      border-radius: 24px;
+      margin-right: 8px;
+    }
+
+    #mushroomSvg{ width: min(360px, 90%); }
+
+    .animal-slot{ width: 64px; height: 64px; }
+
+    .card{
+      flex: 1;
+      align-self: center;
+      border-radius: 24px;
+      margin: 0;
+      padding: 28px 26px 30px;
+      box-shadow: 0 12px 40px rgba(60, 45, 20, 0.1);
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    .question-text{ font-size: 19px; }
+
+    .option-btn{
+      min-height: 58px;
+      padding: 14px 16px;
+      font-size: 17px;
+    }
+
+    .option-icon{ width: 44px; height: 44px; }
+
+    .overlay{
+      position:absolute;
+      border-radius: 32px;
+    }
+
+    @keyframes fall{
+      0%{ transform: translateY(-20px); opacity:0; }
+      10%{ opacity:1; }
+      100%{ transform: translateY(520px); opacity:0; }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <!-- INTRO -->
+  <div class="overlay" id="introOverlay">
+    <svg class="overlay-mushroom" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="170" rx="22" ry="8" fill="#d8cba6" opacity="0.5"/>
+      <rect x="82" y="100" width="36" height="70" rx="14" fill="#F3E3C4"/>
+      <path d="M30 100 Q30 30 100 30 Q170 30 170 100 Q100 130 30 100Z" fill="var(--terracotta)"/>
+      <ellipse cx="65" cy="65" rx="9" ry="7" fill="#fff" opacity="0.85"/>
+      <ellipse cx="110" cy="55" rx="7" ry="6" fill="#fff" opacity="0.85"/>
+      <ellipse cx="135" cy="80" rx="8" ry="6" fill="#fff" opacity="0.85"/>
+      <ellipse cx="95" cy="90" rx="6" ry="5" fill="#fff" opacity="0.7"/>
+    </svg>
+    <h1>Под грибом</h1>
+    <p>Поговори с мамой и помоги зверятам спрятаться от дождя! Слушай вопросы и выбирай правильный ответ.</p>
+    <button class="big-btn" id="startBtn">Начать игру</button>
+  </div>
+
+  <!-- END -->
+  <div class="overlay hidden" id="endOverlay">
+    <svg class="overlay-mushroom" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="175" rx="60" ry="10" fill="#d8cba6" opacity="0.4"/>
+      <rect x="75" y="95" width="50" height="80" rx="16" fill="#F3E3C4"/>
+      <path d="M5 95 Q5 10 100 10 Q195 10 195 95 Q100 140 5 95Z" fill="var(--terracotta)"/>
+      <ellipse cx="50" cy="55" rx="11" ry="9" fill="#fff" opacity="0.85"/>
+      <ellipse cx="100" cy="40" rx="9" ry="8" fill="#fff" opacity="0.85"/>
+      <ellipse cx="150" cy="65" rx="10" ry="8" fill="#fff" opacity="0.85"/>
+      <ellipse cx="75" cy="80" rx="7" ry="6" fill="#fff" opacity="0.7"/>
+      <ellipse cx="130" cy="90" rx="7" ry="6" fill="#fff" opacity="0.7"/>
+    </svg>
+    <h1>Молодцы!</h1>
+    <p id="endText">Все зверята спрятались под грибом. В тесноте, да не в обиде!</p>
+    <button class="big-btn" id="restartBtn">Играть ещё раз</button>
+  </div>
+
+  <!-- MOBILE APP BAR -->
+  <header class="app-bar">
+    <a class="app-bar-back" href="../" aria-label="К списку заданий">←</a>
+    <div class="app-bar-brand">
+      <span class="app-bar-icon" aria-hidden="true">🍄</span>
+      <div class="app-bar-title-wrap">
+        <span class="app-bar-title">Под грибом</span>
+        <span class="app-bar-subtitle">сказка В. Сутеева</span>
+      </div>
+    </div>
+    <span class="app-bar-step" id="appBarStep">1 / 5</span>
+  </header>
+
+  <!-- DESKTOP HEADER -->
+  <header class="desktop-header">
+    <p class="title">Под грибом</p>
+    <p class="subtitle">сказка В. Сутеева</p>
+  </header>
+
+  <div class="game-layout">
+  <!-- SCENE -->
+  <div class="scene-wrap">
+    <div class="rain" id="rain"></div>
+    <div class="ground">
+      <svg id="mushroomSvg" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="140" cy="208" rx="90" ry="10" fill="#cBb98e" opacity="0.35"/>
+        <rect x="118" y="100" width="44" height="105" rx="18" fill="#F3E3C4"/>
+        <rect x="118" y="100" width="44" height="105" rx="18" fill="url(#stemShade)"/>
+        <path d="M10 100 Q10 8 140 8 Q270 8 270 100 Q140 150 10 100Z" fill="var(--terracotta)"/>
+        <path d="M10 100 Q10 8 140 8 Q270 8 270 100 Q140 150 10 100Z" fill="url(#capShade)" opacity="0.5"/>
+        <ellipse cx="70" cy="55" rx="14" ry="11" fill="#fff" opacity="0.88"/>
+        <ellipse cx="140" cy="38" rx="11" ry="9" fill="#fff" opacity="0.88"/>
+        <ellipse cx="205" cy="62" rx="13" ry="10" fill="#fff" opacity="0.88"/>
+        <ellipse cx="105" cy="85" rx="8" ry="6" fill="#fff" opacity="0.7"/>
+        <ellipse cx="180" cy="95" rx="9" ry="7" fill="#fff" opacity="0.7"/>
+        <defs>
+          <linearGradient id="stemShade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#000" stop-opacity="0.08"/>
+            <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0.1"/>
+          </linearGradient>
+          <linearGradient id="capShade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0.15"/>
+            <stop offset="1" stop-color="#000" stop-opacity="0.12"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- animal slots positioned around stem -->
+      <div class="animal-slot" id="slot-ant" style="left:42%; bottom:8px;">
+        <svg viewBox="0 0 60 60">
+          <path d="M14 44 L7 50 M16 47 L10 54 M19 42 L13 47" stroke="#3A3226" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M30 40 L37 46 M33 44 L40 51 M27 38 L33 44" stroke="#3A3226" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <ellipse cx="18" cy="40" rx="9" ry="7.5" fill="#3A3226"/>
+          <ellipse cx="32" cy="35" rx="7.5" ry="6.5" fill="#3A3226"/>
+          <circle cx="43" cy="29" r="6.5" fill="#3A3226"/>
+          <path d="M43 23 Q38 14 32 12 M43 23 Q48 14 54 13" stroke="#3A3226" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <circle cx="45.5" cy="27.5" r="1.3" fill="#F6EFDE"/>
+        </svg>
+      </div>
+      <div class="animal-slot" id="slot-butterfly" style="left:30%; bottom:30px;">
+        <svg viewBox="0 0 60 60">
+          <path d="M30 14 Q10 8 8 22 Q8 32 22 30 Q30 28 30 30Z" fill="#9B4444"/>
+          <path d="M30 14 Q50 8 52 22 Q52 32 38 30 Q30 28 30 30Z" fill="#E8B854"/>
+          <path d="M30 30 Q14 30 13 42 Q14 50 24 44 Q30 38 30 30Z" fill="#C8743C"/>
+          <path d="M30 30 Q46 30 47 42 Q46 50 36 44 Q30 38 30 30Z" fill="#5B7B4F"/>
+          <circle cx="18" cy="20" r="3" fill="#F6EFDE" opacity="0.7"/>
+          <circle cx="42" cy="20" r="3" fill="#F6EFDE" opacity="0.7"/>
+          <rect x="28.5" y="10" width="3" height="36" rx="1.5" fill="#3A3226"/>
+          <circle cx="30" cy="10" r="3" fill="#3A3226"/>
+          <path d="M28 8 Q24 2 20 3 M32 8 Q36 2 40 3" stroke="#3A3226" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="animal-slot" id="slot-mouse" style="left:58%; bottom:6px;">
+        <svg viewBox="0 0 60 60">
+          <path d="M44 40 Q56 38 56 28 Q56 22 50 24" stroke="#3A3226" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="28" cy="40" rx="17" ry="13" fill="#B8A48C"/>
+          <circle cx="14" cy="22" r="8" fill="#B8A48C"/>
+          <circle cx="32" cy="19" r="8" fill="#B8A48C"/>
+          <circle cx="14" cy="22" r="4" fill="#E8B8B8"/>
+          <circle cx="32" cy="19" r="4" fill="#E8B8B8"/>
+          <path d="M10 34 Q4 38 6 44" stroke="#3A3226" stroke-width="1.3" fill="none"/>
+          <path d="M10 38 Q3 40 4 46" stroke="#3A3226" stroke-width="1.3" fill="none"/>
+          <ellipse cx="16" cy="35" rx="2.5" ry="2" fill="#3A3226"/>
+          <ellipse cx="20" cy="39" rx="2" ry="1.6" fill="#E8B8B8"/>
+        </svg>
+      </div>
+      <div class="animal-slot" id="slot-sparrow" style="left:70%; bottom:26px;">
+        <svg viewBox="0 0 60 60">
+          <path d="M14 42 L10 48 M20 44 L17 50" stroke="#3A3226" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="26" cy="36" rx="17" ry="14" fill="#C8743C"/>
+          <path d="M14 30 Q4 32 10 42 Q20 42 24 34Z" fill="#A85C2A"/>
+          <circle cx="42" cy="22" r="10" fill="#C8743C"/>
+          <path d="M51 22 L60 25 L51 29Z" fill="#E8B854"/>
+          <circle cx="45" cy="19" r="1.8" fill="#3A3226"/>
+          <path d="M8 38 Q-2 34 2 26 Q8 28 10 34Z" fill="#A85C2A"/>
+        </svg>
+      </div>
+      <div class="animal-slot" id="slot-hare" style="left:15%; bottom:4px;">
+        <svg viewBox="0 0 60 60">
+          <ellipse cx="17" cy="13" rx="5.5" ry="17" fill="#E8E0CE" transform="rotate(-12 17 13)"/>
+          <ellipse cx="17" cy="13" rx="2.8" ry="13" fill="#E8B8B8" transform="rotate(-12 17 13)"/>
+          <ellipse cx="33" cy="11" rx="5.5" ry="17" fill="#E8E0CE" transform="rotate(10 33 11)"/>
+          <ellipse cx="33" cy="11" rx="2.8" ry="13" fill="#E8B8B8" transform="rotate(10 33 11)"/>
+          <ellipse cx="28" cy="42" rx="18" ry="14" fill="#E8E0CE"/>
+          <circle cx="50" cy="44" r="6" fill="#E8E0CE"/>
+          <circle cx="18" cy="35" r="2.3" fill="#3A3226"/>
+          <circle cx="32" cy="33" r="2.3" fill="#3A3226"/>
+          <ellipse cx="24" cy="42" rx="2.5" ry="1.8" fill="#C8743C"/>
+          <path d="M22 44 Q16 48 12 46 M22 44 Q16 44 11 41 M26 45 Q24 51 22 53" stroke="#3A3226" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div class="animal-slot" id="slot-frog" style="left:82%; bottom:6px;">
+        <svg viewBox="0 0 60 60">
+          <ellipse cx="20" cy="50" rx="6" ry="3" fill="#5B7B4F" transform="rotate(-20 20 50)"/>
+          <ellipse cx="40" cy="50" rx="6" ry="3" fill="#5B7B4F" transform="rotate(20 40 50)"/>
+          <ellipse cx="30" cy="40" rx="19" ry="14" fill="#5B7B4F"/>
+          <circle cx="17" cy="23" r="9" fill="#5B7B4F"/>
+          <circle cx="43" cy="23" r="9" fill="#5B7B4F"/>
+          <circle cx="17" cy="21" r="4" fill="#3A3226"/>
+          <circle cx="43" cy="21" r="4" fill="#3A3226"/>
+          <circle cx="18.5" cy="19.5" r="1.2" fill="#fff"/>
+          <circle cx="44.5" cy="19.5" r="1.2" fill="#fff"/>
+          <path d="M16 44 Q30 52 44 44" stroke="#3A3226" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="30" cy="44" rx="6" ry="3" fill="#3A3226" opacity="0.15"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION CARD -->
+  <div class="card">
+    <div class="progress" id="progress"></div>
+    <div class="voice-row">
+      <button class="replay-btn" id="replayBtn" aria-label="Повторить вопрос">🔊</button>
+      <p class="question-text" id="questionText"></p>
+    </div>
+    <div class="options" id="options"></div>
+    <p class="feedback" id="feedback"></p>
+    <button class="next-btn" id="nextBtn">Дальше →</button>
+  </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  const AUDIO = {
+    wrong: 'wrong_answer.m4a',
+    final: 'final.m4a'
+  };
+
+  const steps = [
+    {
+      id:'ant',
+      question:'Пошёл дождь. Кто первым попросился спрятаться под грибом?',
+      audioQuestion: 'q1_ant.m4a',
+      audioPraise: 'praise1_ant.m4a',
+      slot:'slot-ant',
+      options:[
+        {label:'Муравей', correct:true, icon:`<svg viewBox="0 0 60 60"><ellipse cx="20" cy="38" rx="9" ry="7" fill="#3A3226"/><ellipse cx="33" cy="34" rx="7" ry="6" fill="#3A3226"/><circle cx="44" cy="30" r="6" fill="#3A3226"/></svg>`},
+        {label:'Лиса', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="18" ry="13" fill="#C8743C"/><path d="M12 26 L20 10 L26 28Z" fill="#C8743C"/><path d="M48 26 L40 10 L34 28Z" fill="#C8743C"/></svg>`},
+        {label:'Медведь', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="38" rx="20" ry="16" fill="#8a6a4a"/><circle cx="14" cy="18" r="7" fill="#8a6a4a"/><circle cx="46" cy="18" r="7" fill="#8a6a4a"/></svg>`}
+      ],
+      praise:'Верно! Муравьишке негде было спрятаться от дождя.'
+    },
+    {
+      id:'butterfly',
+      question:'Муравью стало мокро одному. Кто пришёл к грибу вторым?',
+      audioQuestion: 'q2_butterfly.m4a',
+      audioPraise: 'praise2_butterfly.m4a',
+      slot:'slot-butterfly',
+      options:[
+        {label:'Бабочка', correct:true, icon:`<svg viewBox="0 0 60 60"><ellipse cx="22" cy="22" rx="14" ry="11" fill="#9B4444"/><ellipse cx="38" cy="22" rx="14" ry="11" fill="#E8B854"/></svg>`},
+        {label:'Волк', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="17" ry="13" fill="#7a7a7a"/><path d="M14 26 L20 10 L26 28Z" fill="#7a7a7a"/><path d="M46 26 L40 10 L34 28Z" fill="#7a7a7a"/></svg>`},
+        {label:'Слон', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="28" cy="34" rx="18" ry="15" fill="#A8A8B0"/><path d="M40 38 Q52 44 48 56" stroke="#A8A8B0" stroke-width="6" fill="none"/></svg>`}
+      ],
+      praise:'Правильно! «Пусти меня под грибок!» — попросила бабочка.'
+    },
+    {
+      id:'mouse',
+      question:'Гриб слегка подрос. Кто пришёл туда третьей?',
+      audioQuestion: 'q3_mouse.m4a',
+      audioPraise: 'praise3_mouse.m4a',
+      slot:'slot-mouse',
+      options:[
+        {label:'Мышка', correct:true, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="38" rx="16" ry="13" fill="#B8A48C"/><circle cx="18" cy="22" r="7" fill="#B8A48C"/><circle cx="34" cy="20" r="7" fill="#B8A48C"/></svg>`},
+        {label:'Лев', correct:false, icon:`<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="#E8B854"/><circle cx="30" cy="30" r="11" fill="#C8743C"/></svg>`},
+        {label:'Тигр', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="18" ry="14" fill="#E8B854"/><rect x="16" y="20" width="4" height="14" fill="#3A3226"/><rect x="40" y="20" width="4" height="14" fill="#3A3226"/></svg>`}
+      ],
+      praise:'Точно! «Я только одним глазком гляну» — пропищала мышка.'
+    },
+    {
+      id:'hare',
+      question:'Вдруг кто-то прискакал, спасаясь от лисы. Кто это был?',
+      audioQuestion: 'q4_hare.m4a',
+      audioPraise: 'praise4_hare.m4a',
+      slot:'slot-hare',
+      options:[
+        {label:'Заяц', correct:true, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="40" rx="17" ry="14" fill="#E8E0CE"/><ellipse cx="18" cy="14" rx="5" ry="16" fill="#E8E0CE"/><ellipse cx="32" cy="12" rx="5" ry="16" fill="#E8E0CE"/></svg>`},
+        {label:'Черепаха', correct:false, icon:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="20" ry="14" fill="#5B7B4F"/><circle cx="10" cy="34" r="6" fill="#5B7B4F"/></svg>`},
+        {label:'Улитка', correct:false, icon:`<svg viewBox="0 0 60 60"><circle cx="34" cy="30" r="14" fill="#C8743C"/><ellipse cx="18" cy="42" rx="14" ry="7" fill="#E8E0CE"/></svg>`}
+      ],
+      praise:'Да! Заяц так испугался лисы, что попросился под грибок тоже.'
+    },
+    {
+      id:'rain-reason',
+      question:'Все звери поместились под одним грибом. Как ты думаешь, почему гриб стал таким большим?',
+      audioQuestion: 'q5_reason.m4a',
+      audioPraise: 'praise5_reason.m4a',
+      slot:null,
+      options:[
+        {label:'Его полил дождь, и он вырос', correct:true, icon:`<svg viewBox="0 0 60 60"><line x1="20" y1="10" x2="14" y2="26" stroke="#9bb8d8" stroke-width="3"/><line x1="32" y1="6" x2="26" y2="24" stroke="#9bb8d8" stroke-width="3"/><line x1="44" y1="12" x2="38" y2="28" stroke="#9bb8d8" stroke-width="3"/></svg>`},
+        {label:'Гриб был волшебный', correct:false, icon:`<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="14" fill="#E8B854"/><circle cx="30" cy="30" r="3" fill="#9B4444"/></svg>`},
+        {label:'Звери его выдумали', correct:false, icon:`<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="16" fill="#ccc"/></svg>`}
+      ],
+      praise:'Правильно! От дождя гриб подрос — вот и хватило места всем. «В тесноте, да не в обиде!»'
+    }
+  ];
+
+  let current = 0;
+  let answered = false;
+  let currentAudio = null;
+
+  function stopAudio(){
+    if (!currentAudio) return;
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+    document.getElementById('replayBtn').classList.remove('speaking');
+  }
+
+  function playAudio(src){
+    if (!src) return;
+    stopAudio();
+    const btn = document.getElementById('replayBtn');
+    const audio = new Audio(src);
+    currentAudio = audio;
+    btn.classList.add('speaking');
+    audio.onended = () => {
+      if (currentAudio === audio) currentAudio = null;
+      btn.classList.remove('speaking');
+    };
+    audio.onerror = () => {
+      if (currentAudio === audio) currentAudio = null;
+      btn.classList.remove('speaking');
+    };
+    audio.play().catch(() => {
+      if (currentAudio === audio) currentAudio = null;
+      btn.classList.remove('speaking');
+    });
+  }
+
+  function renderProgress(){
+    const wrap = document.getElementById('progress');
+    wrap.innerHTML = '';
+    steps.forEach((s,i)=>{
+      const d = document.createElement('div');
+      d.className = 'dot' + (i < current ? ' done' : (i===current ? ' current':''));
+      wrap.appendChild(d);
+    });
+    const stepEl = document.getElementById('appBarStep');
+    if (stepEl) stepEl.textContent = `${Math.min(current + 1, steps.length)} / ${steps.length}`;
+  }
+
+  function startRain(on){
+    const rain = document.getElementById('rain');
+    if (on){
+      rain.classList.add('active');
+      if (!rain.dataset.filled){
+        for(let i=0;i<22;i++){
+          const d = document.createElement('div');
+          d.className='drop';
+          d.style.left = (Math.random()*100)+'%';
+          d.style.animationDuration = (0.6+Math.random()*0.5)+'s';
+          d.style.animationDelay = (Math.random()*1)+'s';
+          rain.appendChild(d);
+        }
+        rain.dataset.filled = '1';
+      }
+    } else {
+      rain.classList.remove('active');
+    }
+  }
+
+  function growMushroom(){
+    const m = document.getElementById('mushroomSvg');
+    const scale = 1 + (current+1) * 0.13;
+    m.style.transform = `scale(${scale})`;
+  }
+
+  function showAnimal(slotId){
+    if (!slotId) return;
+    const el = document.getElementById(slotId);
+    if (el) el.classList.add('show');
+  }
+
+  function loadStep(){
+    stopAudio();
+    answered = false;
+    renderProgress();
+    const step = steps[current];
+    document.getElementById('questionText').textContent = step.question;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('nextBtn').classList.remove('show');
+
+    const optWrap = document.getElementById('options');
+    optWrap.innerHTML = '';
+    // shuffle options for replay variety but keep deterministic-ish
+    step.options.forEach(opt=>{
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerHTML = `<span class="option-icon">${opt.icon}</span><span class="option-label">${opt.label}</span>`;
+      btn.addEventListener('click', ()=> handleAnswer(btn, opt, step));
+      optWrap.appendChild(btn);
+    });
+
+    playAudio(step.audioQuestion);
+  }
+
+  function handleAnswer(btn, opt, step){
+    if (answered) return;
+    answered = true;
+    const allBtns = document.querySelectorAll('.option-btn');
+    allBtns.forEach(b=>b.disabled = true);
+
+    if (opt.correct){
+      btn.classList.add('correct');
+      document.getElementById('feedback').textContent = step.praise;
+      playAudio(step.audioPraise);
+      showAnimal(step.slot);
+      growMushroom();
+      if (current === 0) startRain(true);
+    } else {
+      btn.classList.add('wrong');
+      document.getElementById('feedback').textContent = 'Попробуй ещё раз!';
+      playAudio(AUDIO.wrong);
+      setTimeout(()=>{
+        btn.classList.remove('wrong');
+        allBtns.forEach(b=>{ if(!b.classList.contains('correct')) b.disabled=false; });
+        answered = false;
+      }, 900);
+      return;
+    }
+
+    document.getElementById('nextBtn').classList.add('show');
+  }
+
+  document.getElementById('replayBtn').addEventListener('click', ()=>{
+    const step = steps[current];
+    const fb = document.getElementById('feedback').textContent;
+    if (fb && answered) playAudio(step.audioPraise);
+    else playAudio(step.audioQuestion);
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    current++;
+    if (current >= steps.length){
+      finishGame();
+    } else {
+      loadStep();
+    }
+  });
+
+  function finishGame(){
+    renderProgress();
+    document.getElementById('endOverlay').classList.remove('hidden');
+    playAudio(AUDIO.final);
+  }
+
+  function resetGame(){
+    stopAudio();
+    current = 0;
+    document.querySelectorAll('.animal-slot').forEach(s=>s.classList.remove('show'));
+    document.getElementById('mushroomSvg').style.transform = 'scale(1)';
+    startRain(false);
+    document.getElementById('endOverlay').classList.add('hidden');
+    loadStep();
+  }
+
+  document.getElementById('startBtn').addEventListener('click', ()=>{
+    document.getElementById('introOverlay').classList.add('hidden');
+    loadStep();
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', resetGame);
+
+  renderProgress();
+})();
+</script>
+
+</body>
+</html>

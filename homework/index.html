@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#5B7B4F"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Домашнее задание — Bilingvi</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#3B5BDB;--blue-light:#6485F0;--blue-pale:#EEF2FF;
+  --yellow:#F5A623;--pink:#F4845F;--purple:#5C47C7;
+  --green:#2D9E6B;--cream:#FDFAF6;--dark:#1E2140;--text:#2C2A3E;--muted:#7A7896;--border:#E4E0F5;
+  --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#eef2ff 0%,var(--cream) 38%,#fffaf3 100%);color:var(--text);line-height:1.65;min-height:100dvh;padding-bottom:calc(24px + var(--safe-bottom))}
+a{color:inherit;text-decoration:none}
+.container{max-width:720px;margin:0 auto;padding:0 24px}
+
+.hw-nav{position:sticky;top:0;z-index:50;background:rgba(253,250,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:calc(10px + var(--safe-top)) 0 10px}
+.hw-nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hw-back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:var(--blue);padding:8px 12px;border-radius:50px;background:var(--blue-pale);transition:background .2s}
+.hw-back:hover{background:#dfe8ff}
+.hw-logo{font-family:'Baloo 2',cursive;font-weight:800;font-size:20px;color:var(--blue);line-height:1;display:block}
+.hw-logo:hover{color:var(--blue-light)}
+.hw-logo span{color:var(--pink)}
+
+.hw-hero{padding:36px 0 28px;text-align:center}
+.hw-tag{display:inline-block;font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);background:white;border:1.5px solid #c4cfff;border-radius:999px;padding:7px 14px;margin-bottom:16px}
+.hw-hero h1{font-family:'Baloo 2',cursive;font-size:clamp(28px,6vw,38px);font-weight:800;color:var(--dark);line-height:1.12;margin-bottom:14px}
+.hw-intro{font-size:17px;color:var(--text);max-width:560px;margin:0 auto 10px;line-height:1.6}
+.hw-hint{font-size:14px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.55}
+.hw-phone-tip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;background:white;border:1.5px solid var(--border);border-radius:50px;font-size:13px;font-weight:700;color:var(--dark);box-shadow:0 6px 20px rgba(59,91,219,.08)}
+
+.hw-grid{display:flex;flex-direction:column;gap:14px;padding-bottom:32px}
+.hw-card{position:relative;overflow:hidden;display:flex;align-items:stretch;gap:0;border-radius:22px;border:1.5px solid #b9caff;background:linear-gradient(135deg,#f7faff 0%,#eef4ff 55%,#fff 100%);box-shadow:0 14px 36px rgba(47,110,234,.12);transition:transform .22s,box-shadow .22s;text-align:left}
+.hw-card:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(47,110,234,.18)}
+.hw-card-body{flex:1;padding:22px 20px 22px 22px;min-width:0}
+.hw-card-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.hw-age{font-size:11px;font-weight:800;border-radius:999px;padding:5px 11px;background:#dfe9ff;color:#2f6eea}
+.hw-card h2{font-family:'Baloo 2',cursive;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:4px;line-height:1.15}
+.hw-author{font-size:13px;font-weight:700;color:#2f6eea;margin-bottom:8px}
+.hw-desc{font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+.hw-play{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:50px;background:linear-gradient(180deg,#4F6EE8 0%,#3050D0 100%);color:#fff;font-size:15px;font-weight:800;box-shadow:0 10px 22px rgba(47,110,234,.25);transition:transform .18s,box-shadow .18s}
+.hw-play:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(47,110,234,.32)}
+.hw-card-art{flex-shrink:0;width:120px;display:flex;align-items:flex-end;justify-content:center;padding:8px 12px 0 0;pointer-events:none}
+.hw-card-art img{width:100%;max-width:108px;height:auto;object-fit:contain}
+.hw-card::after{content:'';position:absolute;width:140px;height:140px;border-radius:50%;right:-50px;top:-50px;background:#dce8ff;opacity:.45;pointer-events:none}
+
+.hw-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:15px}
+.hw-footer{text-align:center;padding:8px 0 24px;font-size:12px;color:var(--muted)}
+.hw-footer a{color:var(--blue);font-weight:700}
+
+@media (max-width:520px){
+  .hw-card{flex-direction:column}
+  .hw-card-art{width:100%;padding:0 16px 8px;justify-content:flex-end}
+  .hw-card-art img{max-width:96px}
+  .hw-card-body{padding-bottom:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="hw-nav">
+<div class="container hw-nav-inner">
+<a class="hw-back" href="../index.html">← На сайт</a>
+<a class="hw-logo" href="../">Bi<span>lingvi</span></a>
+</div>
+</header>
+
+<main class="container">
+<section class="hw-hero">
+<div class="hw-tag" id="hwTag">Домашнее задание</div>
+<h1 id="hwTitle">Продолжаем историю дома</h1>
+<p class="hw-intro" id="hwIntro"></p>
+<p class="hw-hint" id="hwHint"></p>
+<div class="hw-phone-tip">📱 Удобно открыть на телефоне</div>
+</section>
+
+<div class="hw-grid" id="hwGrid"></div>
+
+<p class="hw-footer">Вопросы? Напишите на <a href="mailto:hello@bilingvi.club">hello@bilingvi.club</a></p>
+</main>
+
+<script>
+const HOMEWORK_DATA={
+  section:{
+    tag:"Домашнее задание",
+    title:"Продолжаем историю дома",
+    intro:"После занятия давайте проведём время вместе! Нажмите на сказку, которую слушали на встрече, — и сделайте маленькую игру с ребёнком. Удобно открыть на телефоне.",
+    hint:"Сядьте рядом, слушайте вопросы вслух и помогайте выбирать ответы — без спешки и без оценок."
+  },
+  stories:[{
+    id:"pod-gribom",
+    isActive:true,
+    title:"«Под грибом»",
+    authorLine:"по мотивам В. Сутеева",
+    age:"4–6 лет",
+    description:"Интерактивная игра: помогаем зверятам спрятаться от дождя.",
+    illustration:"../img/ant.webp",
+    illustrationAlt:"Муравей из сказки «Под грибом»",
+    url:"pod-gribom/"
+  }]
+};
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+function renderHomework(data){
+  const grid=document.getElementById('hwGrid');
+  const sec=data.section||{};
+  if(sec.tag)document.getElementById('hwTag').textContent=sec.tag;
+  if(sec.title)document.getElementById('hwTitle').textContent=sec.title;
+  if(sec.intro)document.getElementById('hwIntro').textContent=sec.intro;
+  if(sec.hint)document.getElementById('hwHint').textContent=sec.hint;
+  const stories=(data.stories||[]).filter(s=>s.isActive);
+  if(!stories.length){
+    grid.innerHTML='<p class="hw-empty">Пока нет доступных игр — загляните позже.</p>';
+    return;
+  }
+  grid.innerHTML=stories.map(story=>{
+    const art=story.illustration
+      ?`<div class="hw-card-art"><img src="${esc(story.illustration)}" alt="${esc(story.illustrationAlt||'')}" loading="lazy" width="108" height="108"></div>`
+      :'';
+    const href=story.url||'#';
+    return`<a class="hw-card" href="${esc(href)}">
+<div class="hw-card-body">
+<div class="hw-card-top"><span class="hw-age">${esc(story.age||'')}</span></div>
+<h2>${esc(story.title)}</h2>
+<div class="hw-author">${esc(story.authorLine||'')}</div>
+<p class="hw-desc">${esc(story.description||'')}</p>
+<span class="hw-play">Играть вместе →</span>
+</div>
+${art}
+</a>`;
+  }).join('');
+}
+
+function loadHomework(){
+  renderHomework(HOMEWORK_DATA);
+  if(location.protocol==='file:')return;
+  fetch('../homework.json')
+    .then(r=>r.ok?r.json():null)
+    .then(data=>{
+      if(!data)return;
+      const stories=(data.stories||[]).map(s=>({
+        ...s,
+        illustration:s.illustration&&!s.illustration.startsWith('../')&&!s.illustration.startsWith('/')
+          ?'../'+s.illustration
+          :s.illustration
+      }));
+      renderHomework({...data,stories});
+    })
+    .catch(()=>{});
+}
+loadHomework();
+</script>
+</body>
+</html>

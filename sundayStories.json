@@ -18,7 +18,8 @@
       "platform": "Zoom",
       "theme": "blue",
       "illustration": "img/ant.webp",
-      "illustrationAlt": "Муравей из сказки «Под грибом»"
+      "illustrationAlt": "Муравей из сказки «Под грибом»",
+      "homeworkUrl": "homework/"
     },
     {
       "id": "blockograd-7-10",

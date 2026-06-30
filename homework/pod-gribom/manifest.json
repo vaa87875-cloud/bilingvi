@@ -1,0 +1,11 @@
+{
+  "name": "Под грибом",
+  "short_name": "Под грибом",
+  "description": "Домашняя игра по сказке В. Сутеева",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F6EFDE",
+  "theme_color": "#5B7B4F",
+  "orientation": "portrait-primary",
+  "lang": "ru"
+}

@@ -251,6 +251,7 @@ section{padding:var(--sec-pad) 0}
 .hero-mobile-badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
 .hero-mobile-steps{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0}
 .hero-mobile-steps li{font-size:11px;font-weight:800;color:var(--dark);background:white;border:1.5px solid var(--border);border-radius:50px;padding:5px 11px}
+.hero-mobile-steps a{color:inherit;text-decoration:none;display:block}
 
 /* Hero CTA */
 .hero-cta-row{display:flex;flex-direction:column;align-items:flex-start}
@@ -358,6 +359,13 @@ section{padding:var(--sec-pad) 0}
 .sunday-story-card.theme-green .sunday-story-author{color:#047857}
 .sunday-story-desc{font-size:var(--t-base);color:var(--muted);line-height:1.6;margin-bottom:10px;flex:1}
 .sunday-story-meta{font-size:var(--t-sm);font-weight:800;color:var(--text);margin-bottom:0;opacity:.85}
+.sunday-story-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sunday-story-homework{background:#fff!important;color:var(--blue)!important;border:1.5px solid #A8B8FF!important;box-shadow:0 4px 14px rgba(59,91,219,.08)!important}
+.sunday-story-homework:hover{background:var(--blue-pale)!important;transform:translateY(-2px)}
+.sunday-story-card.theme-purple .sunday-story-homework{color:#6f4ee8!important;border-color:#cfc5ff!important}
+.sunday-story-card.theme-yellow .sunday-story-homework{color:#c56a08!important;border-color:#f0d9a8!important}
+.sunday-story-card.theme-green .sunday-story-homework{color:#047857!important;border-color:#b8e6cc!important}
+.system-homework-link{margin-top:14px;display:inline-flex}
 .sunday-story-btn{align-self:flex-start;min-height:44px;padding:10px 20px;font-size:var(--t-sm);border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;text-decoration:none}
 .sunday-story-btn--full{width:100%;align-self:stretch;justify-content:center;display:inline-flex;align-items:center}
 .sunday-story-card.theme-blue .sunday-story-btn:not(.is-pending){background:linear-gradient(180deg,#4F6EE8 0%,#3050D0 100%);color:#fff;border:none;box-shadow:0 10px 22px rgba(47,110,234,.22)}
@@ -799,6 +807,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <li><a href="#sunday-stories">Истории</a></li>
 <li><a href="#how">Как проходит</a></li>
 <li><a href="#signup">Записаться</a></li>
+<li><a href="homework/">Игра дома</a></li>
 <li><a class="btn-nav" href="#" onclick="openFreeTrial();return false">Бесплатная история</a></li>
 </ul>
 <div class="nav-actions">
@@ -813,6 +822,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <li><a href="#sunday-stories" onclick="toggleNav()">Примеры историй</a></li>
 <li><a href="#how" onclick="toggleNav()">Как это работает</a></li>
 <li><a href="#signup" onclick="toggleNav()">Записаться</a></li>
+<li><a href="homework/" onclick="toggleNav()">Игра дома</a></li>
 <li><a href="#faq" onclick="toggleNav()">FAQ</a></li>
 <li><a class="btn-nav" href="#" onclick="openFreeTrial();toggleNav();return false">Бесплатная история</a></li>
 </ul>
@@ -850,7 +860,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 </div>
 <ul class="hero-mobile-steps">
 <li>Истории в Zoom</li>
-<li>Игра дома</li>
+<li><a href="homework/">Игра дома</a></li>
 </ul>
 </div>
 </div>
@@ -963,7 +973,8 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <div class="system-step-label">Шаг 2</div>
 <div class="system-step-icon">🏠</div>
 <h3>После встречи — игра дома</h3>
-<p>Родители получают PDF или ссылку с мини-игрой, словами и заданиями по сюжету. Русский продолжается дома без «сядь и учи»: через вопросы, выборы и маленькие задания.</p>
+<p>Родители получают ссылку с мини-игрой, словами и заданиями по сюжету. Русский продолжается дома без «сядь и учи»: через вопросы, выборы и маленькие задания.</p>
+<a class="btn btn-outline btn-sm system-homework-link" href="homework/">Открыть домашнее задание →</a>
 </div>
 </div>
 <div class="system-accent-box reveal">Первая встреча — бесплатно. Понравится формат — продолжайте: £5 за историю или £16 / месяц.</div>
@@ -1120,6 +1131,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <h5>Форматы</h5>
 <div class="ft-links">
 <a href="#sunday-stories">Примеры историй</a>
+<a href="homework/">Игра дома</a>
 <a href="#signup">Записаться</a>
 </div>
 </div>
@@ -1308,6 +1320,7 @@ function renderSundayStories(data){
     const meta=`${esc(story.duration)} · ${esc(story.platform)}`;
     const illustration=story.illustration?`<img class="sunday-story-illustration" src="${esc(story.illustration)}" alt="${esc(story.illustrationAlt||'')}" loading="lazy" width="152" height="152">`:'';
     const hasIllustration=story.illustration?' has-illustration':'';
+    const homeworkBtn=story.homeworkUrl?`<div class="sunday-story-actions"><a class="sunday-story-btn sunday-story-homework" href="${esc(story.homeworkUrl)}">🏠 Игра дома</a></div>`:'';
     return`<div class="sunday-story-card ${theme}${hasIllustration} reveal rd${i}">
 <div class="sunday-story-top">
 <span class="sunday-story-age">${esc(story.age)}</span>
@@ -1316,6 +1329,7 @@ function renderSundayStories(data){
 <div class="sunday-story-author">${esc(story.authorLine)}</div>
 <p class="sunday-story-desc">${esc(story.description)}</p>
 <div class="sunday-story-meta">${meta}</div>
+${homeworkBtn}
 ${illustration}
 </div>`;
   }).join('');

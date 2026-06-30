@@ -2,3 +2,9 @@
   publish = "."
 
 # Forms: trial-request (detected from index.html at deploy time)
+
+[[headers]]
+  for = "/*.m4a"
+  [headers.values]
+    Content-Type = "audio/mp4"
+    Cache-Control = "public, max-age=31536000, immutable"
