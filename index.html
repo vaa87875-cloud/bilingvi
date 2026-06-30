@@ -393,10 +393,21 @@ section{padding:var(--sec-pad) 0}
 .signup-step h3{font-size:16px;color:var(--dark);margin-bottom:6px;line-height:1.25}
 .signup-step p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0}
 .pricing-after{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pricing-after-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:20px 18px;text-align:center}
+.pricing-after-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:20px 18px;text-align:center;display:flex;flex-direction:column}
+.pricing-after-card--free{border-color:#b8e6cc;background:linear-gradient(180deg,#f6fffb 0%,#fff 100%)}
+.pricing-after-card--hot{border:2px solid var(--blue);box-shadow:0 12px 32px rgba(59,91,219,.12);background:linear-gradient(180deg,#f7faff 0%,#fff 100%)}
 .pricing-after-card h3{font-size:18px;color:var(--dark);margin-bottom:4px}
 .pricing-after-card .price{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:var(--blue);margin-bottom:6px}
-.pricing-after-card p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0}
+.pricing-after-card .price-row-sale{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:4px 8px;margin-bottom:4px}
+.pricing-after-card .price-old{font-family:'Baloo 2',cursive;font-size:22px;font-weight:700;color:var(--muted);text-decoration:line-through;opacity:.65}
+.pricing-after-card .price-new{font-family:'Baloo 2',cursive;font-size:34px;font-weight:800;color:var(--dark);line-height:1}
+.pricing-after-card .price-period{font-size:14px;font-weight:700;color:var(--muted)}
+.pricing-after-card .promo-countdown{font-size:12px;font-weight:800;color:#c05621;margin:0 0 8px;line-height:1.4}
+.pricing-after-card .plan-badge-sm{display:inline-block;padding:4px 12px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;margin-bottom:10px}
+.pricing-after-card .plan-badge-sm.badge-free{background:#d1fae5;color:#047857}
+.pricing-after-card .plan-badge-sm.badge-promo{background:#ffe8d6;color:#c05621}
+.pricing-after-card p{font-size:var(--t-sm);color:var(--muted);line-height:1.55;margin:0 0 12px;flex:1}
+.pricing-after-card .btn{margin-top:auto;align-self:center}
 .pricing-after-note{margin-top:14px;text-align:center;font-size:var(--t-sm);color:var(--muted);line-height:1.5}
 
 /* ── PRICING ── */
@@ -977,7 +988,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <a class="btn btn-outline btn-sm system-homework-link" href="homework/">Открыть домашнее задание →</a>
 </div>
 </div>
-<div class="system-accent-box reveal">Первая встреча — бесплатно. Понравится формат — продолжайте: £5 за историю или £16 / месяц.</div>
+<div class="system-accent-box reveal">Первая встреча — бесплатно. Дальше — месяц из 4 занятий: <span id="accentPromoPrice">£18</span> <span id="accentPromoOld" style="text-decoration:line-through;opacity:.6">£20</span> <span id="accentPromoNote">(акция до 7 июля)</span>.</div>
 <div class="system-cta-row reveal">
 <button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
@@ -1068,18 +1079,26 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <button class="btn btn-yellow" onclick="openFreeTrial()">Записаться на бесплатную историю</button>
 </div>
 <div class="pricing-after reveal">
-<div class="pricing-after-card">
-<h3>Одна история</h3>
-<div class="price">£5</div>
-<p>Разовая встреча — если хотите ходить время от времени.</p>
+<div class="pricing-after-card pricing-after-card--free">
+<span class="plan-badge-sm badge-free">Сначала</span>
+<h3>Бесплатное пробное</h3>
+<div class="price">£0</div>
+<p>Первая интерактивная история в Zoom — без оплаты и без обязательств. Познакомьтесь с форматом вместе с ребёнком.</p>
+<button class="btn btn-yellow btn-sm" type="button" onclick="openFreeTrial()">Записаться бесплатно</button>
 </div>
-<div class="pricing-after-card">
-<h3>Месяц историй</h3>
-<div class="price">£16</div>
-<p>4 встречи в месяц — для регулярного контакта с русским.</p>
+<div class="pricing-after-card pricing-after-card--hot">
+<span class="plan-badge-sm badge-promo" id="promoBadge">−£2 · акция</span>
+<h3>Месяц занятий</h3>
+<div class="price-row-sale" id="monthlyPriceRow">
+<span class="price-old" id="monthlyOldPrice">£20</span>
+<span class="price-new" id="monthlyNewPrice">£18</span>
+<span class="price-period">/ месяц</span>
+</div>
+<p class="promo-countdown" id="promoCountdown">Акция заканчивается через 7 дней</p>
+<p>4 интерактивные истории в Zoom + игра дома после каждой встречи. Для регулярного контакта с русским.</p>
 </div>
 </div>
-<p class="pricing-after-note reveal">Тарифы — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
+<p class="pricing-after-note reveal">Тариф — только после бесплатной встречи, если формат подойдёт. Пришлём ссылку на оплату по email.</p>
 </div>
 </section>
 
@@ -1111,7 +1130,7 @@ input[type=text]:focus,input[type=email]:focus,select:focus,textarea:focus{borde
 <section class="final-cta">
 <div class="final-cta-inner">
 <h2>Русский не исчезает за один день. И вернуть его в речь тоже можно мягко — через историю, в которую ребёнку хочется войти.</h2>
-<p class="final-cta-sub">Первая встреча — бесплатно. Понравится формат — продолжайте: £5 за историю или £16 / месяц.</p>
+<p class="final-cta-sub">Первая встреча — бесплатно. Понравится формат — месяц из 4 занятий: <span id="finalPromoPrice">£18</span> <span id="finalPromoOld" style="text-decoration:line-through;opacity:.65">£20</span> <span id="finalPromoNote">(акция)</span>.</p>
 <button class="btn btn-yellow btn-lg" onclick="openFreeTrial()">Записаться на бесплатную историю →</button>
 <p class="final-cta-micro">Придумала Настя — методист и мама детей-трилингвов. Я знаю эту боль изнутри и делаю Bilingvi так, как хотела бы для своих детей.</p>
 <p class="final-cta-tagline">Bilingvi — это не курс русского языка. Это место, где ребёнок постепенно начинает хотеть говорить.</p>
@@ -1412,6 +1431,41 @@ function toggleFaq(el){
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
   if(!open)item.classList.add('open');
 }
+
+const PROMO_END=new Date('2026-07-07T23:59:59');
+function pluralDays(n){
+  const m10=n%10,m100=n%100;
+  if(m10===1&&m100!==11)return 'день';
+  if(m10>=2&&m10<=4&&(m100<12||m100>14))return 'дня';
+  return 'дней';
+}
+function formatPromoRemaining(ms){
+  if(ms<=0)return null;
+  const days=Math.ceil(ms/86400000);
+  if(days>1)return`Акция заканчивается через ${days} ${pluralDays(days)}`;
+  const hours=Math.ceil(ms/3600000);
+  if(hours>1)return`Акция заканчивается через ${hours} ч.`;
+  return'Акция заканчивается сегодня';
+}
+function initPromoPricing(){
+  const active=Date.now()<PROMO_END.getTime();
+  const hide=ids=>ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  const setText=(id,text)=>{const el=document.getElementById(id);if(el)el.textContent=text;};
+  if(!active){
+    hide(['monthlyOldPrice','promoBadge','promoCountdown','accentPromoOld','accentPromoNote','finalPromoOld','finalPromoNote']);
+    setText('monthlyNewPrice','£20');
+    setText('accentPromoPrice','£20');
+    setText('finalPromoPrice','£20');
+    return;
+  }
+  const txt=formatPromoRemaining(PROMO_END.getTime()-Date.now());
+  if(txt)setText('promoCountdown',txt);
+  const dateStr=PROMO_END.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
+  const note=`(акция до ${dateStr})`;
+  setText('accentPromoNote',note);
+  setText('finalPromoNote','(акция)');
+}
+
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
 document.querySelectorAll('.reveal,.reveal-fade,.reveal-scale').forEach(el=>{el.dataset.observed='1';obs.observe(el)});
 document.addEventListener('click',e=>{
@@ -1430,6 +1484,7 @@ window.addEventListener('pageshow',keepPageAtTop);
 let userScrolled=false;
 window.addEventListener('scroll',()=>{if(scrollY>24)userScrolled=true},{passive:true});
 async function initPage(){
+  initPromoPricing();
   await Promise.all([loadSundayStories(),loadFaq()]);
   if(!location.hash&&!userScrolled)window.scrollTo(0,0);
 }
